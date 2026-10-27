@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simple Syrup Ratio Calculator | SyrupRatio</title>
+<meta name="description" content="Simple syrup ratio calculator: enter sugar, get exact water, total yield and shelf life for 1:1, 2:1 rich, demerara and flavored syrups. Free tool.">
+<link rel="canonical" href="https://convert.fixoraa.tech/syrupratio/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Simple Syrup Ratio Calculator | SyrupRatio">
+<meta property="og:description" content="Simple syrup ratio calculator: enter sugar, get exact water, total yield and shelf life for 1:1, 2:1 rich, demerara and flavored syrups. Free tool.">
+<meta property="og:url" content="https://convert.fixoraa.tech/syrupratio/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patua+One:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SyrupRatio",
+      "url": "https://convert.fixoraa.tech/syrupratio/",
+      "applicationCategory": "Cooking",
+      "operatingSystem": "Web",
+      "description": "Simple syrup ratio calculator: enter sugar, get exact water, total yield and shelf life for 1:1, 2:1 rich, demerara and flavored syrups. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between 1:1 and 2:1 simple syrup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1:1 uses equal parts sugar and water (one cup each); 2:1 uses two cups of sugar to one cup of water. Rich 2:1 syrup is sweeter and thicker per ounce, dilutes drinks less, and keeps up to 6 months refrigerated versus about 1 month for 1:1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does homemade simple syrup last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In the refrigerator, 1:1 simple syrup keeps about one month; 2:1 rich syrup keeps up to six months because the higher sugar concentration preserves better. Flavored syrups with fresh ingredients keep about two weeks. Discard anything cloudy, spotty, or fermented-smelling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does 1 cup sugar + 1 cup water make 2 cups of syrup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not exactly \u2014 dissolving sugar in water yields slightly less than the sum of the parts. One cup of sugar plus one cup of water makes roughly 1.5 cups of 1:1 syrup. The calculator reports sugar + water for planning; expect 10-15% less actual yield."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is rich simple syrup better for cocktails?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 it is the main reason bars prefer it. Rich syrup delivers the same sweetness with less water, so cocktails stay stronger and silkier. Most classic specs written for 1:1 can use half the volume of 2:1 with better texture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to boil simple syrup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heat helps sugar dissolve but is not mandatory. Cold-process syrup (shaking sugar and water in a sealed bottle) works for 1:1, though it takes longer. For 2:1 rich syrup, hot water is strongly recommended \u2014 that much sugar barely dissolves cold."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did my syrup turn cloudy or crystallize?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cloudiness is usually impurities from less-refined sugars or incomplete dissolving \u2014 simmer a bit longer and strain; it is safe. Crystallization happens when sugar recrystallizes on the pan walls or in storage; a few drops of lemon juice while making rich syrup prevents it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F8F2F0; --surface:#FFFFFF; --accent:#9A3412; --accent-ink:#FFFFFF;
+  --ink:#1F2937; --muted:#5C6675; --line:#ECDAD4;
+  --display:'Patua One',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sr-wrap{font-family:Inter,system-ui,sans-serif;background:#F8F2F0;color:#1F2937;padding:56px 20px 76px;}.sr-head{max-width:960px;margin:0 auto 30px;display:flex;align-items:center;gap:18px;}.sr-logo{width:66px;height:66px;border-radius:20px;background:linear-gradient(135deg,#9A3412,#d97a4a);color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 12px 26px rgba(154,52,18,.25);}.sr-head h1{font-family:'Patua One',serif;font-size:clamp(28px,4.4vw,44px);margin:0;letter-spacing:.01em;}.sr-head p{margin:4px 0 0;color:#5C6675;font-size:15.5px;}.sr-dash{max-width:960px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:20px;}.sr-panel{background:#FFFFFF;border:1px solid #ECDAD4;border-radius:22px;padding:26px;box-shadow:0 16px 40px rgba(154,52,18,.08);}.sr-panel h2{font-family:'Patua One',serif;font-size:20px;margin:0 0 14px;}.sr-ratios{display:grid;gap:10px;}.sr-ratio{border:2px solid #ECDAD4;border-radius:14px;padding:12px 14px;cursor:pointer;background:#fff;font-family:inherit;text-align:left;width:100%;box-sizing:border-box;}.sr-ratio .sr-r{font-weight:800;font-size:17px;}.sr-ratio .sr-d{font-size:13px;color:#5C6675;}.sr-ratio.on{border-color:#9A3412;background:#F8F2F0;}.sr-field{margin-top:16px;}.sr-field label{display:block;font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#5C6675;margin-bottom:8px;}.sr-field input,.sr-field select{width:100%;padding:13px;font-size:16px;border:2px solid #ECDAD4;border-radius:12px;font-family:inherit;color:#1F2937;background:#F8F2F0;box-sizing:border-box;min-height:52px;}.sr-field input:focus{outline:none;border-color:#9A3412;}.sr-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}.sr-stat{background:#FFFFFF;border:1px solid #ECDAD4;border-radius:18px;padding:20px;text-align:center;}.sr-stat .sr-v{font-family:'Patua One',serif;font-size:34px;color:#9A3412;}.sr-stat .sr-l{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:#5C6675;margin-top:6px;font-weight:700;}.sr-shelf{background:#FFFFFF;border:1px solid #ECDAD4;border-radius:18px;padding:20px;font-size:14.5px;line-height:1.6;color:#5C6675;}.sr-shelf strong{color:#1F2937;}.sr-hist{max-width:960px;margin:20px auto 0;background:#FFFFFF;border:1px solid #ECDAD4;border-radius:22px;padding:26px;}.sr-hist h2{font-family:'Patua One',serif;font-size:20px;margin:0 0 12px;}.sr-hist table{width:100%;border-collapse:collapse;font-size:14px;}.sr-hist th,.sr-hist td{padding:9px 8px;text-align:left;border-bottom:1px solid #ECDAD4;}.sr-hist th{color:#5C6675;font-size:12px;text-transform:uppercase;letter-spacing:.05em;}.sr-clear{background:none;border:1px solid #ECDAD4;border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;color:#5C6675;font-family:inherit;margin-top:12px;}@media (max-width:760px){.sr-dash{grid-template-columns:1fr;}.sr-stats{grid-template-columns:1fr 1fr;}.sr-head{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SyrupRatio home">
+      <span class="fx-logo-tile" aria-hidden="true">🍯</span>
+      <span class="fx-brand">SyrupRatio</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-stat-dash" aria-label="SyrupRatio tool">
+<section class='sr-wrap'><div class='sr-head'><div class='sr-logo' aria-hidden='true'>🍯</div><div><h1>Simple Syrup Ratio Calculator</h1><p>Perfect syrup, every ratio, every batch.</p></div></div><div class='sr-dash'><div class='sr-panel'><h2>Your batch</h2><div class='sr-ratios' id='sr-ratios' role='radiogroup' aria-label='Syrup ratio'></div><div class='sr-field'><label for='sr-sugar'>Sugar (US cups)</label><input id='sr-sugar' type='number' min='0' step='0.25' value='2' inputmode='decimal'></div><div class='sr-field'><label for='sr-flavor'>Flavored preset</label><select id='sr-flavor'><option value='plain'>Plain</option><option value='vanilla'>Vanilla bean</option><option value='mint'>Fresh mint</option><option value='cinnamon'>Cinnamon</option><option value='ginger'>Fresh ginger</option></select></div></div><div><div class='sr-stats'><div class='sr-stat'><div class='sr-v' id='sr-water'>–</div><div class='sr-l'>Water (cups)</div></div><div class='sr-stat'><div class='sr-v' id='sr-yield'>–</div><div class='sr-l'>Yield (cups)</div></div><div class='sr-stat'><div class='sr-v' id='sr-sweet'>–</div><div class='sr-l'>Sugar %</div></div></div><div class='sr-shelf' id='sr-shelf'></div></div></div><div class='sr-hist'><h2>Batch history</h2><div style='overflow-x:auto'><table><thead><tr><th>When</th><th>Ratio</th><th>Sugar</th><th>Water</th><th>Flavor</th></tr></thead><tbody id='sr-histbody'><tr><td colspan='5' style='color:#5C6675'>No batches yet — your syrups will be logged here.</td></tr></tbody></table></div><button class='sr-clear' id='sr-clear'>Clear history</button></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Simple Syrup Actually Is</h2><p>Simple syrup is exactly what the name promises: sugar dissolved in water. Yet this two-ingredient staple is the backbone of modern cocktails, coffee drinks, lemonades, and dessert soaking syrups, because liquid sugar blends instantly into cold drinks where granulated sugar would sink to the bottom in gritty defiance. Making it is trivially easy — heat water, stir in sugar until dissolved, cool, bottle — but the <strong>ratio</strong> you choose changes everything about sweetness, texture, shelf life, and how much to use in a recipe.</p><p>Ratios are written sugar-to-water by volume. A 1:1 syrup uses equal parts sugar and water: one cup of sugar to one cup of water. A 2:1 syrup, also called rich simple syrup, uses two cups of sugar to one cup of water. The calculator above does the arithmetic for any batch size: enter your sugar, pick your ratio, and it returns the water to add, the total yield, and how long the batch will keep.</p><h2>The Two Classic Ratios</h2><p><strong>1:1 simple syrup</strong> is the all-rounder. It dissolves easily, pours like water, and substitutes neatly in recipes: because it is half sugar by volume, replacing one tablespoon of granulated sugar with two tablespoons of 1:1 syrup keeps sweetness equivalent (with a little extra water, which rarely matters). Most cocktail recipes that say "simple syrup" without specifying mean 1:1. It keeps about one month refrigerated.</p><p><strong>2:1 rich simple syrup</strong> is the bartender's preference. With twice the sugar, it is noticeably thicker and sweeter per ounce, so drinks need less of it — which means less dilution of the spirit. A daiquiri built with rich syrup tastes rounder and more textured than the same drink built with 1:1. The high sugar concentration also acts as a preservative: rich syrup keeps up to six months refrigerated, far longer than 1:1. The trade-off is that it is harder to dissolve — use hot (not boiling) water and stir patiently.</p><h3>Less common ratios worth knowing</h3><ul><li><strong>1:2 (light syrup):</strong> half the sugar of standard — useful for lightly sweetened iced teas and for soaking cakes where you want moisture more than sweetness.</li><li><strong>Demerara syrup (usually 1:1):</strong> made with demerara or turbinado sugar for a toffee, molasses-tinged flavor that transforms old fashioneds and rum drinks.</li><li><strong>Honey syrup (about 4:3):</strong> honey is thicker than sugar water, so it is thinned with a little water to make it pourable and mixable in cold drinks.</li></ul><h2>Sugar Types and How They Change the Syrup</h2><p>White granulated sugar makes a neutral syrup that disappears into any drink. Demerara, turbinado, and muscovado sugars add caramel, toffee, and molasses notes — superb in whiskey, rum, and coffee drinks, but wrong for a delicate gin cocktail where you want the botanicals to shine. Brown sugar syrup leans even further into molasses and suits fall-flavored drinks. Palm or coconut sugar brings a butterscotch depth that works in tiki drinks. Whatever sugar you use, the ratio math is identical; only the flavor changes.</p><p>One caution: darker sugars contain more impurities and their syrups spoil faster. A demerara 1:1 keeps closer to two or three weeks refrigerated, not the full month of white-sugar syrup. When in doubt, make smaller batches more often.</p><h2>Flavored Syrups: The Presets Explained</h2><p>The tool's flavored presets scale classic infusions alongside the base ratio:</p><ul><li><strong>Vanilla:</strong> one split vanilla bean (or 1 tablespoon extract) per cup of sugar, added while the syrup is hot. The foundation of vanilla lattes.</li><li><strong>Mint:</strong> a packed handful of mint leaves bruised and steeped 30 minutes in hot syrup, then strained. Essential for mojitos and mint juleps; keep it refrigerated and use within two weeks.</li><li><strong>Cinnamon:</strong> 2–3 sticks per cup of sugar, simmered 5 minutes and steeped an hour. Superb in coffee and apple cocktails.</li><li><strong>Ginger:</strong> a 2-inch knob of sliced fresh ginger per cup of sugar, simmered 10 minutes. Fiery in mules and lemonades.</li></ul><p>The universal method: make the base syrup, add the flavoring while hot, steep, strain, bottle. Delicate herbs (mint, basil) steep off the heat to avoid bitterness; hard spices (cinnamon, clove) can simmer briefly. Always strain through a fine mesh — stray bits become nucleation sites for crystallization and spoilage.</p><h2>Shelf Life and Food Safety</h2><p>Sugar preserves by binding water so microbes cannot use it, which is why concentration is destiny:</p><table><thead><tr><th>Syrup</th><th>Sugar concentration</th><th>Refrigerated shelf life</th></tr></thead><tbody><tr><td>1:2 light syrup</td><td>~33%</td><td>2–3 weeks</td></tr><tr><td>1:1 simple syrup</td><td>50%</td><td>About 1 month</td></tr><tr><td>2:1 rich syrup</td><td>~67%</td><td>Up to 6 months</td></tr><tr><td>Flavored (any base)</td><td>Varies</td><td>2 weeks (fresh ingredients spoil faster)</td></tr></tbody></table><p>Always refrigerate — room-temperature syrup is a science experiment. Use clean bottles, and consider adding a tablespoon of vodka per cup as an extra preservative for 1:1 syrups (it will not affect flavor at that dilution). Discard any syrup that turns cloudy, grows spots, or smells fermented. Crystallization, on the other hand, is harmless: warm the bottle gently and stir until clear.</p><h2>Scaling Batches Up and Down</h2><p>The math is perfectly linear, which is what the calculator exploits: doubling the sugar doubles the water and roughly doubles the yield. Note "roughly" — dissolving sugar in water produces slightly less total volume than the sum of the parts (a cup of sugar plus a cup of water yields about 1.5 cups of 1:1 syrup, not 2). The tool reports yield as sugar + water for planning purposes; for exact bottle counts, expect about 10–15 percent less.</p><p>For large batches, work in weight instead of volume: a kitchen scale makes 2 kilograms of sugar plus 1 liter of water trivially easy to measure, and weight is unaffected by how the sugar settles. Rich syrup in bulk is where crystallization risk rises, so add a squeeze of lemon juice (the acid inverts some sucrose into glucose and fructose, which resist crystallizing) when making more than a liter.</p><h2>Using Syrup in Recipes</h2><p>Converting recipes between granulated sugar and syrup is simple once you remember that 1:1 syrup is half sugar by volume. To replace 1 cup of granulated sugar, use about 1.5 cups of 1:1 syrup and reduce other liquids in the recipe by half a cup. For 2:1 rich syrup, 1 cup replaces roughly 1 cup of sugar with only a quarter cup of extra water. In cocktails, standard specs assume 1:1 unless the bartender says otherwise — if a recipe calls for 3/4 oz of rich syrup instead, it is delivering the same sugar as 1.5 oz of 1:1 with less dilution, a deliberate choice for spirit-forward drinks.</p><h2>Troubleshooting</h2><ul><li><strong>Cloudy syrup:</strong> usually undissolved impurities from raw sugars. Simmer a minute longer and strain through cheesecloth. It is safe.</li><li><strong>Crystals forming:</strong> stir while dissolving, keep undissolved sugar off the pan walls (a wet pastry brush helps), and add a few drops of lemon juice for rich syrups.</li><li><strong>Too thin for the drink:</strong> you probably wanted 2:1. Rich syrup's viscosity is part of its mouthfeel — do not try to thicken 1:1 by boiling it down, which just converts it toward 2:1 unpredictably.</li><li><strong>Off flavors:</strong> old syrup tastes fermented or musty. When in doubt, the batch is cheap — remake it.</li></ul><p>Simple syrup rewards the small effort of making it fresh. A bottle of 1:1 and a bottle of rich 2:1 in the fridge cover nearly every drink you will ever make, and with the calculator above you will never again do ratio math on the back of a napkin.</p><h3>Storing syrup so it lasts</h3><p>Rich two to one syrup keeps for months refrigerated because sugar itself is the preservative, while thin one to one syrup lasts only a few weeks before clouding. Always store in a sterilized bottle, keep it cold, and add a splash of neutral spirit if you want extra insurance. If a batch ever turns cloudy or ferments, discard it — sugar is cheap and stomachs are not. Label every bottle with ratio and date, because three half-used bottles of mystery syrup help nobody.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is the difference between 1:1 and 2:1 simple syrup?</summary><p>1:1 uses equal parts sugar and water (one cup each); 2:1 uses two cups of sugar to one cup of water. Rich 2:1 syrup is sweeter and thicker per ounce, dilutes drinks less, and keeps up to 6 months refrigerated versus about 1 month for 1:1.</p></details>
+<details><summary>How long does homemade simple syrup last?</summary><p>In the refrigerator, 1:1 simple syrup keeps about one month; 2:1 rich syrup keeps up to six months because the higher sugar concentration preserves better. Flavored syrups with fresh ingredients keep about two weeks. Discard anything cloudy, spotty, or fermented-smelling.</p></details>
+<details><summary>Does 1 cup sugar + 1 cup water make 2 cups of syrup?</summary><p>Not exactly — dissolving sugar in water yields slightly less than the sum of the parts. One cup of sugar plus one cup of water makes roughly 1.5 cups of 1:1 syrup. The calculator reports sugar + water for planning; expect 10-15% less actual yield.</p></details>
+<details><summary>Is rich simple syrup better for cocktails?</summary><p>Yes — it is the main reason bars prefer it. Rich syrup delivers the same sweetness with less water, so cocktails stay stronger and silkier. Most classic specs written for 1:1 can use half the volume of 2:1 with better texture.</p></details>
+<details><summary>Do I need to boil simple syrup?</summary><p>Heat helps sugar dissolve but is not mandatory. Cold-process syrup (shaking sugar and water in a sealed bottle) works for 1:1, though it takes longer. For 2:1 rich syrup, hot water is strongly recommended — that much sugar barely dissolves cold.</p></details>
+<details><summary>Why did my syrup turn cloudy or crystallize?</summary><p>Cloudiness is usually impurities from less-refined sugars or incomplete dissolving — simmer a bit longer and strain; it is safe. Crystallization happens when sugar recrystallizes on the pan walls or in storage; a few drops of lemon juice while making rich syrup prevents it.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SyrupRatio</div>
+    <p>SyrupRatio scales simple syrup batches: pick a ratio, enter sugar, get exact water, yield and shelf life.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function syrupWater(cupsSugar,ratio){var NAMED={rich:'2:1',demerara:'1:1',honey:'4:3',agave:'1:1','1-1':'1:1'};var r=String(ratio==null?'':ratio).trim().toLowerCase();if(NAMED[r])r=NAMED[r];var mult=1;var m=/^(\d+(?:\.\d+)?)\s*:\s*(\d+(?:\.\d+)?)$/.exec(r);if(m&&Number(m[1])>0)mult=Number(m[2])/Number(m[1]);var s=Number(cupsSugar);if(!(s>=0))return 0;return Math.round(s*mult*100)/100;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}var RATIOS=[['1:1','1:1 — Classic','Equal parts. The all-rounder for cocktails and coffee.',50,'About 1 month refrigerated.'],['2:1','2:1 — Rich','Double sugar. Silkier drinks, less dilution.',67,'Up to 6 months refrigerated.'],['1:2','1:2 — Light','Half sugar. For iced tea and cake soaks.',33,'2–3 weeks refrigerated.'],['demerara','Demerara','Toffee notes for whiskey and rum drinks.',50,'2–3 weeks refrigerated.']];var cur='1:1';var box=el('sr-ratios');RATIOS.forEach(function(r){var b=document.createElement('button');b.className='sr-ratio'+(r[0]===cur?' on':'');b.type='button';b.setAttribute('role','radio');b.setAttribute('aria-checked',r[0]===cur?'true':'false');b.innerHTML='<div class="sr-r">'+r[1]+'</div><div class="sr-d">'+r[2]+'</div>';b.addEventListener('click',function(){cur=r[0];var all=box.querySelectorAll('.sr-ratio');for(var i=0;i<all.length;i++){all[i].classList.remove('on');all[i].setAttribute('aria-checked','false');}b.classList.add('on');b.setAttribute('aria-checked','true');render();});box.appendChild(b);});var FLAVOR_TXT={plain:'',vanilla:'Add 1 split vanilla bean (or 1 tbsp extract) per cup of sugar while hot.',mint:'Steep a packed handful of bruised mint 30 min in hot syrup, then strain. Use within 2 weeks.',cinnamon:'Simmer 2–3 sticks per cup of sugar 5 min, steep 1 hour, strain.',ginger:'Simmer 2-inch sliced ginger per cup of sugar 10 min, strain.'};function loadHist(){try{var h=JSON.parse(localStorage.getItem('sr_hist')||'[]');return Array.isArray(h)?h:[];}catch(e){return [];}}function saveHist(h){try{localStorage.setItem('sr_hist',JSON.stringify(h.slice(0,20)));}catch(e){}}function drawHist(){var tb=el('sr-histbody');if(!tb)return;var h=loadHist();if(!h.length){tb.innerHTML='<tr><td colspan="5" style="color:#5C6675">No batches yet — your syrups will be logged here.</td></tr>';return;}tb.innerHTML='';h.forEach(function(x){var tr=document.createElement('tr');tr.innerHTML='<td></td><td></td><td></td><td></td><td></td>';tr.children[0].textContent=x.when;tr.children[1].textContent=x.ratio;tr.children[2].textContent=x.sugar+' cups';tr.children[3].textContent=x.water+' cups';tr.children[4].textContent=x.flavor;tb.appendChild(tr);});}function render(){var sugar=el('sr-sugar'),water=el('sr-water'),yieldEl=el('sr-yield'),sweet=el('sr-sweet'),shelf=el('sr-shelf'),flav=el('sr-flavor');if(!sugar||!water)return;var s=Number(sugar.value);if(!(s>0)){water.textContent='–';yieldEl.textContent='–';sweet.textContent='–';shelf.innerHTML='Enter your sugar amount to scale the batch.';return;}var w=syrupWater(s,cur);var info=null;for(var i=0;i<RATIOS.length;i++)if(RATIOS[i][0]===cur)info=RATIOS[i];water.textContent=w;yieldEl.textContent=Math.round((s+w)*100)/100;sweet.textContent=info[3]+'%';var f=flav?flav.value:'plain';var ftext=FLAVOR_TXT[f]||'';shelf.innerHTML='<strong>Shelf life:</strong> '+info[4]+(ftext?' <strong>'+flav.options[flav.selectedIndex].text+':</strong> '+ftext:'')+'<br><strong>Method:</strong> heat the water, stir in the sugar until fully dissolved, cool, then bottle and refrigerate.';}var sin=el('sr-sugar');if(sin){sin.addEventListener('input',render);sin.addEventListener('change',function(){var s=Number(sin.value);if(s>0){var w=syrupWater(s,cur);var h=loadHist();var fl=el('sr-flavor');h.unshift({when:new Date().toLocaleString(),ratio:cur,sugar:s,water:w,flavor:fl?fl.options[fl.selectedIndex].text:'Plain'});saveHist(h);drawHist();}});}var fl2=el('sr-flavor');if(fl2)fl2.addEventListener('change',render);var clr=el('sr-clear');if(clr)clr.addEventListener('click',function(){saveHist([]);drawHist();});drawHist();render();});}
+</script>
+</body>
+</html>
