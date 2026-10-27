@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Climbing Grade Converter: YDS French UIAA</title>
+<meta name="description" content="Convert climbing grades between YDS, French, and UIAA instantly. Full conversion table with difficulty bands. Free climbing grade converter.">
+<link rel="canonical" href="https://convert.fixoraa.tech/climbgrade/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Climbing Grade Converter: YDS French UIAA">
+<meta property="og:description" content="Convert climbing grades between YDS, French, and UIAA instantly. Full conversion table with difficulty bands. Free climbing grade converter.">
+<meta property="og:url" content="https://convert.fixoraa.tech/climbgrade/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ClimbGrade",
+      "url": "https://convert.fixoraa.tech/climbgrade/",
+      "applicationCategory": "Sports Tools",
+      "operatingSystem": "Web",
+      "description": "Convert climbing grades between YDS, French, and UIAA instantly. Full conversion table with difficulty bands. Free climbing grade converter.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which climbing grade system should I learn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "YDS (e.g. 5.10a) is standard in North America, the French system (e.g. 6a) dominates Europe and international sport climbing, and UIAA (e.g. VI+) is used in German-speaking and alpine regions. They describe the same difficulty; use the converter above to translate between them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between 5.10a and 5.10b?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In YDS, 5.10a is the easiest subdivision of 5.10 and 5.10d the hardest, so 5.10b is one letter-step harder than 5.10a. In French terms that is roughly 6a versus 6a+ \u2014 a noticeable but small increment, like the difference between cruising and having to try."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the hardest climbing grade in the world?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As of recent records, 5.15d (French 9a+) is the hardest confirmed redpoint grade in the world, first climbed by Adam Ondra on Silence in 2017. Only a handful of climbers on Earth operate at 5.15c and above."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do bouldering grades convert to route grades?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bouldering uses its own scales \u2014 V-scale (V0\u2013V17) in the US and Font scale (4\u20138C+) elsewhere \u2014 and there is no exact formula converting them to route grades, because routes add endurance to the equation. Roughly, the crux moves of a 5.12a feel like V4\u2013V5 bouldering."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the French system use letters like 6a+?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The French system uses numbers 1\u20139 with letter subdivisions a/b/c and '+' modifiers (6a, 6a+, 6b\u2026), giving finer, more even steps than YDS. It became the international standard for sport climbing because it describes progress precisely and translates cleanly across countries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are indoor climbing grades the same as outdoor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Indoor gym grades typically run one to two grades softer than outdoor grades \u2014 gyms grade generously and plastic offers perfect friction. If you climb 5.11a in the gym, expect to start around 5.9\u20135.10a on real rock until you learn to read stone, manage fear, and place protection."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAF6EE; --surface:#FFFFFF; --accent:#7c2d12; --accent-ink:#FFFFFF;
+  --ink:#241D14; --muted:#6E5F4D; --line:#EADFCB;
+  --display:'IBM Plex Serif',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cg-wrap{font-family:'IBM Plex Serif',Georgia,serif;background:#FAF6EE;color:#241D14;padding:56px 20px 72px;}.cg-head{max-width:1060px;margin:0 auto 34px;text-align:center;}.cg-logo{width:70px;height:70px;margin:0 auto 16px;border-radius:22px;background:linear-gradient(135deg,#7c2d12,#d2691e);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(124,45,18,.22);}.cg-head h1{font-size:clamp(30px,4.6vw,46px);margin:0 0 10px;letter-spacing:-0.01em;font-weight:700;}.cg-tag{font-family:Inter,system-ui,sans-serif;color:#6E5F4D;font-size:17px;margin:0;}.cg-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start;}.cg-panel{background:#FFFFFF;border:1px solid #EADFCB;border-radius:22px;padding:30px;box-shadow:0 16px 40px rgba(124,45,18,.07);}.cg-panel-title{font-family:Inter,system-ui,sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#7c2d12;margin:0 0 18px;}.cg-sysrow{display:flex;gap:10px;margin-bottom:16px;}.cg-sys{flex:1;border:2px solid #EADFCB;background:#FAF6EE;border-radius:12px;padding:12px 6px;font-family:Inter,system-ui,sans-serif;font-size:14.5px;font-weight:700;cursor:pointer;color:#241D14;min-height:48px;}.cg-sys.sel{border-color:#7c2d12;background:#F7E9DE;color:#7c2d12;}.cg-input{width:100%;box-sizing:border-box;padding:14px 16px;font-size:20px;border:2px solid #EADFCB;border-radius:14px;font-family:Inter,system-ui,sans-serif;color:#241D14;min-height:56px;}.cg-input:focus{outline:none;border-color:#7c2d12;box-shadow:0 0 0 3px rgba(124,45,18,.14);}.cg-picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}.cg-chip{border:2px solid #EADFCB;background:#FAF6EE;border-radius:99px;padding:9px 15px;font-family:Inter,system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;color:#241D14;min-height:42px;}.cg-chip:hover{border-color:#7c2d12;}.cg-out3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}.cg-out{background:#FAF6EE;border:1px solid #EADFCB;border-radius:16px;padding:16px 10px;text-align:center;}.cg-out .k{font-family:Inter,system-ui,sans-serif;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#6E5F4D;display:block;margin-bottom:6px;}.cg-out .v{font-size:30px;font-weight:700;color:#241D14;}.cg-band{border-radius:14px;padding:14px 18px;font-family:Inter,system-ui,sans-serif;font-size:15.5px;font-weight:600;display:none;line-height:1.5;}.cg-band.show{display:block;}.cg-band.easy{background:#EAF4EA;border:1px solid #2E7D5B;}.cg-band.interm{background:#E7EFFC;border:1px solid #1D4ED8;}.cg-band.adv{background:#FBF3E2;border:1px solid #B45309;}.cg-band.expert{background:#FBE9E9;border:1px solid #B91C1C;}.cg-table{width:100%;border-collapse:collapse;font-family:Inter,system-ui,sans-serif;font-size:13.5px;margin-top:16px;}.cg-table th,.cg-table td{padding:8px 6px;text-align:center;border-bottom:1px solid #EADFCB;}.cg-table th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6E5F4D;}.cg-table tr.hl td{background:#F7E9DE;font-weight:800;color:#7c2d12;}@media (max-width:760px){.cg-grid{grid-template-columns:1fr;}.cg-out3{grid-template-columns:1fr 1fr 1fr;}.cg-out .v{font-size:24px;}.cg-panel{padding:22px 16px;}.cg-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ClimbGrade home">
+      <span class="fx-logo-tile" aria-hidden="true">🧗</span>
+      <span class="fx-brand">ClimbGrade</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-split-panel" aria-label="ClimbGrade tool">
+<section class='cg-wrap'><div class='cg-head'><div class='cg-logo' aria-hidden='true'>🧗</div><h1>Climbing Grade Converter</h1><p class='cg-tag'>One route, three languages — translate any climbing grade instantly.</p></div><div class='cg-grid'><div class='cg-panel'><p class='cg-panel-title'>Convert a grade</p><div class='cg-sysrow' role='group' aria-label='Grade system'><button class='cg-sys' data-sys='yds'>YDS</button><button class='cg-sys sel' data-sys='french'>French</button><button class='cg-sys' data-sys='uiaa'>UIAA</button></div><input id='cg-grade' class='cg-input' value='6a' aria-label='Grade to convert' placeholder='e.g. 6a'><p class='cg-panel-title' style='margin-top:20px'>Quick picker</p><div class='cg-picker' id='cg-picker'></div></div><div class='cg-panel'><p class='cg-panel-title'>Result</p><div class='cg-out3'><div class='cg-out'><span class='k'>YDS</span><span class='v' id='cg-yds'>–</span></div><div class='cg-out'><span class='k'>French</span><span class='v' id='cg-fr'>–</span></div><div class='cg-out'><span class='k'>UIAA</span><span class='v' id='cg-uiaa'>–</span></div></div><div class='cg-band' id='cg-band' role='status'></div><table class='cg-table' id='cg-table'><thead><tr><th>YDS</th><th>French</th><th>UIAA</th></tr></thead><tbody></tbody></table></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Climbing Has Three Grading Languages</h2><p>Ask a climber in Yosemite, Fontainebleau, and the Dolomites how hard a route is and you will get three different answers for the same climb. The <strong>Yosemite Decimal System (YDS)</strong> dominates North America, the <strong>French system</strong> rules most of Europe and much of the world, and the <strong>UIAA scale</strong> persists in Germany, Austria, and alpine tradition. They all measure the same thing — the difficulty of the single hardest move, assuming good conditions — but they slice the scale differently.</p><h2>The Yosemite Decimal System (YDS)</h2><p>Born in the 1950s from the Sierra Club's 1-to-5 classification (where 5 meant 'technical rock climbing'), YDS subdivides class 5 into 5.0 through 5.15, with letter suffixes a–d splitting grades from 5.10 upward. So <strong>5.10a</strong> is easier than <strong>5.10d</strong>, and <strong>5.11a</strong> is a full step harder than any 5.10. The open-ended top (currently 5.15d) keeps expanding as human limits move.</p><p>Roughly translated to experience: 5.7–5.8 is a confident beginner's playground, 5.9–5.10a is the intermediate heartland where most gym climbers live, 5.10b–5.11b marks the advanced zone requiring real training, and 5.12+ is expert territory demanding dedicated coaching and conditioning.</p><h2>The French System</h2><p>The French scale runs <strong>1 to 9</strong> with letter subdivisions a, b, c and '+' modifiers: 6a, 6a+, 6b, 6b+, and so on. It is arguably the most logical of the three — each step is a fairly even increment — and it has become the de facto international language of sport climbing. A French <strong>6a</strong> corresponds to YDS <strong>5.10a</strong>; <strong>7a+</strong> maps to <strong>5.12a</strong>. Because the steps are finer than YDS number jumps, French grades are often preferred for describing progress: moving from 6b to 6b+ feels like a real, nameable achievement.</p><h2>The UIAA Scale</h2><p>The International Climbing and Mountaineering Federation's scale runs from <strong>I to XII</strong> with − and + modifiers (VI−, VI, VI+). It originated in alpine climbing, where grades had to describe long mountain routes, and it remains standard in German-speaking countries and much of Eastern Europe. UIAA <strong>VII+</strong> equals French 6c and YDS 5.11a. The scale's alpine roots mean it sometimes weights route-finding and seriousness alongside pure move difficulty — a nuance worth knowing when comparing guidebooks.</p><h2>The Conversion Table</h2><table><thead><tr><th>YDS</th><th>French</th><th>UIAA</th><th>Difficulty band</th></tr></thead><tbody><tr><td>5.7</td><td>5a</td><td>V−</td><td>Easy</td></tr><tr><td>5.8</td><td>5b</td><td>VI−</td><td>Easy</td></tr><tr><td>5.9</td><td>5c</td><td>VI</td><td>Easy</td></tr><tr><td>5.10a</td><td>6a</td><td>VI+</td><td>Intermediate</td></tr><tr><td>5.10b</td><td>6a+</td><td>VII−</td><td>Intermediate</td></tr><tr><td>5.10c</td><td>6b</td><td>VII</td><td>Intermediate</td></tr><tr><td>5.11a</td><td>6c</td><td>VII+</td><td>Advanced</td></tr><tr><td>5.11b</td><td>6c+</td><td>VIII−</td><td>Advanced</td></tr><tr><td>5.12a</td><td>7a+</td><td>VIII+</td><td>Expert</td></tr><tr><td>5.13a</td><td>7c+</td><td>IX+</td><td>Expert</td></tr></tbody></table><p>Treat conversions as approximate within half a grade. Grading is subjective — set by the first ascensionist and debated forever after — and style matters enormously. A 6b slab and a 6b overhang can feel like different sports.</p><h2>What About Bouldering Grades?</h2><p>Bouldering uses separate scales: the <strong>V-scale</strong> (V0–V17) in North America and the <strong>Font scale</strong> (4–8C+) almost everywhere else. There is no clean formula mapping a route grade to a boulder grade, because a route's difficulty includes endurance. As a very rough equivalence, the crux of a 5.12a might feel like V4–V5 climbing — but a V5 boulderer with no endurance training can still fall off a 5.11a route. Convert between V and Font with a dedicated bouldering chart rather than forcing it through this one.</p><h2>Indoor vs. Outdoor Grades</h2><p>Gym grades are famously soft — or 'gym-soft,' as climbers say. Commercial gyms grade generously to keep customers progressing and happy, and plastic holds offer perfect friction. Expect your outdoor grade to lag one to two full number grades behind your gym grade at first. The gap closes with experience reading real rock, placing protection, and managing fear, which are skills no plastic can teach.</p><h2>How to Break Into the Next Grade</h2><ul><li><strong>Climb more, spray less:</strong> volume at your current limit beats occasional heroic attempts two grades up.</li><li><strong>Learn to rest:</strong> the difference between 5.10 and 5.11 is often the ability to shake out on a mediocre hold for 30 seconds.</li><li><strong>Footwork first:</strong> quiet feet — placing each foot precisely once, without scraping — is the cheapest grade gain in climbing.</li><li><strong>Project smart:</strong> pick a route one grade above your redpoint level, work the moves in sections, then link them. That is how 5.11a becomes 5.11b.</li><li><strong>Train the antagonist muscles:</strong> push-ups, reverse wrist curls, and shoulder stabilisers keep you climbing while your pulling muscles get stronger.</li></ul><h2>A Final Word on Safety</h2><p>Grades describe difficulty, not danger. A well-protected 5.10 sport route can be safer than a runout 5.7 trad line. Learn to assess protection quality, anchor building, and retreat options separately from the grade — and take instruction from a certified guide or instructor before leading outdoors. The converter above will translate the numbers; only experience and training translate them into good judgment.</p><h2>Grade Milestones: What Each Band Demands From You</h2><p><strong>Easy (5.7–5.9 / 5a–5c):</strong> the focus is entirely on movement fundamentals — quiet feet, straight arms, and learning to trust your feet on small holds. Most people arrive here within their first month. The milestone that matters is not the grade but the first clean, controlled top-out where nothing felt desperate.</p><p><strong>Intermediate (5.10a–5.10c / 6a–6b):</strong> technique starts separating from strength. The key new skills are resting efficiently on the route (finding the shake-out stance instead of powering through), reading sequences before leaving the ground, and clipping from stable positions. This is the longest band — many climbers spend years here, and that is normal and enjoyable.</p><p><strong>Advanced (5.11a–5.11b / 6c–6c+):</strong> structured training enters the picture. Finger strength becomes the limiter for most people, so hangboard work, careful load management, and antagonist training (push-ups, wrist extensors) matter as much as climbing itself. Projecting — working a route over multiple sessions — becomes the standard way to climb at your limit.</p><p><strong>Expert (5.12a+ / 7a+ and up):</strong> everything is optimised: periodised training blocks, nutrition, sleep, skin management, and mental training for falling and performing under pressure. Gains come slowly and injuries must be managed proactively. Coaching is nearly universal at this level because self-coached plateaus are the norm.</p><h2>Benchmark Routes That Define the Grades</h2><p>Certain famous climbs have become informal calibration points that climbers reference worldwide:</p><ul><li><strong>5.9:</strong> routes like <em>Reed's Pinnacle Direct</em> (Yosemite) — the classic benchmark for the grade.</li><li><strong>5.10a:</strong> <em>Snake Dike</em> (Half Dome) — technically moderate but a serious, exposed adventure.</li><li><strong>5.11a:</strong> <em>Equinox</em> (Joshua Tree) — the gateway grade's famous exam.</li><li><strong>5.12a:</strong> <em>To Bolt or Not to Be</em> (Smith Rock) — a rite of passage for the expert threshold.</li><li><strong>5.15a / 9a+:</strong> <em>Biographie</em> (Céuse, France) — a legendary test piece at the absolute limit.</li></ul><p>Climbing one of these is worth a dozen gym laps at the same nominal grade — outdoor benchmarks keep your sense of the scale honest.</p><h2>A Note on Grading Ethics: Sandbags and Soft Touches</h2><p>Every climbing area has its folklore: the 'sandbagged' crag where 5.10a feels like 5.11b, and the 'soft' gym where grades flatter. Both exist, and both have causes. Older traditional areas were graded by pioneers climbing in worse gear with bolder ethics, and grades calcified out of respect. Newer sport crags graded by consensus tend to be more accurate. Neither is 'wrong' — grading is intersubjective by nature. The practical takeaway: treat the first few routes at any new area as calibration climbs, and never let a number override what your body tells you. A wise climber once said the best climber is the one having the most fun, and no sandbag can take that grade away from you.</p><h2>The British Trad Grades: E-Grades and the Technical Grade</h2><p>British trad climbing uses a system no converter handles cleanly, because it grades two things at once. The <strong>adjectival grade</strong> (E1–E11, following Moderate through Extremely Severe) describes overall seriousness — difficulty, protection quality, exposure, and commitment combined. The <strong>technical grade</strong> (4a–7b, French-style) describes the single hardest move. A route is written as <strong>E1 5b</strong>: adjectival first, technical second.</p><p>This dual system explains why conversions feel approximate: E1 5b roughly corresponds to 5.10a, E4 6a to about 5.11c/5.12a — but the E-grade also encodes how dangerous a fall would be, something YDS and French grades ignore entirely. A well-protected E2 can feel easier than a bold, runout E1 at the same technical grade. If you climb trad in the UK, learn to read both halves: the technical grade tells you whether you can do the moves, and the E-grade tells you whether you should try.</p><h2>A Worked Example: Translating Your Grade for a Trip Abroad</h2><p>Say you comfortably redpoint <strong>5.11b</strong> at your home crag in Colorado and you are planning a sport-climbing trip to Kalymnos, Greece, where the guidebook speaks French. Convert first: 5.11b maps to <strong>6c+</strong> (UIAA VIII−). On day one, do not jump on 6c+ routes — pick <strong>6a+ to 6b+</strong> as calibration climbs to learn the limestone style, which rewards delicate footwork over the power your sandstone crag trained. Once the style clicks, project a 6c or 6c+ that suits your strengths.</p><p>Then sanity-check with the outdoor-discount rule: if your 5.11b is a gym grade, treat it as 5.10b outdoors (French 6a+) until proven otherwise. Keep the conversion table on your phone, and when a local says a route is 'soft for the grade', believe them — then add half a grade of scepticism anyway. Grades travel badly; humility travels well.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Which climbing grade system should I learn?</summary><p>YDS (e.g. 5.10a) is standard in North America, the French system (e.g. 6a) dominates Europe and international sport climbing, and UIAA (e.g. VI+) is used in German-speaking and alpine regions. They describe the same difficulty; use the converter above to translate between them.</p></details>
+<details><summary>What is the difference between 5.10a and 5.10b?</summary><p>In YDS, 5.10a is the easiest subdivision of 5.10 and 5.10d the hardest, so 5.10b is one letter-step harder than 5.10a. In French terms that is roughly 6a versus 6a+ — a noticeable but small increment, like the difference between cruising and having to try.</p></details>
+<details><summary>What is the hardest climbing grade in the world?</summary><p>As of recent records, 5.15d (French 9a+) is the hardest confirmed redpoint grade in the world, first climbed by Adam Ondra on Silence in 2017. Only a handful of climbers on Earth operate at 5.15c and above.</p></details>
+<details><summary>How do bouldering grades convert to route grades?</summary><p>Bouldering uses its own scales — V-scale (V0–V17) in the US and Font scale (4–8C+) elsewhere — and there is no exact formula converting them to route grades, because routes add endurance to the equation. Roughly, the crux moves of a 5.12a feel like V4–V5 bouldering.</p></details>
+<details><summary>Why does the French system use letters like 6a+?</summary><p>The French system uses numbers 1–9 with letter subdivisions a/b/c and '+' modifiers (6a, 6a+, 6b…), giving finer, more even steps than YDS. It became the international standard for sport climbing because it describes progress precisely and translates cleanly across countries.</p></details>
+<details><summary>Are indoor climbing grades the same as outdoor?</summary><p>Indoor gym grades typically run one to two grades softer than outdoor grades — gyms grade generously and plastic offers perfect friction. If you climb 5.11a in the gym, expect to start around 5.9–5.10a on real rock until you learn to read stone, manage fear, and place protection.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ClimbGrade</div>
+    <p>ClimbGrade converts climbing grades between YDS, French, and UIAA scales with difficulty bands.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function climbTable(){return [{yds:'5.7',french:'5a',uiaa:'V-'},{yds:'5.8',french:'5b',uiaa:'VI-'},{yds:'5.9',french:'5c',uiaa:'VI'},{yds:'5.10a',french:'6a',uiaa:'VI+'},{yds:'5.10b',french:'6a+',uiaa:'VII-'},{yds:'5.10c',french:'6b',uiaa:'VII'},{yds:'5.11a',french:'6c',uiaa:'VII+'},{yds:'5.11b',french:'6c+',uiaa:'VIII-'},{yds:'5.12a',french:'7a+',uiaa:'VIII+'},{yds:'5.13a',french:'7c+',uiaa:'IX+'}];}
+function convertGrade(system,grade){var sys=String(system==null?'':system).trim().toLowerCase();var g=String(grade==null?'':grade).trim().toLowerCase().replace(/\s+/g,'');var key=sys==='yds'?'yds':sys==='french'?'french':sys==='uiaa'?'uiaa':null;if(!key)return null;var rows=climbTable();for(var i=0;i<rows.length;i++){if(String(rows[i][key]).toLowerCase()===g)return {yds:rows[i].yds,french:rows[i].french,uiaa:rows[i].uiaa};}return null;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var BANDS=[['easy','🟢 Easy —','Confident beginner terrain. Focus on footwork and enjoying the movement.'],['easy','🟢 Easy —','Cruisy climbing where technique matters more than strength.'],['easy','🟢 Easy —','The top of the beginner range — solid all-round skills required.'],['interm','🔵 Intermediate —','The heartland. Time to learn resting, route-reading and efficient clipping.'],['interm','🔵 Intermediate —','Sustained intermediate climbing with real crux sequences.'],['interm','🔵 Intermediate —','Strong intermediate — start projecting and training weaknesses.'],['adv','🟠 Advanced —','Advanced terrain. Structured training and finger strength pay off here.'],['adv','🟠 Advanced —','Serious climbing — expect to project routes over multiple sessions.'],['expert','🔴 Expert —','Expert level. Dedicated coaching, training and conditioning required.'],['expert','🔴 Expert —','Elite climbing — the realm of full-time training and competition athletes.']];var sys='french';var sysBtns=document.querySelectorAll('.cg-sys');var gradeIn=document.getElementById('cg-grade');var picker=document.getElementById('cg-picker');var tbody=document.querySelector('#cg-table tbody');var rows=climbTable();rows.forEach(function(r){var tr=document.createElement('tr');tr.innerHTML='<td>'+r.yds+'</td><td>'+r.french+'</td><td>'+r.uiaa+'</td>';tbody.appendChild(tr);});rows.forEach(function(r){var b=document.createElement('button');b.className='cg-chip';b.textContent=r[sys];b.addEventListener('click',function(){gradeIn.value=r[sys];render();});picker.appendChild(b);});function setSys(s){sys=s;for(var i=0;i<sysBtns.length;i++)sysBtns[i].classList.toggle('sel',sysBtns[i].getAttribute('data-sys')===s);var chips=picker.querySelectorAll('.cg-chip');for(var j=0;j<chips.length;j++)chips[j].textContent=rows[j][s];}for(var k=0;k<sysBtns.length;k++){sysBtns[k].addEventListener('click',function(){setSys(this.getAttribute('data-sys'));render();});}function render(){var r=convertGrade(sys,gradeIn.value);var band=document.getElementById('cg-band');if(!r){document.getElementById('cg-yds').textContent='–';document.getElementById('cg-fr').textContent='–';document.getElementById('cg-uiaa').textContent='–';band.className='cg-band';band.textContent='';var trs=tbody.querySelectorAll('tr');for(var t=0;t<trs.length;t++)trs[t].className='';return;}document.getElementById('cg-yds').textContent=r.yds;document.getElementById('cg-fr').textContent=r.french;document.getElementById('cg-uiaa').textContent=r.uiaa;var idx=-1;for(var i=0;i<rows.length;i++){if(rows[i].yds===r.yds){idx=i;break;}}var trs2=tbody.querySelectorAll('tr');for(var t2=0;t2<trs2.length;t2++)trs2[t2].className=t2===idx?'hl':'';var b=BANDS[idx];band.className='cg-band show '+b[0];band.innerHTML='<strong>'+b[1]+'</strong> '+b[2];}gradeIn.addEventListener('input',render);render();});}
+</script>
+</body>
+</html>
