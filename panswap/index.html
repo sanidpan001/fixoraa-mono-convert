@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cake Pan Size Converter — Convert Pans by Volume</title>
+<meta name="description" content="Convert cake batter between pan sizes and shapes with real volume maths. Get batter scaling % and timing guidance. Free pan converter.">
+<link rel="canonical" href="https://convert.fixoraa.tech/panswap/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Cake Pan Size Converter — Convert Pans by Volume">
+<meta property="og:description" content="Convert cake batter between pan sizes and shapes with real volume maths. Get batter scaling % and timing guidance. Free pan converter.">
+<meta property="og:url" content="https://convert.fixoraa.tech/panswap/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PanSwap",
+      "url": "https://convert.fixoraa.tech/panswap/",
+      "applicationCategory": "Cooking",
+      "operatingSystem": "Web",
+      "description": "Convert cake batter between pan sizes and shapes with real volume maths. Get batter scaling % and timing guidance. Free pan converter.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I swap an 8-inch round recipe into an 8-inch square pan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 an 8-inch square holds about 2,065 ml versus ~1,620 ml for an 8-inch round, roughly 27% more. Your batter will bake up thinner and faster. PanSwap computes the exact ratio from real geometry so you can adjust timing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I adjust baking time for a different pan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compute both pans' volumes and take the ratio: new \u00f7 old \u00d7 100. Above 110% means a thinner layer (check 5\u201310 min early); below 90% means deeper batter (add time, possibly lower temp). PanSwap does this automatically from your dimensions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is pan volume calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Round: \u03c0 \u00d7 r\u00b2 \u00d7 depth. Square: width\u00b2 \u00d7 depth. Rectangular/loaf: length \u00d7 width \u00d7 depth. Measure the inside dimensions in centimetres (or inches) and the depth from base to rim. An 8-inch round, 2 inches deep \u2248 1,620 ml."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I scale the recipe instead of just changing time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If the volume ratio is extreme (below 75% or above 130%), adjust the recipe instead: multiply every ingredient by new volume \u00f7 old volume. For awkward egg counts, round to whole eggs and nudge the flour. Never fill any pan more than two-thirds full."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about bundt, springform, or muffin pans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measure the inside dimensions and treat it by shape: a springform like a round pan of the same diameter, a bundt like a round pan with about 10\u201315% less usable volume (the tube displaces batter but also adds surface area \u2014 they roughly cancel for timing). Muffin and cupcake pans are just small rounds: divide the batter evenly and check early."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does pan shape matter beyond volume?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 corners bake faster than centres, so square pans set at the edges sooner (rotate once mid-bake). Loaf pans are deep and need lower, longer bakes. Round pans are the most forgiving. PanSwap's timing note accounts for depth; keep the shape quirks in mind too."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF3F7; --surface:#FFFFFF; --accent:#BE185D; --accent-ink:#FFFFFF;
+  --ink:#33141F; --muted:#71505B; --line:#F2D8E2;
+  --display:'Comfortaa',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ps-wrap{max-width:720px;margin:0 auto;padding:24px 16px 64px;font-family:Inter,system-ui,sans-serif;color:#33141F}
+.ps-hero{text-align:center;margin:6px 0 26px}
+.ps-hero h1{font-family:Comfortaa,Inter,sans-serif;font-size:clamp(28px,5vw,42px);margin:0 0 8px}
+.ps-tag{color:#71505B;font-size:16px;margin:0}
+.ps-steps{display:flex;gap:8px;margin-bottom:20px}
+.ps-dot{flex:1;text-align:center;font-size:13px;color:#71505B;padding:10px 4px;border-radius:12px;background:#fff;border:1px solid #F2D8E2}
+.ps-dot.on{background:#BE185D;color:#fff;border-color:#BE185D;font-weight:700}
+.ps-card{background:#fff;border:1px solid #F2D8E2;border-radius:20px;padding:24px;box-shadow:0 6px 24px rgba(190,24,93,.07);display:none}
+.ps-card.on{display:block}
+.ps-card h2{font-family:Comfortaa,Inter,sans-serif;font-size:20px;margin:0 0 6px}
+.ps-sub{color:#71505B;font-size:14px;margin:0 0 16px}
+.ps-field{margin-bottom:14px}
+.ps-field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.ps-field select,.ps-field input{width:100%;box-sizing:border-box;min-height:52px;border:1.5px solid #F2D8E2;border-radius:12px;padding:0 14px;font-size:16px;color:#33141F;background:#FDF3F7}
+.ps-dims{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.ps-nav{display:flex;gap:10px;margin-top:18px}
+.ps-nav button{min-height:52px;padding:0 24px;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer}
+.ps-back{background:#fff;border:2px solid #BE185D;color:#BE185D}
+.ps-next{flex:1;background:#BE185D;color:#fff;border:0}
+.ps-verdict{text-align:center;padding:10px 0}
+.ps-pct{font-family:Comfortaa,Inter,sans-serif;font-size:clamp(46px,9vw,68px);color:#BE185D;font-weight:700;margin:4px 0}
+.ps-vols{display:flex;gap:10px;justify-content:center;margin:14px 0;flex-wrap:wrap}
+.ps-vol{background:#FDF3F7;border:1px solid #F2D8E2;border-radius:12px;padding:10px 16px;font-size:14px}
+.ps-vol b{color:#BE185D}
+.ps-note{font-size:15px;color:#71505B;line-height:1.65;background:#FDF3F7;border-radius:12px;padding:14px 16px;margin:0}
+@media (max-width:560px){.ps-dims{grid-template-columns:1fr}.ps-card{padding:18px}.ps-nav{flex-direction:column}.ps-back{order:2}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PanSwap home">
+      <span class="fx-logo-tile" aria-hidden="true">🍰</span>
+      <span class="fx-brand">PanSwap</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-wizard-steps" aria-label="PanSwap tool">
+<div class='ps-wrap'>
+<div class='ps-hero'><h1>Cake Pan Converter</h1><p class='ps-tag'>Wrong pan? Right bake — convert with real volume maths.</p></div>
+<div class='ps-steps'>
+<div class='ps-dot on' data-s='1'>1 · From pan</div>
+<div class='ps-dot' data-s='2'>2 · To pan</div>
+<div class='ps-dot' data-s='3'>3 · Verdict</div>
+</div>
+<section class='ps-card on' id='ps-p1'>
+<h2>Your recipe's pan</h2>
+<p class='ps-sub'>The pan the recipe was written for.</p>
+<div class='ps-field'><label>Shape</label><select id='ps-f-shape'><option value='round'>Round</option><option value='square'>Square</option><option value='rect'>Rectangular / Loaf</option></select></div>
+<div class='ps-dims'>
+<div class='ps-field'><label>Diameter / Length (cm)</label><input id='ps-f-d1' type='number' value='20.3'></div>
+<div class='ps-field'><label>Width (cm)</label><input id='ps-f-d2' type='number' value='20.3'></div>
+<div class='ps-field'><label>Depth (cm)</label><input id='ps-f-d3' type='number' value='5'></div>
+</div>
+<div class='ps-nav'><span></span><button class='ps-next' data-go='2'>Next →</button></div>
+</section>
+<section class='ps-card' id='ps-p2'>
+<h2>The pan you have</h2>
+<p class='ps-sub'>The pan you actually want to bake in.</p>
+<div class='ps-field'><label>Shape</label><select id='ps-t-shape'><option value='round'>Round</option><option value='square'>Square</option><option value='rect'>Rectangular / Loaf</option></select></div>
+<div class='ps-dims'>
+<div class='ps-field'><label>Diameter / Length (cm)</label><input id='ps-t-d1' type='number' value='22.9'></div>
+<div class='ps-field'><label>Width (cm)</label><input id='ps-t-d2' type='number' value='22.9'></div>
+<div class='ps-field'><label>Depth (cm)</label><input id='ps-t-d3' type='number' value='5'></div>
+</div>
+<div class='ps-nav'><button class='ps-back' data-go='1'>← Back</button><button class='ps-next' data-go='3'>Get verdict →</button></div>
+</section>
+<section class='ps-card' id='ps-p3'>
+<h2>The verdict</h2>
+<p class='ps-sub'>Batter depth change and what to do about it.</p>
+<div class='ps-verdict'>
+<div>Batter scaling</div>
+<div class='ps-pct' id='ps-pct'>–</div>
+<div class='ps-vols'><div class='ps-vol'>From: <b id='ps-vf'></b></div><div class='ps-vol'>To: <b id='ps-vt'></b></div></div>
+<p class='ps-note' id='ps-note'></p>
+</div>
+<div class='ps-nav'><button class='ps-back' data-go='2'>← Back</button><button class='ps-next' data-go='1'>Start over</button></div>
+</section>
+</div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why pan size changes everything</h2>
+<p>A cake recipe is a contract between batter volume and pan volume. Pour the same batter into a smaller pan and it bakes up thick — the centre may stay raw while the edges burn. Pour it into a larger pan and it spreads thin, baking faster and drier than intended. Swapping pans without adjusting is the #1 reason “I followed the recipe exactly!” cakes fail. A <strong>cake pan size converter</strong> fixes this with geometry: it computes each pan's true volume, tells you how the batter depth changes, and guides the timing adjustment.</p>
+<h2>The volume maths</h2>
+<p>Every pan is a simple solid, and its volume is easy to compute:</p>
+<ul>
+<li><strong>Round pan:</strong> π × r² × depth. An 8-inch (20.3 cm) round, 2 inches (5 cm) deep holds about 1,620 ml.</li>
+<li><strong>Square pan:</strong> width × width × depth. An 8×8-inch square holds about 2,065 ml — noticeably more than the 8-inch round, which surprises people.</li>
+<li><strong>Rectangular / loaf pan:</strong> length × width × depth. A 9×13-inch pan holds about 3,775 ml; a standard 9×5-inch loaf about 1,890 ml.</li>
+</ul>
+<p>The ratio of the two volumes is the <strong>batter scaling percentage</strong>: moving from a 1,620 ml pan to a 2,050 ml pan gives 127%, meaning the batter spreads 27% thinner. PanSwap computes this from your exact dimensions — no lookup tables, no approximations.</p>
+<h2>Reading the scale percentage</h2>
+<ul>
+<li><strong>90–110%:</strong> essentially the same depth. Bake as the recipe says; maybe check a couple of minutes early.</li>
+<li><strong>Above 110%:</strong> thinner batter layer. It will bake <em>faster</em> — start checking 5–10 minutes before the recipe's time.</li>
+<li><strong>Below 90%:</strong> deeper batter. It needs <em>longer</em> — the centre takes disproportionately more time as depth grows.</li>
+<li><strong>Below 75% or above 130%:</strong> reconsider. Extreme depth changes alter texture, not just time — scale the recipe instead of forcing the pan.</li>
+</ul>
+<h2>Common pan swaps</h2>
+<table>
+<thead><tr><th>From</th><th>To</th><th>Volume change</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>8″ round</td><td>9″ round</td><td>~127%</td><td>Fine — thinner layer, check early</td></tr>
+<tr><td>8″ round</td><td>8″ square</td><td>~127%</td><td>Fine — same guidance</td></tr>
+<tr><td>9″ round</td><td>9×13″ rect</td><td>~184%</td><td>Too thin for one batch — scale up 1.5×</td></tr>
+<tr><td>8″ square</td><td>9×5″ loaf</td><td>~92%</td><td>Excellent swap, nearly identical</td></tr>
+<tr><td>Two 8″ rounds</td><td>9×13″ rect</td><td>~116%</td><td>Good — one layer cake becomes a sheet</td></tr>
+<tr><td>9×5″ loaf</td><td>8×4″ loaf</td><td>~71%</td><td>Deeper — add time, tent with foil</td></tr>
+</tbody>
+</table>
+<h2>Adjusting bake time like a pro</h2>
+<p>Time does not scale linearly with depth — a batter twice as deep needs <em>more</em> than twice the time for the centre to set, because heat penetrates from the outside in. Practical rules:</p>
+<ul>
+<li><strong>Thinner layer (scale &gt; 100%):</strong> start checking at 75–80% of the stated time. A toothpick test is definitive.</li>
+<li><strong>Deeper layer (scale &lt; 100%):</strong> add 10–20% time, lower the oven by 10°C, and tent with foil once the top browns to protect it while the centre catches up.</li>
+<li><strong>Always trust the tests, not the clock:</strong> a skewer should come out with moist crumbs (not wet batter) for most cakes; brownies want a slight wobble.</li>
+</ul>
+<h2>When to scale the recipe instead</h2>
+<p>If the volume ratio is extreme, adjusting time is not enough — the crumb structure itself changes. Instead, scale the recipe: multiply every ingredient by (new volume ÷ old volume), rounding to sensible fractions. Going from one 8-inch round to a 9×13-inch pan? That's roughly 1.9× batter — double the recipe and fill the pan two-thirds full. Eggs scale awkwardly (1.5 eggs?), so round to whole eggs and adjust flour slightly, or use a baker's percentage approach for precision.</p>
+<h2>The two-thirds rule</h2>
+<p>Whatever pan you use, fill it no more than two-thirds full (half for very airy batters like chiffon). Cake rises; an overfilled pan spills, domes excessively, or bakes raw in the middle. If your scaled batter overfills the new pan, you have chosen the wrong pan — go bigger or split into two.</p>
+<h2>Shape changes: round ↔ square ↔ loaf</h2>
+<p>Shape affects more than volume. Corners bake faster than centres, so square pans set at the edges sooner — rotate square pans once mid-bake for evenness. Loaf pans are deep by nature; they need lower temperatures and longer times than their volume alone suggests. Round pans are the most forgiving because heat reaches the centre evenly from all sides. PanSwap's volume math is shape-aware, but keep these quirks in mind when you read the timing note.</p>
+<h2>Measuring your pans</h2>
+<p>Manufacturers measure differently — some give top dimensions, some bottom, and non-stick coatings steal a few millimetres. For conversion purposes, measure the <strong>inside</strong> top: diameter for rounds, length × width for the rest, and depth from base to rim. A centimetre of error changes the volume by 5–10%, which is within the tolerance of the timing guidance, so don't stress about millimetres.</p>
+<h2>High-altitude and other adjustments</h2>
+<p>Pan conversion is independent of altitude, but if you bake above ~1,000 m, combine the swap with altitude adjustments: slightly less sugar and leavening, a touch more liquid, and 10–15°C higher temperature. Get the pan right first, then layer the altitude fix on top.</p>
+<h2>Cupcakes and muffins: the small-pan special case</h2>
+<p>Dividing a cake batter into a muffin pan is a volume conversion with a twist: twelve small cavities behave differently from one big pan. The total volume math still works (a standard muffin cup holds ~80 ml, so 12 cups ≈ 960 ml), but the massively increased surface area means cupcakes bake much faster — typically 18–22 minutes at the same temperature, regardless of what the layer-cake recipe says. Fill cups two-thirds full, rotate the pan once, and start checking early. Mini muffins (≈40 ml each) need only 10–14 minutes. When converting a layer recipe to cupcakes, keep the temperature the same and slash the time; when going the other way, keep the temperature and extend the time with foil protection.</p>
+<h2>Pan materials change the rules slightly</h2>
+<p>Volume is volume, but materials conduct heat differently, which interacts with your timing adjustment:</p>
+<ul>
+<li><strong>Light aluminium:</strong> the gold standard — even heating, predictable timing. What the recipe assumes.</li>
+<li><strong>Dark non-stick:</strong> absorbs more radiant heat; edges brown faster. Drop the oven 10°C when converting into dark pans.</li>
+<li><strong>Glass:</strong> heats slowly but retains heat; bakes the edges more. Reduce temperature by 10°C and expect slightly longer times.</li>
+<li><strong>Silicone:</strong> poor heat conductor — great for release, slow to brown. Add a few minutes and don't expect deep colour.</li>
+<li><strong>Insulated/air-cushioned:</strong> designed to prevent over-browning; add 5–10 minutes to any conversion.</li>
+</ul>
+<p>When PanSwap gives you a timing note, treat it as calibrated for light aluminium and nudge it according to your actual pan material.</p>
+<h2>Troubleshooting pan-swap failures</h2>
+<ul>
+<li><strong>Raw centre, burnt edges:</strong> batter too deep for the heat to penetrate — next time use a larger pan or lower the temperature 10°C with a longer bake.</li>
+<li><strong>Dry, flat cake:</strong> batter spread too thin and overbaked — check 10 minutes earlier next time, or scale the recipe up.</li>
+<li><strong>Overflow:</strong> pan filled past two-thirds — the volume math warned you; split into two pans.</li>
+<li><strong>Stuck to the pan:</strong> more common in unfamiliar pans — grease, flour (or cocoa for chocolate cakes), and parchment the base every time you swap.</li>
+<li><strong>Uneven rise:</strong> oven hot spots show more in unfamiliar pans — rotate once, two-thirds through the bake.</li>
+</ul>
+<p>Keep a baking notebook: pan used, volume ratio, time adjustment, and the result. After a handful of entries you'll convert pans by instinct — but the maths will always be here to double-check the tricky ones.</p>
+<h2>Scaling recipes with baker's percentages</h2>
+<p>When a pan swap forces you to scale the recipe itself, baker's percentages are the professional method. Express every ingredient as a percentage of the flour weight (flour is always 100%), then multiply by your new flour amount. A recipe with 250 g flour, 200 g sugar, and 100 g butter becomes: sugar 80%, butter 40%. Need 1.9 times the batter? Use 475 g flour, 380 g sugar, 190 g butter — every ratio preserved exactly. Eggs are the awkward part: a scaled recipe calling for 2.7 eggs should use 3 whole eggs minus a tablespoon of beaten egg, or simply round to 3 and add a spoonful of flour. Leavening scales slightly less than linearly — for doubled recipes, use about one and three-quarter times the baking powder, not double, or you'll taste it. Salt and spices scale straight. Write the scaled recipe down before you start; mental arithmetic with butter on your hands is how mistakes happen.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Can I swap an 8-inch round recipe into an 8-inch square pan?</summary><p>No — an 8-inch square holds about 2,065 ml versus ~1,620 ml for an 8-inch round, roughly 27% more. Your batter will bake up thinner and faster. PanSwap computes the exact ratio from real geometry so you can adjust timing.</p></details>
+<details><summary>How do I adjust baking time for a different pan?</summary><p>Compute both pans' volumes and take the ratio: new ÷ old × 100. Above 110% means a thinner layer (check 5–10 min early); below 90% means deeper batter (add time, possibly lower temp). PanSwap does this automatically from your dimensions.</p></details>
+<details><summary>How is pan volume calculated?</summary><p>Round: π × r² × depth. Square: width² × depth. Rectangular/loaf: length × width × depth. Measure the inside dimensions in centimetres (or inches) and the depth from base to rim. An 8-inch round, 2 inches deep ≈ 1,620 ml.</p></details>
+<details><summary>When should I scale the recipe instead of just changing time?</summary><p>If the volume ratio is extreme (below 75% or above 130%), adjust the recipe instead: multiply every ingredient by new volume ÷ old volume. For awkward egg counts, round to whole eggs and nudge the flour. Never fill any pan more than two-thirds full.</p></details>
+<details><summary>What about bundt, springform, or muffin pans?</summary><p>Measure the inside dimensions and treat it by shape: a springform like a round pan of the same diameter, a bundt like a round pan with about 10–15% less usable volume (the tube displaces batter but also adds surface area — they roughly cancel for timing). Muffin and cupcake pans are just small rounds: divide the batter evenly and check early.</p></details>
+<details><summary>Does pan shape matter beyond volume?</summary><p>Yes — corners bake faster than centres, so square pans set at the edges sooner (rotate once mid-bake). Loaf pans are deep and need lower, longer bakes. Round pans are the most forgiving. PanSwap's timing note accounts for depth; keep the shape quirks in mind too.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PanSwap</div>
+    <p>PanSwap converts cake batter between pan sizes and shapes using real volume maths — no more guessing.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function panVolume(shape,dims){var d=dims||{};function num(x){return Math.max(0,Number(x)||0);}var depth=num(d.depth);if(shape==='round'){var r=num(d.diameter)/2;return Math.PI*r*r*depth;}if(shape==='square'){var w=num(d.width);return w*w*depth;}if(shape==='rect'){return num(d.length)*num(d.width)*depth;}return 0;}
+function panConvert(from,to){var fv=panVolume(from.shape,from.dims),tv=panVolume(to.shape,to.dims);if(fv<=0)return{scalePct:0,timeNote:'Check your pan dimensions — the first pan has no volume.'};var pct=Math.round(tv/fv*100);var note=pct>=110?'Thicker batter layer — start checking 5–10 minutes earlier than the original time.':(pct<=90?'Deeper batter layer — add 10–20% baking time and tent with foil once browned.':'Similar depth — baking time stays roughly the same.');return{scalePct:pct,timeNote:note};}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function dims(p){var shape=document.getElementById('ps-'+p+'-shape').value;var d1=parseFloat(document.getElementById('ps-'+p+'-d1').value)||0;var d2=parseFloat(document.getElementById('ps-'+p+'-d2').value)||0;var d3=parseFloat(document.getElementById('ps-'+p+'-d3').value)||0;return{shape:shape,dims:{diameter:d1,length:d1,width:d2,depth:d3}};}function fmt(ml){return Math.round(ml)+' ml ('+(ml/1000).toFixed(2)+' L)';}function go(n){var cards=document.querySelectorAll('.ps-card');for(var i=0;i<cards.length;i++)cards[i].classList.remove('on');document.getElementById('ps-p'+n).classList.add('on');var dots=document.querySelectorAll('.ps-dot');for(var d=0;d<dots.length;d++)dots[d].classList.toggle('on',dots[d].getAttribute('data-s')===String(n));if(n===3){var from=dims('f'),to=dims('t');var r=panConvert(from,to);document.getElementById('ps-pct').textContent=r.scalePct+'%';document.getElementById('ps-vf').textContent=fmt(panVolume(from.shape,from.dims));document.getElementById('ps-vt').textContent=fmt(panVolume(to.shape,to.dims));var extra='';if(r.scalePct>=130||r.scalePct<=75&&r.scalePct>0)extra=' Warning: this is an extreme depth change — consider scaling the recipe instead.';document.getElementById('ps-note').textContent=r.timeNote+extra;}window.scrollTo({top:0,behavior:'smooth'});}var navs=document.querySelectorAll('[data-go]');for(var i=0;i<navs.length;i++){navs[i].addEventListener('click',function(){go(this.getAttribute('data-go'));});}});}
+</script>
+</body>
+</html>
