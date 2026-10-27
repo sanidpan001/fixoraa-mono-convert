@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://convert.fixoraa.tech/aspectly/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspectly — Aspect Ratio Calculator</title>
+<meta name="description" content="Aspectly is a free aspect ratio calculator. Scale by width or height with a ratio lock, use 16:9, 4:3, 1:1 and 21:9 presets, and solve screens from diagonal size.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body{font-family:'Inter',system-ui,sans-serif;background:#e5e7eb;color:#111827}
+  h1,h2,h3,.font-display{font-family:'Space Grotesk',sans-serif}
+  .lab-grid{background-image:linear-gradient(#e5e7eb 1px,transparent 1px),linear-gradient(90deg,#e5e7eb 1px,transparent 1px);background-size:20px 20px}
+  .violet-glow{box-shadow:0 10px 40px rgba(124,58,237,.18)}
+  input[type=number]{-moz-appearance:textfield} input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none}
+  .preset-active{background:#7c3aed!important;color:#fff!important;border-color:#7c3aed!important}
+  details summary::-webkit-details-marker{display:none}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is an aspect ratio and how is it written?","acceptedAnswer":{"@type":"Answer","text":"An aspect ratio is the proportional relationship between width and height, written as width:height such as 16:9. It describes shape, not physical size, so a 1920×1080 screen and a 1280×720 screen share the same 16:9 shape."}},
+    {"@type":"Question","name":"How do I calculate a missing height from width and ratio?","acceptedAnswer":{"@type":"Answer","text":"Divide the width by the ratio's width part and multiply by the ratio's height part. For 16:9 at 1920 wide, height = 1920 ÷ 16 × 9 = 1080. Aspectly does this instantly when you scale by width with the ratio lock on."}},
+    {"@type":"Question","name":"What does diagonal-size mode do?","acceptedAnswer":{"@type":"Answer","text":"Diagonal-size mode works backwards from the diagonal measurement printed on TVs and monitors. Give Aspectly a diagonal and a ratio such as 55 inches at 16:9 and it uses Pythagoras to return the actual width and height of the panel."}},
+    {"@type":"Question","name":"Which aspect ratio should I use for video, photos and social media?","acceptedAnswer":{"@type":"Answer","text":"Use 16:9 for most video and presentations, 9:16 for vertical short-form video, 1:1 for square social posts, 4:3 for classic slides and some tablets, 3:2 for DSLR photos, and 21:9 for ultrawide monitors and cinematic footage."}},
+    {"@type":"Question","name":"Why does my image get cropped or show black bars?","acceptedAnswer":{"@type":"Answer","text":"Black bars or cropping happen when the image ratio and the display ratio differ. A 4:3 photo on a 16:9 screen leaves side bars, while filling the screen would crop top and bottom. Matching ratios before you export avoids both problems."}},
+    {"@type":"Question","name":"Is Aspectly free and does it upload my data?","acceptedAnswer":{"@type":"Answer","text":"Yes, Aspectly is completely free with unlimited usage and no signup. All calculations run in your browser, so your numbers are never uploaded to a server."}}
+  ]
+}
+</script>
+</head>
+<body id="top">
+<header class="sticky top-0 z-50 bg-[#111827]/95 backdrop-blur border-b border-violet-500/30">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <span class="w-9 h-9 rounded-lg bg-violet-600 flex items-center justify-center text-white font-display font-bold text-lg">▭</span>
+      <span class="font-display font-700 font-bold text-white text-xl tracking-tight">Aspectly</span>
+      <span class="hidden sm:inline text-[10px] uppercase tracking-widest text-violet-300 border border-violet-500/50 rounded-full px-2 py-0.5">Ratio Lab</span>
+    </a>
+    <nav class="flex items-center gap-1 text-sm">
+      <a href="#top" class="text-gray-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10">Home</a>
+      <a href="https://fixoraa.tech" class="text-white bg-violet-600 hover:bg-violet-500 px-3 py-2 rounded-lg font-semibold">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+  <div class="text-center max-w-2xl mx-auto mb-8">
+    <h1 class="font-display text-4xl sm:text-5xl font-bold leading-tight">Aspect Ratio <span class="text-violet-600">Calculator</span></h1>
+    <p class="text-gray-600 mt-3 text-base sm:text-lg">Scale any width or height without breaking the shape. Lock a ratio, tap a preset, or solve a screen from its diagonal — all in one lab bench.</p>
+    <span class="inline-flex items-center gap-1.5 mt-4 bg-violet-100 text-violet-800 border border-violet-200 text-xs font-bold px-3 py-1.5 rounded-full">✦ Unlimited Free Usage &nbsp;•&nbsp; No signup &nbsp;•&nbsp; No watermark</span>
+  </div>
+
+  <!-- RATIO LAB -->
+  <section class="bg-white rounded-2xl border border-gray-300 overflow-hidden violet-glow">
+    <div class="bg-gray-900 px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+      <span class="text-white font-display font-semibold tracking-wide text-sm">⬢ THE RATIO LAB — BENCH 01</span>
+      <span id="lockBadge" class="text-xs bg-violet-600 text-white px-2.5 py-1 rounded-full font-semibold">🔒 Ratio lock ON</span>
+    </div>
+
+    <div class="grid lg:grid-cols-5">
+      <!-- Controls -->
+      <div class="lg:col-span-3 p-5 sm:p-6 space-y-6">
+        <!-- Ratio -->
+        <div>
+          <label class="text-xs font-bold tracking-widest uppercase text-gray-500">1 · Your ratio</label>
+          <div class="flex items-center gap-2 mt-2">
+            <input id="rw" type="number" min="0" step="any" value="16" class="w-full border-2 border-gray-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 rounded-xl px-4 py-3 text-xl font-bold text-center outline-none" aria-label="Ratio width">
+            <span class="font-display text-2xl font-bold text-gray-400">:</span>
+            <input id="rh" type="number" min="0" step="any" value="9" class="w-full border-2 border-gray-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 rounded-xl px-4 py-3 text-xl font-bold text-center outline-none" aria-label="Ratio height">
+            <button id="swapRatio" class="shrink-0 bg-gray-100 hover:bg-violet-100 border border-gray-200 rounded-xl px-3 py-3 font-bold" title="Swap ratio">⇄</button>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3" id="presets">
+            <button data-rw="16" data-rh="9" class="preset preset-active border-2 border-gray-200 bg-gray-50 hover:border-violet-400 rounded-full px-4 py-1.5 text-sm font-bold">16:9 Widescreen</button>
+            <button data-rw="4" data-rh="3" class="preset border-2 border-gray-200 bg-gray-50 hover:border-violet-400 rounded-full px-4 py-1.5 text-sm font-bold">4:3 Classic</button>
+            <button data-rw="1" data-rh="1" class="preset border-2 border-gray-200 bg-gray-50 hover:border-violet-400 rounded-full px-4 py-1.5 text-sm font-bold">1:1 Square</button>
+            <button data-rw="21" data-rh="9" class="preset border-2 border-gray-200 bg-gray-50 hover:border-violet-400 rounded-full px-4 py-1.5 text-sm font-bold">21:9 Ultrawide</button>
+            <button data-rw="3" data-rh="2" class="preset border-2 border-gray-200 bg-gray-50 hover:border-violet-400 rounded-full px-4 py-1.5 text-sm font-bold">3:2 Photo</button>
+            <button data-rw="9" data-rh="16" class="preset border-2 border-gray-200 bg-gray-50 hover:border-violet-400 rounded-full px-4 py-1.5 text-sm font-bold">9:16 Vertical</button>
+          </div>
+          <p id="ratioNote" class="text-sm text-violet-700 font-medium mt-2">Simplified: 16:9 · Decimal 1.7778 · Full HD / Widescreen</p>
+        </div>
+
+        <!-- Dimensions / Scale -->
+        <div>
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <label class="text-xs font-bold tracking-widest uppercase text-gray-500">2 · Scale by width or height</label>
+            <label class="flex items-center gap-2 text-sm font-semibold cursor-pointer select-none">
+              <input id="lockToggle" type="checkbox" checked class="w-4 h-4 accent-violet-600"> Ratio lock
+            </label>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3 mt-2">
+            <div>
+              <label class="text-xs text-gray-500 font-semibold">WIDTH</label>
+              <input id="widthInput" type="number" min="0" step="any" value="1920" class="mt-1 w-full border-2 border-gray-200 focus:border-violet-500 rounded-xl px-4 py-3 text-lg font-bold outline-none" placeholder="e.g. 1920">
+            </div>
+            <div>
+              <label class="text-xs text-gray-500 font-semibold">HEIGHT</label>
+              <input id="heightInput" type="number" min="0" step="any" value="1080" class="mt-1 w-full border-2 border-gray-200 focus:border-violet-500 rounded-xl px-4 py-3 text-lg font-bold outline-none" placeholder="e.g. 1080">
+            </div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">With the lock on, editing one side recalculates the other from your ratio. Turn it off to type any pair and discover its true ratio instead.</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <button data-w="1920" data-h="1080" class="quickRes text-xs font-bold bg-gray-900 text-white rounded-lg px-3 py-2">1920×1080 FHD</button>
+            <button data-w="3840" data-h="2160" class="quickRes text-xs font-bold bg-gray-100 border rounded-lg px-3 py-2">3840×2160 4K</button>
+            <button data-w="1280" data-h="720" class="quickRes text-xs font-bold bg-gray-100 border rounded-lg px-3 py-2">1280×720 HD</button>
+            <button data-w="1080" data-h="1080" class="quickRes text-xs font-bold bg-gray-100 border rounded-lg px-3 py-2">1080×1080 Post</button>
+          </div>
+        </div>
+
+        <!-- Diagonal mode -->
+        <div class="bg-violet-50 border border-violet-200 rounded-2xl p-4">
+          <label class="text-xs font-bold tracking-widest uppercase text-violet-700">3 · Diagonal-size mode 📐</label>
+          <p class="text-sm text-violet-900/70 mt-1">TVs and monitors are sold by diagonal. Enter it and let Pythagoras find the real width and height.</p>
+          <div class="grid sm:grid-cols-3 gap-3 mt-3">
+            <div>
+              <label class="text-xs font-semibold text-gray-600">DIAGONAL</label>
+              <input id="diagInput" type="number" min="0" step="any" value="55" class="mt-1 w-full border-2 border-violet-200 focus:border-violet-500 rounded-xl px-3 py-2.5 font-bold outline-none bg-white">
+            </div>
+            <div>
+              <label class="text-xs font-semibold text-gray-600">UNIT</label>
+              <select id="diagUnit" class="mt-1 w-full border-2 border-violet-200 rounded-xl px-3 py-2.5 font-semibold bg-white">
+                <option value="in">inches</option>
+                <option value="cm">cm</option>
+                <option value="px">pixels</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs font-semibold text-gray-600">SOLVE FROM</label>
+              <select id="diagMode" class="mt-1 w-full border-2 border-violet-200 rounded-xl px-3 py-2.5 font-semibold bg-white">
+                <option value="ratio">Diagonal + ratio</option>
+                <option value="width">Diagonal + width</option>
+                <option value="height">Diagonal + height</option>
+              </select>
+            </div>
+          </div>
+          <button id="solveDiag" class="mt-3 w-full bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl py-3">Solve from diagonal →</button>
+          <p id="diagResult" class="mt-3 text-sm font-semibold text-violet-900 bg-white border border-violet-100 rounded-xl px-3 py-2.5">55 in at 16:9 → 47.94 × 26.96 in</p>
+        </div>
+
+        <p id="errorMsg" class="hidden text-sm font-semibold text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3"></p>
+        <div class="flex flex-wrap gap-2">
+          <button id="copyBtn" class="bg-gray-900 hover:bg-black text-white font-bold rounded-xl px-5 py-3 text-sm">⧉ Copy result</button>
+          <button id="resetBtn" class="bg-white border-2 border-gray-200 hover:border-violet-400 font-bold rounded-xl px-5 py-3 text-sm">Reset lab</button>
+          <span id="copyMsg" class="text-sm font-semibold text-emerald-600 self-center"></span>
+        </div>
+      </div>
+
+      <!-- Preview / results -->
+      <div class="lg:col-span-2 bg-gray-100 border-t lg:border-t-0 lg:border-l border-gray-200 p-5 sm:p-6">
+        <label class="text-xs font-bold tracking-widest uppercase text-gray-500">Live preview</label>
+        <div class="lab-grid bg-white border border-gray-300 rounded-2xl mt-2 p-4 min-h-[220px] flex items-center justify-center">
+          <div class="w-full max-w-[320px]">
+            <div id="previewBox" class="relative bg-violet-600/90 rounded-lg mx-auto transition-all duration-300" style="width:100%;aspect-ratio:16/9">
+              <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100"><line x1="0" y1="100" x2="100" y2="0" stroke="rgba(255,255,255,.55)" stroke-width="1" stroke-dasharray="4 3"/></svg>
+              <span id="previewLabel" class="absolute inset-0 flex items-center justify-center text-white font-display font-bold text-sm sm:text-base text-center px-2">1920 × 1080</span>
+            </div>
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-1.5"><span id="dimW">← 1920 →</span><span id="dimDiag">diag 2202.91</span><span id="dimH">1080 ↕</span></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <div class="bg-white rounded-xl border p-3"><div class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Simplified ratio</div><div id="statRatio" class="font-display font-bold text-xl mt-0.5">16:9</div></div>
+          <div class="bg-white rounded-xl border p-3"><div class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Decimal</div><div id="statDecimal" class="font-display font-bold text-xl mt-0.5">1.7778</div></div>
+          <div class="bg-white rounded-xl border p-3"><div class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Diagonal</div><div id="statDiag" class="font-display font-bold text-xl mt-0.5">2202.91</div></div>
+          <div class="bg-white rounded-xl border p-3"><div class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Megapixels</div><div id="statMP" class="font-display font-bold text-xl mt-0.5">2.07 MP</div></div>
+          <div class="bg-white rounded-xl border p-3"><div class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">CSS padding-top</div><div id="statPad" class="font-display font-bold text-xl mt-0.5">56.25%</div></div>
+          <div class="bg-white rounded-xl border p-3"><div class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Area</div><div id="statArea" class="font-display font-bold text-xl mt-0.5">2,073,600</div></div>
+        </div>
+
+        <div class="mt-4">
+          <div class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-2">Same ratio, other sizes</div>
+          <div id="resList" class="space-y-1.5 text-sm"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid sm:grid-cols-3 gap-4 mt-6">
+    <div class="bg-white border rounded-2xl p-5"><div class="text-2xl">🔒</div><h3 class="font-display font-bold mt-2">Ratio lock scaling</h3><p class="text-sm text-gray-600 mt-1">Change width or height and the other side follows your ratio exactly — no stretched logos, no squashed faces, ever.</p></div>
+    <div class="bg-white border rounded-2xl p-5"><div class="text-2xl">📐</div><h3 class="font-display font-bold mt-2">Diagonal solver</h3><p class="text-sm text-gray-600 mt-1">A “55-inch TV” tells you almost nothing about its footprint. Solve the true width and height before you buy the wall mount.</p></div>
+    <div class="bg-white border rounded-2xl p-5"><div class="text-2xl">🎞️</div><h3 class="font-display font-bold mt-2">Presets that matter</h3><p class="text-sm text-gray-600 mt-1">16:9, 4:3, 1:1, 21:9, 3:2 and 9:16 — the six shapes that cover video, photo, print and social in one tap.</p></div>
+  </section>
+</main>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<article class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+  <h2 class="font-display text-3xl font-bold">The Complete Guide to Aspect Ratios: Shapes, Screens and Sizes</h2>
+  <p class="mt-4 text-gray-700 leading-relaxed">Every image, video, screen and sheet of paper has a shape, and that shape is summed up in two small numbers separated by a colon. That pair of numbers is the aspect ratio. It is one of the simplest ideas in visual technology and also one of the most constantly misunderstood, because it describes proportion rather than size. A thumbnail and a cinema screen can share an identical aspect ratio while differing in area by a factor of thousands. Aspectly exists to make that proportion effortless to work with: you give it a ratio and one dimension, and it finds the other dimension exactly, every time, without rounding surprises or stretched results.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">Formally, an aspect ratio is the width of a rectangle divided by its height. Written as 16:9, it says that for every sixteen units of width there are nine units of height. Written as a decimal, the same ratio is 1.78. Written as a percentage trick in CSS, it becomes a padding-top of 56.25 percent. These are three dialects for one fact, and fluency in all three matters depending on whether you are editing video, building a website, ordering a print or shopping for a monitor. A good calculator should move between them freely, which is why Aspectly shows the simplified ratio, the decimal and the CSS percentage side by side in its results bench.</p>
+  <h3 class="font-display text-xl font-bold mt-8">Why simplifying a ratio matters</h3>
+  <p class="mt-3 text-gray-700 leading-relaxed">Real dimensions rarely arrive in their simplest form. A camera may record 1920 by 1080 pixels, a phone screenshot may measure 1170 by 2532, and a scanned photograph may be 3508 by 2480. Simplifying those pairs — dividing both numbers by their greatest common divisor — reveals the underlying standard. The first is 16:9, the second is 9:19.5 in disguise, more conventionally described as an extra-tall phone ratio, and the third is very close to the A4 paper family. Simplification is not cosmetic. Once you know the simplified ratio, you know which family a file belongs to, which devices will display it without bars, and which export settings will preserve it. Aspectly simplifies automatically whenever you unlock the ratio and type a width and height pair, turning raw pixel counts into a recognisable shape in one glance.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">The greatest common divisor method is exact for whole numbers, which is why calculators prefer it over eyeballing decimals. Two dimensions that look unrelated, such as 1366 by 768, simplify only to 683:384, which explains why that once-common laptop resolution never matched 16:9 content perfectly and why videos on those screens showed hairline bars or slight scaling. Knowing this history helps you forgive old hardware and choose better resolutions today: 1920 by 1080, 2560 by 1440 and 3840 by 2160 are all exact 16:9, so video scales cleanly with no wasted pixels.</p>
+  <h3 class="font-display text-xl font-bold mt-8">The famous ratios and where each one rules</h3>
+  <p class="mt-3 text-gray-700 leading-relaxed">The 16:9 ratio dominates modern video for good historical reasons. It was chosen as a compromise that could display both older 4:3 television and wider cinema films with relatively small bars, and it became the shape of HDTV, YouTube, streaming, presentations and most laptop screens. If you are making video for a general audience and must pick one shape, 16:9 remains the safest default. Its taller sibling 9:16 is simply 16:9 rotated ninety degrees, and it owns vertical short-form video, stories and reels, where the phone stays upright in the hand. Designing for 9:16 means keeping faces and text in the central safe area and remembering that captions occupy the lower fifth of the frame.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">The 4:3 ratio is older than most of its users. It shaped broadcast television for half a century, early computer monitors, the original iPad and many classroom projectors that still hang in schools today. Slides, documents and scanned archives frequently remain 4:3, and tablet reading apps favour it because it sits comfortably between portrait paper and landscape video. The 1:1 square, once dismissed as a limitation of early social apps, has become a deliberate design choice: it takes the most feed height on mobile without demanding rotation, treats portrait and landscape source photos equally, and gives product photography a calm, gallery-like symmetry.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">At the wide extreme, 21:9 — sometimes marketed as ultrawide and often built as 64:27 in real panels — gives editors a timeline-friendly canvas, gives gamers extra peripheral vision and approximates the anamorphic cinema experience at home. Films shot at 2.39:1 sit inside 21:9 with only slim bars. Photographers, meanwhile, live mostly at 3:2, the shape of 35 millimetre film inherited by nearly every DSLR and mirrorless sensor, with 4:3 and 1:1 available as in-camera crops. Print adds its own family: the ISO A-series uses the elegant ratio of one to the square root of two, which keeps its shape when folded in half, a trick no video ratio can perform.</p>
+  <h3 class="font-display text-xl font-bold mt-8">Scaling without distortion: the ratio lock idea</h3>
+  <p class="mt-3 text-gray-700 leading-relaxed">Distortion happens when width and height are scaled by different factors. A face stretched ten percent wider still reads as a face in a casual glance, yet viewers sense that something is wrong, and logos, circles and text reveal the cheat immediately: circles become ellipses and brand marks break their own guidelines. The ratio lock prevents this by treating the ratio as the master value and any single dimension as the only free input. Change the width and the height is derived; change the height and the width is derived. The mathematics is a single multiplication — new height equals new width times the ratio height over the ratio width — but embedding it in a live tool removes the temptation to guess, round carelessly or resize by dragging a corner handle freehand.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">Locking is equally valuable in the opposite direction. When you receive an asset of unknown shape, unlocking and typing its true pixel dimensions tells you the ratio it actually is, not the ratio the filename claims. Mismatches between claimed and actual ratios are a quiet source of bugs in video pipelines, advertising specifications and marketplace listings, where a creative delivered at 1200 by 628 may be requested again at twice the size and someone must know that 2400 by 1256, not 2400 by 1200, is the faithful upscale. Aspectly handles both directions in the same bench, so discovery and production live one click apart.</p>
+  <h3 class="font-display text-xl font-bold mt-8">Diagonal-size mode: what a 55-inch screen really measures</h3>
+  <p class="mt-3 text-gray-700 leading-relaxed">Televisions and monitors are sold by diagonal because a single large number is tidy marketing and because, historically, picture tubes were measured that way. The diagonal, however, hides the two numbers you actually need when planning a room, a desk, a flight case or a wall mount: width and height. Two screens can both claim 55 inches and have very different footprints if their ratios differ, although with modern 16:9 panels the answer is consistent. The geometry is pure Pythagoras. The diagonal is the hypotenuse; the width and height scale from the ratio parts; so width equals diagonal times sixteen over the square root of sixteen squared plus nine squared. For a 55-inch 16:9 screen that yields about 47.9 inches wide and 27.0 inches tall, before adding the bezel and stand, which manufacturers usually exclude from the headline number.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">Diagonal mode also runs in reverse from a known side. If a product listing gives a diagonal and a width — common for ultrawide monitors and for laptops — the missing height follows from the square root of diagonal squared minus width squared. Aspectly offers all three routes: diagonal plus ratio, diagonal plus width and diagonal plus height. This matters beyond television. Phone screens, camera monitors, drawing tablets and even picture frames are frequently specified by diagonal alone, and converting that single number into a rectangle you can measure against a wall with a tape is the difference between a purchase that fits and a return that costs a weekend.</p>
+  <h3 class="font-display text-xl font-bold mt-8">Aspect ratios on the web and in CSS</h3>
+  <p class="mt-3 text-gray-700 leading-relaxed">Web developers meet aspect ratios as a layout defence. If a browser knows an image is 16:9 before the file loads, it can reserve the correct space and the page does not jump as media arrives — a behaviour measured as cumulative layout shift and rewarded by search engines when kept low. Modern CSS offers a direct aspect-ratio property, while older code used the padding-top percentage trick, where a container for 16:9 receives 56.25 percent top padding because nine divided by sixteen equals 0.5625. Aspectly displays that percentage for any ratio so legacy codebases and email templates remain easy to maintain. The same thinking governs responsive video embeds, hero banners and card grids: define the shape once, let width be fluid, and let height follow by rule rather than by fixed pixels that break on the next phone size.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">Design tools tell the same story in a friendlier accent. Constraining proportions while dragging, locking a frame to a preset and exporting at one-times, two-times and three-times scale are all ratio-lock operations with better marketing. Understanding the underlying arithmetic makes those features predictable instead of magical, and it explains why a design exported at the wrong ratio cannot be rescued by a clever crop alone when the subject sits near an edge. The time to choose the shape is before the shoot, the edit or the first line of layout code, and a calculator is the cheapest place to make that decision deliberately.</p>
+  <h3 class="font-display text-xl font-bold mt-8">Common mistakes and how to avoid them</h3>
+  <p class="mt-3 text-gray-700 leading-relaxed">The first mistake is confusing resolution with ratio. Resolution is the count of pixels; ratio is their shape when arranged. Increasing resolution sharpens an image but does not change what fits inside it, and requesting a higher-resolution file in the wrong ratio only gives you a sharper crop. The second mistake is trusting platform labels without checking dimensions, because a video exported as 1080p is a height, not a promise about width. The third is mixing units across a diagonal calculation, entering centimetres where the tool expects inches and concluding that a television is the size of a wardrobe. Aspectly keeps units explicit in diagonal mode for exactly this reason. The fourth mistake is rounding intermediate steps by hand; rounding should happen once, at presentation, not inside the chain of calculations, or errors compound across a family of exported sizes.</p>
+  <p class="mt-4 text-gray-700 leading-relaxed">A practical workflow ties all of this together. Start from the destination: the screen, feed, slide or page where the work will live. Note its ratio first and its pixel dimensions second. Set that ratio in the lab, scale by the width or height your source can comfortably supply, and export the exact pair the calculator returns. Check the diagonal whenever physical size matters, from monitor arms to printed banners viewed across a hall. Keep the lock on unless you are investigating an unknown file. Followed consistently, this small discipline eliminates stretched logos, surprise bars, cropped faces and the quiet embarrassment of a presentation that almost fits the projector. That is the entire promise of Aspectly: two numbers, treated with respect, doing more work than any filter.</p>
+
+  <h2 class="font-display text-2xl font-bold mt-10 mb-4">Frequently asked questions</h2>
+  <div class="space-y-3">
+    <details class="bg-white border rounded-xl p-4" open><summary class="font-bold cursor-pointer">What is an aspect ratio and how is it written?</summary><p class="text-gray-600 text-sm mt-2 leading-relaxed">An aspect ratio is the proportional relationship between width and height, written as width:height such as 16:9. It describes shape, not physical size, so a 1920×1080 screen and a 1280×720 screen share the same 16:9 shape.</p></details>
+    <details class="bg-white border rounded-xl p-4"><summary class="font-bold cursor-pointer">How do I calculate a missing height from width and ratio?</summary><p class="text-gray-600 text-sm mt-2 leading-relaxed">Divide the width by the ratio's width part and multiply by the ratio's height part. For 16:9 at 1920 wide, height = 1920 ÷ 16 × 9 = 1080. Aspectly does this instantly when you scale by width with the ratio lock on.</p></details>
+    <details class="bg-white border rounded-xl p-4"><summary class="font-bold cursor-pointer">What does diagonal-size mode do?</summary><p class="text-gray-600 text-sm mt-2 leading-relaxed">Diagonal-size mode works backwards from the diagonal measurement printed on TVs and monitors. Give Aspectly a diagonal and a ratio such as 55 inches at 16:9 and it uses Pythagoras to return the actual width and height of the panel.</p></details>
+    <details class="bg-white border rounded-xl p-4"><summary class="font-bold cursor-pointer">Which aspect ratio should I use for video, photos and social media?</summary><p class="text-gray-600 text-sm mt-2 leading-relaxed">Use 16:9 for most video and presentations, 9:16 for vertical short-form video, 1:1 for square social posts, 4:3 for classic slides and some tablets, 3:2 for DSLR photos, and 21:9 for ultrawide monitors and cinematic footage.</p></details>
+    <details class="bg-white border rounded-xl p-4"><summary class="font-bold cursor-pointer">Why does my image get cropped or show black bars?</summary><p class="text-gray-600 text-sm mt-2 leading-relaxed">Black bars or cropping happen when the image ratio and the display ratio differ. A 4:3 photo on a 16:9 screen leaves side bars, while filling the screen would crop top and bottom. Matching ratios before you export avoids both problems.</p></details>
+    <details class="bg-white border rounded-xl p-4"><summary class="font-bold cursor-pointer">Is Aspectly free and does it upload my data?</summary><p class="text-gray-600 text-sm mt-2 leading-relaxed">Yes, Aspectly is completely free with unlimited usage and no signup. All calculations run in your browser, so your numbers are never uploaded to a server.</p></details>
+  </div>
+</article>
+
+<footer class="bg-gray-900 text-gray-400 text-center text-sm py-8 px-4">
+  <p class="font-display font-bold text-white">Aspectly — Ratio Lab</p>
+  <p class="mt-1">Scale by width or height, lock the shape, solve the diagonal. Free forever.</p>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+
+<script id="lib-aspectly">
+var AspectlyLib = (function () {
+  'use strict';
+
+  function isPositive(n) {
+    return typeof n === 'number' && isFinite(n) && n > 0;
+  }
+
+  function gcd(a, b) {
+    a = Math.abs(Math.round(a));
+    b = Math.abs(Math.round(b));
+    if (!a && !b) return 0;
+    if (!a) return b;
+    if (!b) return a;
+    while (b !== 0) { var t = b; b = a % b; a = t; }
+    return a;
+  }
+
+  function simplify(w, h) {
+    if (!isPositive(w) || !isPositive(h)) return null;
+    // Scale to integers for gcd when inputs are integers; if decimals, scale by 1000
+    var scale = 1;
+    if (Math.round(w) !== w || Math.round(h) !== h) scale = 1000;
+    var iw = Math.round(w * scale), ih = Math.round(h * scale);
+    var g = gcd(iw, ih);
+    if (!g) return null;
+    var rw = iw / g, rh = ih / g;
+    return { rw: rw, rh: rh, text: rw + ':' + rh, decimal: w / h };
+  }
+
+  function decimalRatio(w, h) {
+    if (!isPositive(w) || !isPositive(h)) return null;
+    return w / h;
+  }
+
+  function heightFromWidth(rw, rh, width) {
+    if (!isPositive(rw) || !isPositive(rh) || !isPositive(width)) return null;
+    return width * rh / rw;
+  }
+
+  function widthFromHeight(rw, rh, height) {
+    if (!isPositive(rw) || !isPositive(rh) || !isPositive(height)) return null;
+    return height * rw / rh;
+  }
+
+  function diagonalFromWH(w, h) {
+    if (!isPositive(w) || !isPositive(h)) return null;
+    return Math.sqrt(w * w + h * h);
+  }
+
+  function whFromDiagonal(rw, rh, diagonal) {
+    if (!isPositive(rw) || !isPositive(rh) || !isPositive(diagonal)) return null;
+    var k = diagonal / Math.sqrt(rw * rw + rh * rh);
+    return { width: rw * k, height: rh * k, diagonal: diagonal };
+  }
+
+  function otherFromDiagonalAndSide(diagonal, side) {
+    if (!isPositive(diagonal) || !isPositive(side)) return null;
+    if (side >= diagonal) return null;
+    return Math.sqrt(diagonal * diagonal - side * side);
+  }
+
+  function whFromDiagonalAndWidth(diagonal, width) {
+    var h = otherFromDiagonalAndSide(diagonal, width);
+    if (h === null) return null;
+    return { width: width, height: h, diagonal: diagonal };
+  }
+
+  function whFromDiagonalAndHeight(diagonal, height) {
+    var w = otherFromDiagonalAndSide(diagonal, height);
+    if (w === null) return null;
+    return { width: w, height: height, diagonal: diagonal };
+  }
+
+  function scale(w, h, targetWidth, targetHeight) {
+    // Returns scaled dims preserving ratio of w/h. If both targets given, fits inside (contain).
+    if (!isPositive(w) || !isPositive(h)) return null;
+    if (targetWidth != null && targetHeight != null) {
+      if (!isPositive(targetWidth) || !isPositive(targetHeight)) return null;
+      var factor = Math.min(targetWidth / w, targetHeight / h);
+      return { width: w * factor, height: h * factor, factor: factor, mode: 'fit' };
+    }
+    if (targetWidth != null) {
+      if (!isPositive(targetWidth)) return null;
+      var f2 = targetWidth / w;
+      return { width: targetWidth, height: h * f2, factor: f2, mode: 'width' };
+    }
+    if (targetHeight != null) {
+      if (!isPositive(targetHeight)) return null;
+      var f3 = targetHeight / h;
+      return { width: w * f3, height: targetHeight, factor: f3, mode: 'height' };
+    }
+    return null;
+  }
+
+  function megapixels(w, h) {
+    if (!isPositive(w) || !isPositive(h)) return null;
+    return (w * h) / 1000000;
+  }
+
+  function aspectPercent(w, h) {
+    // e.g. width as % of height etc - used for CSS padding trick
+    if (!isPositive(w) || !isPositive(h)) return null;
+    return (h / w) * 100;
+  }
+
+  function matchesRatio(w, h, rw, rh, tolerance) {
+    if (!isPositive(w) || !isPositive(h) || !isPositive(rw) || !isPositive(rh)) return false;
+    var tol = (typeof tolerance === 'number' && tolerance > 0) ? tolerance : 0.01;
+    return Math.abs((w / h) - (rw / rh)) <= tol;
+  }
+
+  function commonName(rw, rh) {
+    if (!isPositive(rw) || !isPositive(rh)) return '';
+    var s = simplify(rw, rh);
+    if (!s) return '';
+    var key = s.rw + ':' + s.rh;
+    var map = {
+      '16:9': 'Full HD / Widescreen',
+      '4:3': 'Classic / Standard',
+      '1:1': 'Square',
+      '21:9': 'Ultrawide',
+      '7:3': 'Ultrawide',
+      '3:2': 'Photo / DSLR',
+      '16:10': 'Widescreen 16:10',
+      '9:16': 'Vertical Video',
+      '5:4': 'Near Square',
+      '2:1': 'Panoramic 2:1',
+      '3:1': 'Banner'
+    };
+    return map[key] || '';
+  }
+
+  function resolutionsForRatio(rw, rh) {
+    if (!isPositive(rw) || !isPositive(rh)) return [];
+    // Generate a few scaled resolutions based on common widths
+    var widths = [640, 800, 1024, 1280, 1366, 1600, 1920, 2560, 3840];
+    var out = [];
+    for (var i = 0; i < widths.length; i++) {
+      var w = widths[i];
+      var h = Math.round(w * rh / rw);
+      out.push({ width: w, height: h, label: w + ' × ' + h });
+    }
+    return out;
+  }
+
+  function roundTo(n, decimals) {
+    if (typeof n !== 'number' || !isFinite(n)) return null;
+    var d = (typeof decimals === 'number') ? decimals : 2;
+    var f = Math.pow(10, d);
+    return Math.round(n * f) / f;
+  }
+
+  function formatNumber(n, decimals) {
+    var r = roundTo(n, decimals == null ? 2 : decimals);
+    if (r === null) return '';
+    // Remove trailing zeros nicely but keep at most 2 decimals
+    return String(r);
+  }
+
+  var PRESETS = [
+    { rw: 16, rh: 9, label: '16:9', name: 'Widescreen' },
+    { rw: 4, rh: 3, label: '4:3', name: 'Classic' },
+    { rw: 1, rh: 1, label: '1:1', name: 'Square' },
+    { rw: 21, rh: 9, label: '21:9', name: 'Ultrawide' },
+    { rw: 3, rh: 2, label: '3:2', name: 'Photo' },
+    { rw: 9, rh: 16, label: '9:16', name: 'Vertical' }
+  ];
+
+  return {
+    isPositive: isPositive,
+    gcd: gcd,
+    simplify: simplify,
+    decimalRatio: decimalRatio,
+    heightFromWidth: heightFromWidth,
+    widthFromHeight: widthFromHeight,
+    diagonalFromWH: diagonalFromWH,
+    whFromDiagonal: whFromDiagonal,
+    otherFromDiagonalAndSide: otherFromDiagonalAndSide,
+    whFromDiagonalAndWidth: whFromDiagonalAndWidth,
+    whFromDiagonalAndHeight: whFromDiagonalAndHeight,
+    scale: scale,
+    megapixels: megapixels,
+    aspectPercent: aspectPercent,
+    matchesRatio: matchesRatio,
+    commonName: commonName,
+    resolutionsForRatio: resolutionsForRatio,
+    roundTo: roundTo,
+    formatNumber: formatNumber,
+    PRESETS: PRESETS
+  };
+})();
+
+if (typeof module !== 'undefined' && module.exports) { module.exports = AspectlyLib; }
+
+</script>
+<script>
+(function(){
+  var L = AspectlyLib;
+  function $(id){return document.getElementById(id);}
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)?v:NaN;}
+  function fmt(n){return L.formatNumber(n,2);}
+  function showError(msg){var e=$('errorMsg');if(msg){e.textContent=msg;e.classList.remove('hidden');}else{e.classList.add('hidden');}}
+
+  function update(changed){
+    var rw=num('rw'), rh=num('rh'), w=num('widthInput'), h=num('heightInput');
+    var locked=$('lockToggle').checked;
+    $('lockBadge').textContent = locked ? '🔒 Ratio lock ON' : '🔓 Ratio lock OFF';
+    if(!L.isPositive(rw)||!L.isPositive(rh)){showError('Enter a valid ratio — both parts must be greater than zero.');return;}
+    showError('');
+    if(locked){
+      if(changed==='width' && L.isPositive(w)){ h=L.heightFromWidth(rw,rh,w); $('heightInput').value=fmt(h); }
+      else if(changed==='height' && L.isPositive(h)){ w=L.widthFromHeight(rw,rh,h); $('widthInput').value=fmt(w); }
+      else if((changed==='ratio'||changed==='preset'||changed==='quick') && L.isPositive(w)){ h=L.heightFromWidth(rw,rh,w); $('heightInput').value=fmt(h); }
+    } else {
+      if(L.isPositive(w)&&L.isPositive(h)){ var s=L.simplify(w,h); if(s){ $('rw').value=s.rw; $('rh').value=s.rh; rw=s.rw; rh=s.rh; } }
+    }
+    w=num('widthInput'); h=num('heightInput'); rw=num('rw'); rh=num('rh');
+    if(!L.isPositive(w)||!L.isPositive(h)) { showError('Enter a width and height greater than zero to see results.'); return; }
+    var simp=L.simplify(w,h);
+    var simpRatio = simp ? simp.text : (rw+':'+rh);
+    $('statRatio').textContent=simpRatio;
+    $('statDecimal').textContent=fmt(L.decimalRatio(w,h)*1) ? (Math.round(L.decimalRatio(w,h)*10000)/10000) : '—';
+    $('statDiag').textContent=fmt(L.diagonalFromWH(w,h));
+    var mp=L.megapixels(w,h); $('statMP').textContent=(Math.round(mp*100)/100)+' MP';
+    $('statPad').textContent=fmt(L.aspectPercent(w,h))+'%';
+    $('statArea').textContent=Math.round(w*h).toLocaleString('en-US');
+    var name=L.commonName(rw,rh);
+    $('ratioNote').textContent='Simplified: '+simpRatio+' · Decimal '+(Math.round(L.decimalRatio(w,h)*10000)/10000)+(name?' · '+name:'');
+    // preview
+    var box=$('previewBox'); box.style.aspectRatio=w+'/'+h;
+    // constrain preview width by shape
+    var maxW=320, maxH=200; var pw=maxW, ph=pw*h/w; if(ph>maxH){ph=maxH; pw=ph*w/h;}
+    box.style.width=pw+'px';
+    $('previewLabel').textContent=fmt(w)+' × '+fmt(h);
+    $('dimW').textContent='← '+fmt(w)+' →'; $('dimH').textContent=fmt(h)+' ↕'; $('dimDiag').textContent='diag '+fmt(L.diagonalFromWH(w,h));
+    // resolutions
+    var res=L.resolutionsForRatio(rw,rh); var html='';
+    res.forEach(function(r){ html+='<button class="resItem w-full text-left bg-white border hover:border-violet-400 rounded-lg px-3 py-2 font-semibold flex justify-between" data-w="'+r.width+'" data-h="'+r.height+'"><span>'+r.label+'</span><span class="text-violet-600 text-xs self-center">USE →</span></button>'; });
+    $('resList').innerHTML=html;
+    document.querySelectorAll('.resItem').forEach(function(b){ b.addEventListener('click',function(){ $('widthInput').value=b.getAttribute('data-w'); $('heightInput').value=b.getAttribute('data-h'); update('quick'); }); });
+    // mark preset active
+    document.querySelectorAll('.preset').forEach(function(b){ var brw=parseFloat(b.getAttribute('data-rw')), brh=parseFloat(b.getAttribute('data-rh')); if(brw===rw&&brh===rh) b.classList.add('preset-active'); else b.classList.remove('preset-active'); });
+    updateDiagPreview();
+  }
+
+  function updateDiagPreview(){
+    var d=num('diagInput'), rw=num('rw'), rh=num('rh'), mode=$('diagMode').value, unit=$('diagUnit').value;
+    if(!L.isPositive(d)){$('diagResult').textContent='Enter a diagonal greater than zero.';return;}
+    var out=null, label='';
+    if(mode==='ratio'){ out=L.whFromDiagonal(rw,rh,d); label=d+' '+unit+' at '+rw+':'+rh; }
+    else if(mode==='width'){ var w=num('widthInput'); out=L.whFromDiagonalAndWidth(d,w); label=d+' '+unit+' diagonal + width '+fmt(w); if(!out){$('diagResult').textContent='Width must be smaller than the diagonal.';return;} }
+    else { var h=num('heightInput'); out=L.whFromDiagonalAndHeight(d,h); label=d+' '+unit+' diagonal + height '+fmt(h); if(!out){$('diagResult').textContent='Height must be smaller than the diagonal.';return;} }
+    if(out) $('diagResult').textContent=label+' → '+fmt(out.width)+' × '+fmt(out.height)+' '+unit;
+  }
+
+  $('solveDiag').addEventListener('click',function(){
+    var d=num('diagInput'), rw=num('rw'), rh=num('rh'), mode=$('diagMode').value, unit=$('diagUnit').value;
+    if(!L.isPositive(d)){showError('Diagonal mode needs a diagonal greater than zero.');return;}
+    var out=null;
+    if(mode==='ratio') out=L.whFromDiagonal(rw,rh,d);
+    else if(mode==='width') out=L.whFromDiagonalAndWidth(d,num('widthInput'));
+    else out=L.whFromDiagonalAndHeight(d,num('heightInput'));
+    if(!out){showError('That diagonal and side do not form a rectangle — the side must be smaller than the diagonal.');return;}
+    showError('');
+    $('widthInput').value=fmt(out.width); $('heightInput').value=fmt(out.height);
+    if(mode!=='ratio'){ var s=L.simplify(out.width,out.height); if(s){$('rw').value=s.rw;$('rh').value=s.rh;} }
+    update('quick');
+    $('diagResult').textContent='Solved: '+fmt(out.width)+' × '+fmt(out.height)+' '+unit+' (diagonal '+fmt(d)+' '+unit+')';
+  });
+
+  document.querySelectorAll('.preset').forEach(function(b){ b.addEventListener('click',function(){ $('rw').value=b.getAttribute('data-rw'); $('rh').value=b.getAttribute('data-rh'); if(!$('lockToggle').checked) $('lockToggle').checked=true; update('preset'); }); });
+  document.querySelectorAll('.quickRes').forEach(function(b){ b.addEventListener('click',function(){ $('widthInput').value=b.getAttribute('data-w'); $('heightInput').value=b.getAttribute('data-h'); var s=L.simplify(parseFloat(b.getAttribute('data-w')),parseFloat(b.getAttribute('data-h'))); if(s){$('rw').value=s.rw;$('rh').value=s.rh;} update('quick'); }); });
+  $('swapRatio').addEventListener('click',function(){ var a=$('rw').value; $('rw').value=$('rh').value; $('rh').value=a; update('ratio'); });
+  $('rw').addEventListener('input',function(){update('ratio');});
+  $('rh').addEventListener('input',function(){update('ratio');});
+  $('widthInput').addEventListener('input',function(){update('width');});
+  $('heightInput').addEventListener('input',function(){update('height');});
+  $('lockToggle').addEventListener('change',function(){update('ratio');});
+  $('diagInput').addEventListener('input',updateDiagPreview);
+  $('diagMode').addEventListener('change',updateDiagPreview);
+  $('diagUnit').addEventListener('change',updateDiagPreview);
+  $('resetBtn').addEventListener('click',function(){ $('rw').value=16;$('rh').value=9;$('widthInput').value=1920;$('heightInput').value=1080;$('diagInput').value=55;$('lockToggle').checked=true; update('preset'); });
+  $('copyBtn').addEventListener('click',function(){
+    var text='Aspectly result: '+$('widthInput').value+' × '+$('heightInput').value+' · Ratio '+$('statRatio').textContent+' · Decimal '+$('statDecimal').textContent+' · Diagonal '+$('statDiag').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(text).then(function(){$('copyMsg').textContent='Copied!';});
+    else $('copyMsg').textContent=text;
+  });
+  update('init');
+})();
+</script>
+</body>
+</html>
