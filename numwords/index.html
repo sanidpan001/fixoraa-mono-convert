@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://convert.fixoraa.tech/numwords/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NumWords — Number to Words Converter (Indian &amp; International, Cheque-Ready)</title>
+<meta name="description" content="NumWords is a free number to words converter with Indian (lakh, crore) and International systems, cheque-ready currency wording with Only, and support for numbers up to 15 digits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; background: #faf6ec; }
+  .font-display { font-family: 'Fraunces', Georgia, serif; }
+  .cheque-paper {
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(20,38,76,0.05) 28px),
+      linear-gradient(160deg, #fffdf4 0%, #fbf5e3 55%, #f5ecd2 100%);
+  }
+  .perf { background-image: radial-gradient(circle, #faf6ec 3.2px, transparent 3.6px); background-size: 100% 22px; background-position: center; }
+  .ruled { background-image: linear-gradient(to bottom, transparent calc(100% - 2px), #b7a86f calc(100% - 2px)); }
+  .seg-btn[aria-pressed="true"] { background: #14264c; color: #fdf9ec; }
+  .chip:hover { background: #14264c; color: #fdf9ec; }
+  @media print {
+    .no-print, header, footer { display: none !important; }
+    body { background: #fff; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I convert a number to words for a cheque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Type the amount into the number box, choose the Indian system if your bank account is in India (or International elsewhere), select your currency, and switch on Cheque mode. NumWords instantly writes the amount in words with the currency name at the front and the word Only at the end — for example, 150000 becomes \"Rupees One Lakh Fifty Thousand Only\", ready to copy onto the cheque leaf exactly as a bank expects it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between the Indian and International numbering systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both systems name the same numbers; they simply group the digits differently. The International system groups digits in threes and uses Thousand, Million, Billion and Trillion, so 10000000 is written as 10,000,000 and read as Ten Million. The Indian system groups the first three digits and then pairs, using Thousand, Lakh, Crore, Arab, Kharab and Neel, so the same value is written 1,00,00,000 and read as One Crore. India, Pakistan, Bangladesh, Nepal and Sri Lanka commonly use the Indian system, while most of the rest of the world uses the International system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the largest number NumWords can convert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NumWords supports whole numbers of up to 15 digits before the decimal point — that is 999,999,999,999,999, which reads as Nine Hundred Ninety Nine Trillion in the International system and Ninety Nine Neel Ninety Nine Kharab Ninety Nine Arab Ninety Nine Crore Ninety Nine Lakh Ninety Nine Thousand Nine Hundred Ninety Nine in the Indian system. That ceiling comfortably covers national budgets, market capitalisations and every personal cheque you will ever write."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I write amounts with paise or cents in words?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just include the decimal part when you type the amount, for example 2500.75. In Cheque mode NumWords converts the first two decimal digits into the currency subunit automatically, producing \"Dollars Two Thousand Five Hundred and Cents Seventy Five Only\" for dollars, or the equivalent with Paise for rupees, Cents for euros and Pence for pounds. In plain mode the decimal digits are spoken one by one after the word Point, which is the convention for reading numbers aloud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do banks require the amount in words on a cheque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Words are much harder to alter than figures. Changing a 1 into a 7 or adding a zero takes a second in the figures box, but rewriting a whole line of words without leaving evidence is nearly impossible, so the words act as a built-in tamper check. Bank rules in most countries say that if the words and figures on a cheque ever disagree, the amount written in words is the one that legally prevails — which is exactly why spelling the amount correctly matters, and why a converter like this one is worth using."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is NumWords free, and does it store the numbers I convert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, NumWords is completely free with unlimited usage — no signup, no paywall and no watermark on anything you copy. Every conversion happens entirely inside your own browser using code delivered with this page; the numbers you type are never sent to a server, never logged and never stored, so it is safe to use for real cheque amounts, salaries, invoices and other private figures."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body id="top" class="text-[#23283a] antialiased">
+
+<header class="sticky top-0 z-40 bg-[#14264c] text-[#fdf9ec] shadow-lg shadow-[#14264c]/20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#c9a227] text-[#14264c] font-display font-extrabold text-lg leading-none">№</span>
+      <span class="font-display font-extrabold text-xl tracking-tight">NumWords</span>
+    </a>
+    <nav class="flex items-center gap-1 sm:gap-2 text-sm font-semibold">
+      <a href="#top" class="px-3 py-2 rounded-lg hover:bg-white/10 transition">Home</a>
+      <a href="https://fixoraa.tech" class="px-3 py-2 rounded-lg bg-[#c9a227] text-[#14264c] hover:bg-[#dbb63e] transition">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="mx-auto max-w-6xl px-4 sm:px-6">
+  <!-- Hero -->
+  <section class="pt-8 sm:pt-12 pb-6 text-center">
+    <span class="inline-block bg-[#14264c] text-[#f3d97b] text-[11px] font-bold tracking-[0.18em] uppercase px-3.5 py-1.5 rounded-full">Unlimited Free Usage · No Signup</span>
+    <h1 class="font-display font-extrabold text-[#14264c] text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mt-5">Number to Words,<br class="hidden sm:block"> the way a bank writes it.</h1>
+    <p class="mt-4 max-w-2xl mx-auto text-[#4a5064] text-base sm:text-lg leading-relaxed">Type any amount up to 15 digits and NumWords spells it out in the <strong class="text-[#14264c]">Indian system</strong> (lakh, crore) or the <strong class="text-[#14264c]">International system</strong> (million, billion) — with a cheque-ready line, currency and the word <em>Only</em>, in one click.</p>
+  </section>
+
+  <!-- Controls -->
+  <section class="no-print max-w-3xl mx-auto">
+    <label for="amount" class="block text-xs font-bold tracking-[0.16em] uppercase text-[#14264c] mb-2">Amount in figures</label>
+    <input id="amount" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"
+      placeholder="e.g. 1,50,000 or 2500.75"
+      class="w-full text-2xl sm:text-3xl font-bold text-[#14264c] bg-white border-2 border-[#d8cfb4] focus:border-[#14264c] focus:ring-4 focus:ring-[#14264c]/10 rounded-2xl px-5 py-4 outline-none transition placeholder:text-[#a49a7c] placeholder:font-medium">
+    <p id="error" class="hidden mt-2 text-sm font-medium text-[#b3261e]"></p>
+
+    <div class="mt-5 grid sm:grid-cols-3 gap-4">
+      <div>
+        <span class="block text-xs font-bold tracking-[0.16em] uppercase text-[#14264c] mb-2">Number system</span>
+        <div class="flex rounded-xl border-2 border-[#d8cfb4] overflow-hidden bg-white" role="group" aria-label="Number system">
+          <button id="sys-indian" type="button" class="seg-btn flex-1 px-3 py-2.5 text-sm font-bold transition" aria-pressed="true">Indian · Lakh/Crore</button>
+          <button id="sys-intl" type="button" class="seg-btn flex-1 px-3 py-2.5 text-sm font-bold transition" aria-pressed="false">International</button>
+        </div>
+      </div>
+      <div>
+        <label for="currency" class="block text-xs font-bold tracking-[0.16em] uppercase text-[#14264c] mb-2">Currency</label>
+        <select id="currency" class="w-full bg-white border-2 border-[#d8cfb4] focus:border-[#14264c] rounded-xl px-3 py-2.5 text-sm font-bold text-[#14264c] outline-none">
+          <option value="INR" selected>Rupees (₹)</option>
+          <option value="USD">Dollars ($)</option>
+          <option value="EUR">Euros (€)</option>
+          <option value="GBP">Pounds (£)</option>
+          <option value="NONE">No currency</option>
+        </select>
+      </div>
+      <div>
+        <span class="block text-xs font-bold tracking-[0.16em] uppercase text-[#14264c] mb-2">Cheque mode</span>
+        <button id="cheque-toggle" type="button" aria-pressed="true" class="w-full flex items-center justify-between bg-white border-2 border-[#d8cfb4] rounded-xl px-3 py-2 text-sm font-bold text-[#14264c]">
+          <span id="cheque-label">On — ends with “Only”</span>
+          <span id="cheque-pill" class="inline-block w-11 h-6 rounded-full bg-[#14264c] relative transition"><span id="cheque-knob" class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-[#f3d97b] transition-all" style="left:22px"></span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-5 flex flex-wrap gap-2 items-center">
+      <span class="text-xs font-bold tracking-wide uppercase text-[#8a7f5c] mr-1">Try:</span>
+      <button type="button" class="chip sample border border-[#c9bfa0] rounded-full px-3 py-1.5 text-sm font-semibold text-[#14264c] transition" data-amt="500">500</button>
+      <button type="button" class="chip sample border border-[#c9bfa0] rounded-full px-3 py-1.5 text-sm font-semibold text-[#14264c] transition" data-amt="10000">10,000</button>
+      <button type="button" class="chip sample border border-[#c9bfa0] rounded-full px-3 py-1.5 text-sm font-semibold text-[#14264c] transition" data-amt="150000">1,50,000</button>
+      <button type="button" class="chip sample border border-[#c9bfa0] rounded-full px-3 py-1.5 text-sm font-semibold text-[#14264c] transition" data-amt="2500000">25,00,000</button>
+      <button type="button" class="chip sample border border-[#c9bfa0] rounded-full px-3 py-1.5 text-sm font-semibold text-[#14264c] transition" data-amt="10000000">1,00,00,000</button>
+      <button type="button" class="chip sample border border-[#c9bfa0] rounded-full px-3 py-1.5 text-sm font-semibold text-[#14264c] transition" data-amt="78654.50">78,654.50</button>
+      <button type="button" id="clear-btn" class="ml-auto text-sm font-semibold text-[#8a7f5c] underline underline-offset-2 hover:text-[#14264c]">Clear</button>
+    </div>
+  </section>
+
+  <!-- The cheque -->
+  <section aria-label="Cheque preview" class="mt-8 max-w-3xl mx-auto">
+    <div class="cheque-paper relative rounded-2xl border border-[#d8cfb4] shadow-xl shadow-[#14264c]/10 overflow-hidden">
+      <div class="perf absolute inset-y-0 left-0 w-[14px] border-r border-dashed border-[#c9bfa0]"></div>
+      <div class="pl-8 pr-5 sm:pl-10 sm:pr-8 py-6">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="font-display font-extrabold text-[#14264c] text-lg leading-none">NUMWORDS CHEQUE DESK</p>
+            <p class="text-[11px] tracking-[0.22em] uppercase text-[#8a7f5c] mt-1.5">Amount in words · specimen preview</p>
+          </div>
+          <div class="flex gap-1" aria-hidden="true">
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">D</span>
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">D</span>
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">M</span>
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">M</span>
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">Y</span>
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded hidden sm:flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">Y</span>
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded hidden sm:flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">Y</span>
+            <span class="w-7 h-9 border-2 border-[#14264c]/50 rounded hidden sm:flex items-center justify-center text-[10px] font-bold text-[#14264c]/60">Y</span>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-end gap-3">
+          <span class="italic font-display text-[#14264c] text-lg shrink-0 pb-1">Pay</span>
+          <div class="ruled flex-1 min-h-[2rem]"></div>
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#8a7f5c] pb-1 shrink-0">or Bearer</span>
+        </div>
+
+        <div class="mt-5 flex items-start gap-3">
+          <span id="cheque-cur-label" class="italic font-display text-[#14264c] text-lg shrink-0 pt-0.5">Rupees</span>
+          <p id="cheque-words" class="ruled flex-1 font-display font-semibold text-[#14264c] text-xl sm:text-2xl leading-snug min-h-[3.5rem]">Type an amount above and your cheque line appears here, spelled out in full.</p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-end justify-between gap-4">
+          <div class="text-sm text-[#4a5064] space-y-1">
+            <p>Figures, grouped: <strong id="stat-grouped" class="text-[#14264c]">—</strong></p>
+            <p>Scale: <strong id="stat-place" class="text-[#14264c]">—</strong> · Digits: <strong id="stat-digits" class="text-[#14264c]">—</strong></p>
+          </div>
+          <div class="border-2 border-[#14264c] rounded-lg px-4 py-2.5 bg-white/70 min-w-[170px]">
+            <span class="text-[10px] tracking-[0.2em] uppercase text-[#8a7f5c] block">Amount in figures</span>
+            <span id="stat-figure" class="font-display font-extrabold text-[#14264c] text-xl">₹ —</span>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-dashed border-[#c9bfa0] flex items-center justify-between gap-3">
+          <span class="text-[11px] tracking-[0.28em] text-[#8a7f5c] font-semibold hidden sm:block">⑆ 042610 ⑈ 110042610 ⑆ 31</span>
+          <span class="font-display italic text-[#14264c]/70">Your signature</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plain words + actions -->
+    <div class="no-print mt-5 bg-[#14264c] text-[#fdf9ec] rounded-2xl p-5 sm:p-6">
+      <p class="text-[11px] font-bold tracking-[0.18em] uppercase text-[#f3d97b]">In words (plain)</p>
+      <p id="plain-words" class="mt-2 text-lg sm:text-xl font-semibold leading-relaxed">Nothing yet — your words will appear here as you type.</p>
+      <div class="mt-4 flex flex-wrap gap-2.5">
+        <button id="copy-cheque" type="button" class="bg-[#c9a227] hover:bg-[#dbb63e] text-[#14264c] font-bold text-sm px-4 py-2.5 rounded-xl transition">Copy cheque line</button>
+        <button id="copy-plain" type="button" class="bg-white/10 hover:bg-white/20 font-bold text-sm px-4 py-2.5 rounded-xl transition">Copy plain words</button>
+        <button id="print-btn" type="button" class="bg-white/10 hover:bg-white/20 font-bold text-sm px-4 py-2.5 rounded-xl transition">Print cheque preview</button>
+        <span id="copied" class="hidden self-center text-sm font-semibold text-[#9fe8b1]">Copied ✓</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works strip -->
+  <section class="no-print mt-10 grid sm:grid-cols-3 gap-4 max-w-5xl mx-auto">
+    <div class="bg-white/70 border border-[#e3dac0] rounded-2xl p-5">
+      <p class="font-display font-extrabold text-[#c9a227] text-2xl">01</p>
+      <h2 class="font-bold text-[#14264c] mt-1">Type the figures</h2>
+      <p class="text-sm text-[#4a5064] mt-1.5 leading-relaxed">Commas are welcome, decimals too. NumWords reads up to 15 digits and groups them the Indian or International way.</p>
+    </div>
+    <div class="bg-white/70 border border-[#e3dac0] rounded-2xl p-5">
+      <p class="font-display font-extrabold text-[#c9a227] text-2xl">02</p>
+      <h2 class="font-bold text-[#14264c] mt-1">Pick system &amp; currency</h2>
+      <p class="text-sm text-[#4a5064] mt-1.5 leading-relaxed">Lakh and crore for Indian cheques, million and billion for international ones — rupees, dollars, euros or pounds.</p>
+    </div>
+    <div class="bg-white/70 border border-[#e3dac0] rounded-2xl p-5">
+      <p class="font-display font-extrabold text-[#c9a227] text-2xl">03</p>
+      <h2 class="font-bold text-[#14264c] mt-1">Copy it onto the cheque</h2>
+      <p class="text-sm text-[#4a5064] mt-1.5 leading-relaxed">The cheque line arrives with the currency first and “Only” last, exactly the format bank clerks are trained to accept.</p>
+    </div>
+  </section>
+</main>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<article id="seo-article" class="mx-auto max-w-3xl px-4 sm:px-6 py-12">
+  <h2 class="font-display font-extrabold text-[#14264c] text-3xl sm:text-4xl leading-tight">Number to Words Converter: Write Any Amount in Words, the Cheque-Ready Way</h2>
+  <p class="mt-5 leading-[1.85] text-[#3d4356]">Every day, millions of people face the same small moment of doubt: the cheque is in front of them, the figures are easy, but the amount in words has to be spelled out in full — and it has to be right. Write “One Lakh Fifty Thousand” where the figures say 1,50,000 and the cheque sails through. Miss a word, mix up lakh and million, or leave a gap someone could squeeze an extra word into, and the cheque comes back unpaid, the salary transfer is delayed, and an awkward phone call follows. A number to words converter exists to remove that doubt entirely. NumWords takes any amount you type — up to fifteen digits — and spells it out instantly in either the Indian numbering system or the International numbering system, finishing the job with a cheque-ready line that carries the currency name at the front and the protective word “Only” at the end.</p>
+  <p class="mt-4 leading-[1.85] text-[#3d4356]">The need is bigger than cheques alone. Invoices, salary slips, demand drafts, loan agreements, rental contracts, school fee receipts, affidavits and property documents all ask for amounts in words, because words are the legally stronger version of a number. Figures can be altered with a single pen stroke — a 1 becomes a 7, a 3 becomes an 8, a decimal point quietly moves — but a line of words written without gaps is extremely difficult to tamper with. That is why banking rules in India and in most other countries say that when the words and figures on a cheque disagree, the amount in words is the amount that counts. Converting numbers to words accurately is therefore not a cosmetic skill; it is the version of your money that the law reads first.</p>
+
+  <h3 class="font-display font-bold text-[#14264c] text-2xl mt-9">The Indian system: thousand, lakh, crore and beyond</h3>
+  <p class="mt-3 leading-[1.85] text-[#3d4356]">The Indian numbering system is used across India, Pakistan, Bangladesh, Nepal and Sri Lanka, and it is the system printed on Indian cheques, Indian price tags and Indian news reports. Its logic is simple once you see the grouping: the last three digits form the hundreds group, and every group after that holds just two digits. The scale words climb in steps of a hundred — one thousand (10³), one lakh (10⁵, a hundred thousand), one crore (10⁷, a hundred lakh), one arab (10⁹, a hundred crore), one kharab (10¹¹) and one neel (10¹³). So the figure 12,34,56,789 is read as Twelve Crore Thirty Four Lakh Fifty Six Thousand Seven Hundred Eighty Nine. The commas themselves tell the story: they fall after the first three digits and then in pairs, which is why Indian amounts look different on paper from the groups-of-three pattern used in the West. NumWords follows this grouping faithfully, so the words it produces match the comma pattern of the figure you typed — a small detail that makes cross-checking a cheque line against the figures box genuinely effortless.</p>
+  <p class="mt-4 leading-[1.85] text-[#3d4356]">Most everyday Indian amounts live in the thousands, lakhs and crores: a scooter costs eighty-five thousand rupees, a flat costs one crore twenty lakh, a startup raises forty crore. But the system keeps going, and NumWords goes with it. Amounts up to fifteen digits reach into the neel range, which is the territory of national budgets, large infrastructure projects and the total deposits of the banking system. Whether you are a student writing a maths homework answer, an accountant preparing a balance sheet annexure, or a founder spelling out a funding round in a term sheet, the same converter handles the smallest and the largest figure with the same care.</p>
+
+  <h3 class="font-display font-bold text-[#14264c] text-2xl mt-9">The International system: thousand, million, billion, trillion</h3>
+  <p class="mt-3 leading-[1.85] text-[#3d4356]">The International system, used in the United States, the United Kingdom, Europe and most of the rest of the world, groups digits in uniform threes. Its scale words climb in steps of a thousand: one thousand (10³), one million (10⁶), one billion (10⁹) and one trillion (10¹²). Under this system, 1,000,000,000 is One Billion — the same value an Indian reader calls One Arab or One Hundred Crore. Neither system is “more correct”; they are two dialects for the same numbers, and confusing them is one of the most expensive reading mistakes in business. A contract that says “two million” and a colleague who hears “twenty lakh” are describing the same amount, but a document that mixes the two dialects invites exactly the kind of dispute that words on paper are supposed to prevent. NumWords lets you flip between the two systems with a single tap and watch both the words and the comma grouping change together, which makes it a quiet little translation tool for anyone who works across Indian and international documents — exporters, freelancers billing overseas clients, students applying abroad, and NRIs moving money between two financial worlds.</p>
+
+  <h3 class="font-display font-bold text-[#14264c] text-2xl mt-9">What “cheque-ready” actually means</h3>
+  <p class="mt-3 leading-[1.85] text-[#3d4356]">A plain conversion gives you words. A cheque-ready conversion gives you a line that a bank will accept without a second glance, and it follows three conventions that experienced cheque writers know by heart. First, the currency name comes first: “Rupees” for an Indian cheque, “Dollars”, “Euros” or “Pounds” elsewhere, with the singular form used automatically for an amount of exactly one. Second, any fractional part is converted into the currency’s subunit and joined with the word “and” — 2,500.75 dollars becomes “Dollars Two Thousand Five Hundred and Cents Seventy Five”, and the same amount in rupees becomes “Rupees Two Thousand Five Hundred and Paise Seventy Five”. Third, the line ends with the word “Only”. That single word is a security device: it announces that the amount ends here, so nobody can append extra words and inflate the figure. Switch Cheque mode on in NumWords and all three conventions are applied for you, in the right order, every time — including the fiddly singular cases like “Rupee One Only” and “Paisa One”, which are the details people most often get wrong by hand.</p>
+  <p class="mt-4 leading-[1.85] text-[#3d4356]">Decimals deserve a word of their own, because the two reading conventions are easy to confuse. On a cheque, the decimal part is money, so it is read as a subunit count: point seven five is seventy-five paise or seventy-five cents. In plain speech, however, decimals are read digit by digit after the word “Point”: 1,234.5 reads as “One Thousand Two Hundred Thirty Four Point Five”. NumWords respects both conventions — cheque mode uses subunits, plain mode speaks the digits — so the same tool serves a person filling a cheque and a student reading a measurement aloud. It also handles the awkward corners gracefully: zero becomes a clean “Rupees Zero Only”, leading zeros and stray commas are tidied away, and anything beyond fifteen digits is refused with a plain explanation instead of a silently wrong answer.</p>
+
+  <h3 class="font-display font-bold text-[#14264c] text-2xl mt-9">Who uses a number to words converter?</h3>
+  <p class="mt-3 leading-[1.85] text-[#3d4356]">Almost everyone who touches paperwork, sooner or later. Accountants and cashiers convert amounts while preparing payment vouchers and reconciling ledgers. Small business owners write amounts on invoices and quotations so clients can verify totals at a glance. HR teams spell out salary figures in offer letters and full-and-final settlement statements, where a wrong word can hold up a joining date. Teachers set conversion exercises, students check them, and banking exam aspirants practise the lakh–crore–million conversions that competitive tests love. Home buyers meet the converter at the registration office, where the consideration amount on a sale deed must appear in words. Legal clerks draft affidavits and agreements whose amounts are written out in full precisely so that no figure can be disputed later. And behind all of these sits the humble personal cheque — still the way rent, school fees, society maintenance and countless family transfers move in India — where the words line remains the legally decisive part of the instrument.</p>
+  <p class="mt-4 leading-[1.85] text-[#3d4356]">There is also a quieter, everyday use: reading big numbers aloud correctly. News reports announce that a company is “valued at twelve billion dollars” or that a scheme will “benefit two crore farmers”, and listeners deserve to know whether those are the same size of claim. A converter that shows both systems side by side builds that intuition faster than any table. Once you have watched 1,00,00,000 turn into One Crore and then into Ten Million a few times, the two dialects stop being a source of confusion and become two labels you can swap between without thinking — which is, in the end, the real skill the tool is teaching while it does the spelling for you.</p>
+
+  <h3 class="font-display font-bold text-[#14264c] text-2xl mt-9">Private by design, free by principle</h3>
+  <p class="mt-3 leading-[1.85] text-[#3d4356]">Amounts are sensitive. The figure on a cheque, a salary slip or a sale deed is nobody’s business but yours, so NumWords performs every conversion entirely inside your browser. Nothing you type is sent to a server, stored in a database or attached to an account — there is no account. The page arrives once, the maths happens on your own device, and closing the tab takes your numbers with it. The tool is equally simple about money: it is free, with unlimited usage, no signup wall, no paywall and no watermark on the text you copy. Type the figure, choose the system and currency, and take the words — for a single cheque or for a whole afternoon of invoices.</p>
+
+  <h2 class="font-display font-extrabold text-[#14264c] text-3xl mt-12">Frequently asked questions</h2>
+  <div class="mt-6 space-y-4">
+<div class="border border-[#d8cfb4] rounded-xl bg-white/70 px-5 py-4"><h3 class="faq-q font-semibold text-[#14264c] text-base sm:text-lg">How do I convert a number to words for a cheque?</h3><p class="mt-2 text-[#3d4356] leading-relaxed text-[15px]">Type the amount into the number box, choose the Indian system if your bank account is in India (or International elsewhere), select your currency, and switch on Cheque mode. NumWords instantly writes the amount in words with the currency name at the front and the word Only at the end — for example, 150000 becomes "Rupees One Lakh Fifty Thousand Only", ready to copy onto the cheque leaf exactly as a bank expects it.</p></div>
+<div class="border border-[#d8cfb4] rounded-xl bg-white/70 px-5 py-4"><h3 class="faq-q font-semibold text-[#14264c] text-base sm:text-lg">What is the difference between the Indian and International numbering systems?</h3><p class="mt-2 text-[#3d4356] leading-relaxed text-[15px]">Both systems name the same numbers; they simply group the digits differently. The International system groups digits in threes and uses Thousand, Million, Billion and Trillion, so 10000000 is written as 10,000,000 and read as Ten Million. The Indian system groups the first three digits and then pairs, using Thousand, Lakh, Crore, Arab, Kharab and Neel, so the same value is written 1,00,00,000 and read as One Crore. India, Pakistan, Bangladesh, Nepal and Sri Lanka commonly use the Indian system, while most of the rest of the world uses the International system.</p></div>
+<div class="border border-[#d8cfb4] rounded-xl bg-white/70 px-5 py-4"><h3 class="faq-q font-semibold text-[#14264c] text-base sm:text-lg">What is the largest number NumWords can convert?</h3><p class="mt-2 text-[#3d4356] leading-relaxed text-[15px]">NumWords supports whole numbers of up to 15 digits before the decimal point — that is 999,999,999,999,999, which reads as Nine Hundred Ninety Nine Trillion in the International system and Ninety Nine Neel Ninety Nine Kharab Ninety Nine Arab Ninety Nine Crore Ninety Nine Lakh Ninety Nine Thousand Nine Hundred Ninety Nine in the Indian system. That ceiling comfortably covers national budgets, market capitalisations and every personal cheque you will ever write.</p></div>
+<div class="border border-[#d8cfb4] rounded-xl bg-white/70 px-5 py-4"><h3 class="faq-q font-semibold text-[#14264c] text-base sm:text-lg">How do I write amounts with paise or cents in words?</h3><p class="mt-2 text-[#3d4356] leading-relaxed text-[15px]">Just include the decimal part when you type the amount, for example 2500.75. In Cheque mode NumWords converts the first two decimal digits into the currency subunit automatically, producing "Dollars Two Thousand Five Hundred and Cents Seventy Five Only" for dollars, or the equivalent with Paise for rupees, Cents for euros and Pence for pounds. In plain mode the decimal digits are spoken one by one after the word Point, which is the convention for reading numbers aloud.</p></div>
+<div class="border border-[#d8cfb4] rounded-xl bg-white/70 px-5 py-4"><h3 class="faq-q font-semibold text-[#14264c] text-base sm:text-lg">Why do banks require the amount in words on a cheque?</h3><p class="mt-2 text-[#3d4356] leading-relaxed text-[15px]">Words are much harder to alter than figures. Changing a 1 into a 7 or adding a zero takes a second in the figures box, but rewriting a whole line of words without leaving evidence is nearly impossible, so the words act as a built-in tamper check. Bank rules in most countries say that if the words and figures on a cheque ever disagree, the amount written in words is the one that legally prevails — which is exactly why spelling the amount correctly matters, and why a converter like this one is worth using.</p></div>
+<div class="border border-[#d8cfb4] rounded-xl bg-white/70 px-5 py-4"><h3 class="faq-q font-semibold text-[#14264c] text-base sm:text-lg">Is NumWords free, and does it store the numbers I convert?</h3><p class="mt-2 text-[#3d4356] leading-relaxed text-[15px]">Yes, NumWords is completely free with unlimited usage — no signup, no paywall and no watermark on anything you copy. Every conversion happens entirely inside your own browser using code delivered with this page; the numbers you type are never sent to a server, never logged and never stored, so it is safe to use for real cheque amounts, salaries, invoices and other private figures.</p></div>
+  </div>
+</article>
+
+<footer class="bg-[#14264c] text-[#fdf9ec]">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-display font-bold text-lg">NumWords — every amount, spelled out right.</p>
+    <nav class="flex gap-5 text-sm font-semibold">
+      <a href="#top" class="hover:text-[#f3d97b] transition">Home</a>
+      <a href="#seo-article" class="hover:text-[#f3d97b] transition">Guide &amp; FAQs</a>
+    </nav>
+  </div>
+  <p class="text-center text-xs text-[#fdf9ec]/60 pb-6 px-4">Conversions happen entirely in your browser. Always cross-check the words against the figures before signing a cheque.</p>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+
+<script id="lib-numwords">
+/* NumWords — number to words conversion library (pure logic, no DOM).
+   Supports the Indian system (lakh, crore, arab, kharab, neel) and the
+   International system (thousand, million, billion, trillion) for whole
+   numbers of up to 15 digits, plus cheque-ready currency wording. */
+var NumWordsLib = (function () {
+  var ONES = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
+    'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen',
+    'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  var TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy',
+    'Eighty', 'Ninety'];
+
+  var CURRENCIES = {
+    INR: { major: 'Rupees', majorOne: 'Rupee', minor: 'Paise', minorOne: 'Paisa', symbol: '₹' },
+    USD: { major: 'Dollars', majorOne: 'Dollar', minor: 'Cents', minorOne: 'Cent', symbol: '$' },
+    EUR: { major: 'Euros', majorOne: 'Euro', minor: 'Cents', minorOne: 'Cent', symbol: '€' },
+    GBP: { major: 'Pounds', majorOne: 'Pound', minor: 'Pence', minorOne: 'Penny', symbol: '£' },
+    NONE: { major: '', majorOne: '', minor: '', minorOne: '', symbol: '' }
+  };
+
+  function twoDigitWords(n) {
+    if (n < 20) return ONES[n];
+    var t = Math.floor(n / 10), r = n % 10;
+    return r === 0 ? TENS[t] : TENS[t] + ' ' + ONES[r];
+  }
+
+  function threeDigitWords(n) {
+    var h = Math.floor(n / 100), r = n % 100;
+    if (h === 0) return twoDigitWords(r);
+    if (r === 0) return ONES[h] + ' Hundred';
+    return ONES[h] + ' Hundred ' + twoDigitWords(r);
+  }
+
+  /* International: groups of three — Thousand, Million, Billion, Trillion. */
+  function internationalWords(intStr) {
+    if (intStr === '0') return 'Zero';
+    var scales = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
+    var groups = [];
+    var s = intStr;
+    while (s.length > 0) { groups.unshift(s.slice(-3)); s = s.slice(0, -3); }
+    var parts = [];
+    for (var i = 0; i < groups.length; i++) {
+      var val = parseInt(groups[i], 10);
+      if (val === 0) continue;
+      var scale = scales[groups.length - 1 - i];
+      parts.push(threeDigitWords(val) + (scale ? ' ' + scale : ''));
+    }
+    return parts.join(' ');
+  }
+
+  /* Indian: first group of three, then pairs — Thousand, Lakh, Crore, Arab,
+     Kharab, Neel. Works up to 15 digits (Neel covers 10^13). */
+  function indianWords(intStr) {
+    if (intStr === '0') return 'Zero';
+    var scales = ['', 'Thousand', 'Lakh', 'Crore', 'Arab', 'Kharab', 'Neel'];
+    var groups = [];
+    var s = intStr;
+    groups.unshift(s.slice(-3)); s = s.slice(0, -3);
+    while (s.length > 0) { groups.unshift(s.slice(-2)); s = s.slice(0, -2); }
+    var parts = [];
+    for (var i = 0; i < groups.length; i++) {
+      var val = parseInt(groups[i], 10);
+      if (val === 0) continue;
+      var scale = scales[groups.length - 1 - i];
+      var w = (i === groups.length - 1) ? threeDigitWords(val) : twoDigitWords(val);
+      parts.push(w + (scale ? ' ' + scale : ''));
+    }
+    return parts.join(' ');
+  }
+
+  function toWords(intStr, system) {
+    return system === 'indian' ? indianWords(intStr) : internationalWords(intStr);
+  }
+
+  /* Parse a user-typed amount. Accepts digits, commas, spaces, one decimal
+     point and an optional leading minus. Returns
+     { ok, error, negative, intPart, decPart } where intPart has no commas
+     or leading zeros and decPart is the raw fractional digit string. */
+  function parseAmount(raw) {
+    if (raw === null || raw === undefined) return { ok: false, error: 'Please enter a number first.' };
+    var s = String(raw).replace(/[\s,]/g, '');
+    if (s === '') return { ok: false, error: 'Please enter a number first.' };
+    var negative = false;
+    if (s.charAt(0) === '-') { negative = true; s = s.slice(1); }
+    if (s === '') return { ok: false, error: 'That does not look like a number. Try digits like 125000.' };
+    if (!/^\d*(\.\d*)?$/.test(s) || !/\d/.test(s)) {
+      return { ok: false, error: 'Only digits and one decimal point are allowed — letters and symbols are not numbers.' };
+    }
+    var dot = s.indexOf('.');
+    var intPart = dot === -1 ? s : s.slice(0, dot);
+    var decPart = dot === -1 ? '' : s.slice(dot + 1);
+    if (intPart === '') intPart = '0';
+    intPart = intPart.replace(/^0+(?=\d)/, '');
+    if (intPart.length > 15) {
+      return { ok: false, error: 'That number is too large — NumWords supports up to 15 digits before the decimal point.' };
+    }
+    return { ok: true, negative: negative, intPart: intPart, decPart: decPart };
+  }
+
+  /* Group a digit string the Indian way: 12,34,56,789. */
+  function groupIndian(intStr) {
+    if (intStr.length <= 3) return intStr;
+    var head = intStr.slice(0, -3), tail = intStr.slice(-3), out = [];
+    while (head.length > 2) { out.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) out.unshift(head);
+    return out.join(',') + ',' + tail;
+  }
+
+  /* Group a digit string the International way: 123,456,789. */
+  function groupInternational(intStr) {
+    var out = [], s = intStr;
+    while (s.length > 3) { out.unshift(s.slice(-3)); s = s.slice(0, -3); }
+    if (s) out.unshift(s);
+    return out.join(',');
+  }
+
+  function groupDigits(intStr, system) {
+    return system === 'indian' ? groupIndian(intStr) : groupInternational(intStr);
+  }
+
+  function digitName(system, intStr) {
+    var len = intStr.replace(/^0+/, '').length || 1;
+    if (system === 'indian') {
+      var names = { 1: 'Units', 2: 'Tens', 3: 'Hundreds', 4: 'Thousands', 5: 'Thousands', 6: 'Lakhs', 7: 'Lakhs', 8: 'Crores', 9: 'Crores', 10: 'Arabs', 11: 'Arabs', 12: 'Kharabs', 13: 'Kharabs', 14: 'Neels', 15: 'Neels' };
+      return names[len] || '';
+    }
+    var inames = { 1: 'Units', 2: 'Tens', 3: 'Hundreds', 4: 'Thousands', 5: 'Thousands', 6: 'Thousands', 7: 'Millions', 8: 'Millions', 9: 'Millions', 10: 'Billions', 11: 'Billions', 12: 'Billions', 13: 'Trillions', 14: 'Trillions', 15: 'Trillions' };
+    return inames[len] || '';
+  }
+
+  /* Main conversion.
+     opts: { system: 'indian'|'international', cheque: boolean,
+             currency: 'INR'|'USD'|'EUR'|'GBP'|'NONE' }
+     Returns { ok, error, words, chequeLine, grouped, placeName, intWords,
+               minorWords } */
+  function convert(raw, opts) {
+    opts = opts || {};
+    var system = opts.system === 'indian' ? 'indian' : 'international';
+    var cur = CURRENCIES[opts.currency] || CURRENCIES.INR;
+    var p = parseAmount(raw);
+    if (!p.ok) return { ok: false, error: p.error };
+
+    var intWords = toWords(p.intPart, system);
+    var minorVal = 0, minorWords = '';
+    if (p.decPart) {
+      var two = (p.decPart + '00').slice(0, 2);
+      minorVal = parseInt(two, 10);
+      if (minorVal > 0) minorWords = twoDigitWords(minorVal);
+    }
+
+    var plain;
+    if (p.decPart && /[1-9]/.test(p.decPart)) {
+      var spoken = p.decPart.split('').map(function (d) { return ONES[parseInt(d, 10)]; }).join(' ');
+      plain = intWords + ' Point ' + spoken;
+    } else {
+      plain = intWords;
+    }
+    if (p.negative && !(p.intPart === '0' && !/[1-9]/.test(p.decPart))) plain = 'Minus ' + plain;
+
+    var chequeLine = '';
+    if (opts.cheque) {
+      var body;
+      if (cur.major) {
+        var majorName = (p.intPart === '1' && cur.majorOne) ? cur.majorOne : cur.major;
+        body = majorName + ' ' + intWords;
+        if (minorVal > 0) {
+          var minorName = (minorVal === 1 && cur.minorOne) ? cur.minorOne : cur.minor;
+          body += ' and ' + minorName + ' ' + minorWords;
+        }
+      } else {
+        body = intWords;
+        if (minorVal > 0) body += ' and ' + minorWords + ' Hundredths';
+      }
+      chequeLine = body + ' Only';
+    }
+
+    return {
+      ok: true,
+      negative: p.negative,
+      intPart: p.intPart,
+      decPart: p.decPart,
+      intWords: intWords,
+      minorVal: minorVal,
+      minorWords: minorWords,
+      words: plain,
+      chequeLine: chequeLine,
+      grouped: groupDigits(p.intPart, system) + (p.decPart ? '.' + p.decPart : ''),
+      placeName: digitName(system, p.intPart)
+    };
+  }
+
+  return {
+    ONES: ONES,
+    CURRENCIES: CURRENCIES,
+    twoDigitWords: twoDigitWords,
+    threeDigitWords: threeDigitWords,
+    internationalWords: internationalWords,
+    indianWords: indianWords,
+    toWords: toWords,
+    parseAmount: parseAmount,
+    groupIndian: groupIndian,
+    groupInternational: groupInternational,
+    groupDigits: groupDigits,
+    convert: convert
+  };
+})();
+
+if (typeof module !== 'undefined' && module.exports) { module.exports = NumWordsLib; }
+
+</script>
+<script>
+(function () {
+  var state = { system: 'indian', currency: 'INR', cheque: true };
+  var input = document.getElementById('amount');
+  var errorEl = document.getElementById('error');
+  var chequeWords = document.getElementById('cheque-words');
+  var plainWords = document.getElementById('plain-words');
+  var statGrouped = document.getElementById('stat-grouped');
+  var statPlace = document.getElementById('stat-place');
+  var statDigits = document.getElementById('stat-digits');
+  var statFigure = document.getElementById('stat-figure');
+  var copied = document.getElementById('copied');
+  var last = null;
+
+  function render() {
+    var raw = input.value;
+    if (!raw.replace(/[\s,]/g, '')) {
+      last = null;
+      errorEl.classList.add('hidden');
+      chequeWords.textContent = 'Type an amount above and your cheque line appears here, spelled out in full.';
+      plainWords.textContent = 'Nothing yet — your words will appear here as you type.';
+      statGrouped.textContent = '—'; statPlace.textContent = '—'; statDigits.textContent = '—';
+      statFigure.textContent = (NumWordsLib.CURRENCIES[state.currency].symbol || '') + ' —';
+      document.getElementById('cheque-cur-label').textContent = NumWordsLib.CURRENCIES[state.currency].major || 'Words';
+      return;
+    }
+    var r = NumWordsLib.convert(raw, { system: state.system, cheque: state.cheque, currency: state.currency });
+    if (!r.ok) {
+      last = null;
+      errorEl.textContent = r.error;
+      errorEl.classList.remove('hidden');
+      chequeWords.textContent = 'That amount needs a fix — see the note above the cheque.';
+      plainWords.textContent = 'Waiting for a valid number…';
+      return;
+    }
+    errorEl.classList.add('hidden');
+    last = r;
+    chequeWords.textContent = state.cheque ? r.chequeLine : r.words;
+    plainWords.textContent = (r.negative ? '' : '') + r.words;
+    statGrouped.textContent = r.grouped;
+    statPlace.textContent = r.placeName;
+    statDigits.textContent = String(r.intPart.length);
+    var sym = NumWordsLib.CURRENCIES[state.currency].symbol;
+    statFigure.textContent = (sym ? sym + ' ' : '') + r.grouped;
+    var cur = NumWordsLib.CURRENCIES[state.currency];
+    document.getElementById('cheque-cur-label').textContent = cur.major || 'Words';
+  }
+
+  function setSystem(sys) {
+    state.system = sys;
+    document.getElementById('sys-indian').setAttribute('aria-pressed', sys === 'indian' ? 'true' : 'false');
+    document.getElementById('sys-intl').setAttribute('aria-pressed', sys === 'international' ? 'true' : 'false');
+    render();
+  }
+  document.getElementById('sys-indian').addEventListener('click', function () { setSystem('indian'); });
+  document.getElementById('sys-intl').addEventListener('click', function () { setSystem('international'); });
+  document.getElementById('currency').addEventListener('change', function (e) { state.currency = e.target.value; render(); });
+
+  var toggle = document.getElementById('cheque-toggle');
+  toggle.addEventListener('click', function () {
+    state.cheque = !state.cheque;
+    toggle.setAttribute('aria-pressed', state.cheque ? 'true' : 'false');
+    document.getElementById('cheque-label').textContent = state.cheque ? 'On — ends with “Only”' : 'Off — plain words';
+    document.getElementById('cheque-knob').style.left = state.cheque ? '22px' : '2px';
+    document.getElementById('cheque-pill').style.background = state.cheque ? '#14264c' : '#b9ae8d';
+    render();
+  });
+
+  input.addEventListener('input', render);
+  document.querySelectorAll('.sample').forEach(function (b) {
+    b.addEventListener('click', function () { input.value = b.getAttribute('data-amt'); render(); input.focus(); });
+  });
+  document.getElementById('clear-btn').addEventListener('click', function () { input.value = ''; render(); input.focus(); });
+
+  function copyText(t) {
+    if (!t) return;
+    function done() { copied.classList.remove('hidden'); setTimeout(function () { copied.classList.add('hidden'); }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, done); }
+    else {
+      var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta);
+      ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done();
+    }
+  }
+  document.getElementById('copy-cheque').addEventListener('click', function () { if (last) copyText(state.cheque ? last.chequeLine : last.words); });
+  document.getElementById('copy-plain').addEventListener('click', function () { if (last) copyText(last.words); });
+  document.getElementById('print-btn').addEventListener('click', function () { window.print(); });
+
+  render();
+})();
+</script>
+</body>
+</html>
