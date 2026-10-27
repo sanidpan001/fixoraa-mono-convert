@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CupGrams — Cups to Grams Converter for 40+ Baking Ingredients (Flour, Sugar, Cocoa…)</title>
+<meta name="description" content="Free cups to grams converter for cooking and baking with 40+ real ingredient densities — flour, sugar, butter, cocoa and more — plus a recipe scaler for half, double and custom batches.">
+<link rel="canonical" href="https://convert.fixoraa.tech/cupgrams/">
+<meta property="og:title" content="CupGrams — Cups to Grams Converter for 40+ Baking Ingredients (Flour, Sugar, Cocoa…)">
+<meta property="og:description" content="Free cups to grams converter for cooking and baking with 40+ real ingredient densities — flour, sugar, butter, cocoa and more — plus a recipe scaler for half, double and custom batches.">
+<meta property="og:url" content="https://convert.fixoraa.tech/cupgrams/">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--pri:#EA580C;--acc:#65A30D;--bgc:#FFF7ED}
+body{background:var(--bgc);font-family:'Segoe UI',system-ui,sans-serif}
+.pri{background:var(--pri)} .prit{color:var(--pri)} .acct{color:var(--acc)}
+.btn{background:var(--pri);color:#fff;padding:.6rem 1.2rem;border-radius:.6rem;font-weight:600;cursor:pointer;border:none}
+.btn:hover{opacity:.9} .btn2{background:var(--acc);color:#111;padding:.6rem 1.2rem;border-radius:.6rem;font-weight:600;cursor:pointer;border:none}
+input,select,textarea{border:1.5px solid #cbd5e1;border-radius:.55rem;padding:.55rem .7rem;width:100%;background:#fff;color:#0f172a}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--pri);border-color:transparent}
+label{font-size:.83rem;font-weight:600;display:block;margin-bottom:.3rem}
+.card{background:#fff;border-radius:1rem;box-shadow:0 8px 30px rgba(15,23,42,.08);padding:1.4rem}
+article p{margin:.7rem 0;line-height:1.75;color:#334155}
+article h2{font-size:1.45rem;font-weight:800;margin:1.6rem 0 .4rem;color:#0f172a}
+.faq{background:#fff;border-radius:.7rem;padding:.9rem 1.1rem;margin:.55rem 0;box-shadow:0 2px 10px rgba(15,23,42,.05)}
+.faq summary{font-weight:700;cursor:pointer}
+table.dt{width:100%;border-collapse:collapse} table.dt th,table.dt td{border:1px solid #e2e8f0;padding:.45rem .6rem;text-align:left;font-size:.9rem}
+table.dt th{background:#f1f5f9}
+
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "CupGrams", "url": "https://convert.fixoraa.tech/cupgrams/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free cups to grams converter for cooking and baking with 40+ real ingredient densities \u2014 flour, sugar, butter, cocoa and more \u2014 plus a recipe scaler for half, double and custom batches."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many grams are in a cup of flour?", "acceptedAnswer": {"@type": "Answer", "text": "About 125 g for all-purpose flour (US cup), 127 g for bread flour, 114 g for cake flour and 113 g for whole wheat. Flour is the ingredient where cup measurement varies most \u2014 weighing is strongly recommended."}}, {"@type": "Question", "name": "Why does every ingredient have a different conversion?", "acceptedAnswer": {"@type": "Answer", "text": "Cups measure volume; grams measure mass. Ingredients have different densities \u2014 a cup of cocoa (85 g) holds less than half the mass of a cup of sugar (200 g) \u2014 so each ingredient needs its own density, which is what the table provides."}}, {"@type": "Question", "name": "Which cup standard does this use?", "acceptedAnswer": {"@type": "Answer", "text": "The US cup of 236.6 ml (quoted as 240 ml in nutrition contexts). If a recipe uses metric cups (250 ml), multiply results by about 1.06; Japanese cups (200 ml) need about 0.85."}}, {"@type": "Question", "name": "How do I scale a recipe up or down?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply every ingredient by the same factor \u2014 use the \u00bd\u00d7, 2\u00d7 and 3\u00d7 buttons per ingredient, or convert to grams first and scale the weights. Keeping ratios identical preserves the recipe's balance at any size."}}, {"@type": "Question", "name": "Is packed brown sugar included?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 brown sugar is listed at 220 g per cup packed, the standard recipes intend. Unpacked, the same cup can be 30\u201340 g lighter, which is exactly the ambiguity weighing removes."}}, {"@type": "Question", "name": "Can I convert grams back to cups?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 type in the Grams box and the cups update instantly using the selected ingredient's density. Useful when a weighed recipe must be cooked in a cup-only kitchen."}}]}</script>
+</head>
+<body id="top">
+<header class="sticky top-0 z-40 shadow-md" style="background:#431407">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between">
+    <a href="#top" class="text-xl font-extrabold tracking-tight" style="color:#FFF7ED">🥄 CupGrams</a>
+    <nav class="flex gap-5 text-sm font-semibold" style="color:#FFF7ED">
+      <a href="#top" class="hover:underline">Home</a>
+      <a href="https://fixoraa.tech" class="hover:underline">More Tools</a>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
+  <div class="text-center mb-6">
+    <h1 class="text-3xl sm:text-4xl font-extrabold" style="color:#0f172a">Cups ↔ Grams Converter by Ingredient</h1>
+    <p class="mt-2 text-slate-600 max-w-2xl mx-auto">A cup of flour is not a cup of sugar — volume lies, weight tells the truth. Pick your ingredient, convert either way, and scale whole recipes up or down without wrecking the ratios.</p>
+    <span class="inline-block mt-3 px-3 py-1 rounded-full text-xs font-bold text-white pri">✓ Unlimited Free Usage — No Signup, No Watermark</span>
+  </div>
+  <div class="card max-w-3xl mx-auto">
+  <div class="grid md:grid-cols-3 gap-3">
+    <div><label>Ingredient</label><select id="ing" onchange="conv()"></select></div>
+    <div><label>Cups</label><input id="cups" type="number" step="0.05" value="1" oninput="fromCups()"></div>
+    <div><label>Grams</label><input id="grams" type="number" step="1" value="125" oninput="fromGrams()"></div>
+  </div>
+  <div id="equiv" class="text-center font-bold text-lg prit my-3"></div>
+  <h3 class="font-bold mt-4">Recipe scaler — scale this ingredient</h3>
+  <div class="flex gap-2 flex-wrap mt-2"><button class="btn" onclick="scale(0.5)">½× batch</button><button class="btn" onclick="scale(2)">2× batch</button><button class="btn" onclick="scale(3)">3× batch</button><button class="btn2" onclick="scale(1)">Reset</button></div>
+  <div id="scaled" class="mt-2 font-semibold"></div>
+  <div class="overflow-x-auto mt-4 max-h-72 overflow-y-auto"><table class="dt" id="tbl"></table></div>
+ </div>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+<section class="mx-auto max-w-4xl px-4 sm:px-6 pb-6">
+  <article>
+  <h2>A cup is a volume; a recipe is a chemistry</h2>
+<p>Volume measurement survives in home kitchens because cups are convenient — and fails there for the same reason it fails in laboratories: a cup measures space, while baking responds to mass. A cup of flour can hold anywhere from 100 to 150 grams depending on whether it was sifted, scooped, spooned or shaken, a swing of fifty percent in the main structural ingredient of a cake. A cup of sugar is a stable 200 grams; a cup of cocoa is 85; a cup of honey is 340. The measuring tool never changed — the substance did. CupGrams exists in that gap: pick the actual ingredient, and the conversion uses that ingredient's real density, the way a scale would measure it.</p>
+<p>This is why professional bakers weigh, and why recipes from different countries collide so confusingly. An American recipe's 'cup' (236.6 ml) meets a metric cup (250 ml) meets a Japanese cup (200 ml) — before density even enters. Grams end the argument everywhere on Earth. If a recipe matters enough to bake twice, convert it to grams once, write them in the margin, and it will behave identically in every kitchen forever.</p>
+<h2>The densities that matter most</h2>
+<p>Flour is the headline case, and the table carries the common varieties separately because they genuinely differ: all-purpose at about 125 grams per cup, bread flour slightly denser at 127, cake flour lighter at 114, whole wheat airier still. Sugars split too — granulated 200, caster 225, brown sugar 220 when packed (and 'packed' is doing heavy lifting in that phrase; unpacked brown sugar is a shrug in a cup). Cocoa powder at 85 grams is the lightest common ingredient on the list, which is why a 'cup of cocoa' added by flour-habits wrecks chocolate cakes in the dense direction.</p>
+<p>Liquids behave better: water, milk and cream cluster near the honest 236–245 grams a US cup of water should weigh, and butter at 227 is exactly its famous identity — two sticks, one cup, half a pound of sense. Oils run lighter than water, honey and syrups dramatically heavier. Scanning the full table once recalibrates your instincts better than memorising any single conversion — you start feeling which ingredients a cup measures fairly and which it betrays.</p>
+<h2>How to convert an entire recipe</h2>
+<p>Convert ingredient by ingredient, not with a single multiplier, because each line of the recipe has its own density. Start from the cups column: select the ingredient, read its grams, write them down. Liquids and fats take seconds with the table's per-cup column; dry goods deserve the ingredient-specific rows. Then bake by weight once. If the result delights you, the grams version is now your master recipe — immune to scoop technique, cup standards and the next kitchen's equipment.</p>
+<p>The scaler serves the second classic job: resizing. Halving and doubling are buttons because they are 95 percent of real scaling — a double batch for a party, a half batch to test a new recipe without committing a kilo of flour. Note that the scaler scales the selected ingredient's quantity; scale every ingredient by the same factor to keep the recipe's ratios — its actual soul — intact. Ratios preserved, quantities changed: that is the whole of recipe mathematics, and it is why scaling works at all.</p>
+<h2>Where cup conversions still go wrong</h2>
+<p>Three traps survive even good conversion tables. Spooned-versus-scooped flour remains a ±20 percent swing hiding inside any cup figure quoted from a book; if your source does not say, assume their cup was spooned and levelled, the gentlest standard. Temperature moves fats: melted butter measures differently from soft, and the table assumes the ingredient in its recipe-ready state. And chopped, grated or packed goods — nuts, cheese, coconut — vary by how the cook wielded the knife; their table values are honest medians, and your own repeated measure, once taken, beats any table's. Convert, bake, annotate: your margin notes are the final authority.</p>
+<p>A cheap kitchen scale remains the best partner this converter can recommend. Use CupGrams to translate the world's cup-based recipes into grams — then let the scale, not the cup, do the measuring ever after. The converter's finest outcome is making itself unnecessary, one converted recipe at a time.</p>
+<h2>Quick reference worth remembering</h2>
+<p>A few anchors cover most weeknight cooking: flour 125, granulated sugar 200, butter 227, water and milk about 240, cocoa 85, honey 340, rolled oats 90, cooked rice 186 grams per cup. With those eight memorised you can convert the majority of recipes in your head at the market, judging whether you have enough of an ingredient before you are home to check. The other thirty-odd entries in the table handle the long tail — syrups, cheeses, grains, pulses — where intuition guesses worst.</p>
+<p>However you convert, write the grams on the recipe. Recipes are heirlooms in working clothes; the annotated one you hand on should spare the next baker the archaeology you did. CupGrams is the translator standing by for exactly that handover.</p>
+<h2>One standard, gently enforced</h2>
+<p>None of this requires zealotry. If your grandmother's cup-based cake works in your hands, your hands have calibrated to her cups — leave it in peace. Conversion matters at the borders: a new recipe, a new country's cookbook, a bake that failed for no visible reason. At those borders, weight is the passport that always clears. Keep this page at the crossing.</p>
+<h2>Converting by feel: the handful heuristics</h2>
+<p>Once the table has taught your hands, a few physical heuristics carry you through kitchens without a phone: a loosely spooned cup of flour fills a relaxed adult handful three times over at about 40 grams a handful; butter announces itself in sticks and tablespoons (one tablespoon ≈ 14 g) more honestly than in cups; a cup of water is the anchor — 236 grams, the weight your wrist already knows from a small bottle. Heuristics are not precision, and for pastry you should still weigh, but they let you sanity-check any conversion instantly: if a recipe's 'cup of flour' converts to 300 grams in some table, the table is wrong, and your hands now know it.</p>
+<p>That calibrated suspicion is the converter's deepest gift. Recipes online carry typos, unit mix-ups and AI-generated quantities with serene confidence; a cook whose instincts have been trained on real densities catches the impossible number before it catches the bake. Keep the page bookmarked for the long tail — and trust your hands for the staples.</p>
+<h2>When the recipe itself is the problem</h2>
+<p>Occasionally a converted recipe still fails, and the culprit is not your arithmetic but the source: online recipes increasingly circulate with quantities that were never tested in any unit, and conversion merely exposes the impossibility faithfully — a cake calling for 400 grams of flour to 40 grams of liquid was never going to stand. Use the table as a lie detector: check the flour-to-liquid ratio against a recipe you trust (most cakes live near 1:0.8–1:1.1 by weight flour to total liquid) and treat outliers as drafts, not instructions. Conversion gives you consistent units; judgement, now armed with comparable numbers, decides whether the recipe deserves your ingredients.</p>
+  <h2>Frequently Asked Questions</h2>
+  <details class="faq"><summary>How many grams are in a cup of flour?</summary><p>About 125 g for all-purpose flour (US cup), 127 g for bread flour, 114 g for cake flour and 113 g for whole wheat. Flour is the ingredient where cup measurement varies most — weighing is strongly recommended.</p></details>
+<details class="faq"><summary>Why does every ingredient have a different conversion?</summary><p>Cups measure volume; grams measure mass. Ingredients have different densities — a cup of cocoa (85 g) holds less than half the mass of a cup of sugar (200 g) — so each ingredient needs its own density, which is what the table provides.</p></details>
+<details class="faq"><summary>Which cup standard does this use?</summary><p>The US cup of 236.6 ml (quoted as 240 ml in nutrition contexts). If a recipe uses metric cups (250 ml), multiply results by about 1.06; Japanese cups (200 ml) need about 0.85.</p></details>
+<details class="faq"><summary>How do I scale a recipe up or down?</summary><p>Multiply every ingredient by the same factor — use the ½×, 2× and 3× buttons per ingredient, or convert to grams first and scale the weights. Keeping ratios identical preserves the recipe's balance at any size.</p></details>
+<details class="faq"><summary>Is packed brown sugar included?</summary><p>Yes — brown sugar is listed at 220 g per cup packed, the standard recipes intend. Unpacked, the same cup can be 30–40 g lighter, which is exactly the ambiguity weighing removes.</p></details>
+<details class="faq"><summary>Can I convert grams back to cups?</summary><p>Yes — type in the Grams box and the cups update instantly using the selected ingredient's density. Useful when a weighed recipe must be cooked in a cup-only kitchen.</p></details>
+  </article>
+</section>
+<footer class="mt-6 py-8" style="background:#431407;color:#FFF7ED">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 text-center text-sm">
+    <p class="font-bold text-base">CupGrams</p>
+    <p class="opacity-80 mt-1">Free cups to grams converter for cooking and baking with 40+ real ingredient densities — flour, sugar, butter, cocoa and more — plus a recipe scaler for half, double and custom batches.</p>
+    <p class="mt-2"><a href="#top" class="underline">Home</a> · <a href="https://fixoraa.tech" class="underline">More Tools</a></p>
+    <p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+  </div>
+</footer>
+<script id="lib-cupgrams">
+
+var DENSITY = { // grams per US cup (240 ml)
+ 'All-purpose flour':125,'Bread flour':127,'Cake flour':114,'Whole wheat flour':113,'Granulated sugar':200,'Caster sugar':225,'Brown sugar (packed)':220,'Powdered sugar':120,'Cocoa powder':85,'Cornstarch':128,'Baking oats (rolled)':90,'Cooked rice':186,'Dry rice':185,'Butter':227,'Milk':245,'Water':236,'Heavy cream':238,'Vegetable oil':218,'Olive oil':216,'Honey':340,'Maple syrup':315,'Peanut butter':258,'Cream cheese':232,'Grated parmesan':100,'Shredded cheddar':113,'Chopped almonds':108,'Walnuts (chopped)':117,'Chocolate chips':170,'Raisins':145,'Desiccated coconut':85,'Quinoa (dry)':170,'Lentils (dry)':192,'Chickpeas (dry)':200,'Yogurt':245,'Sour cream':230,'Mayonnaise':220,'Ketchup':240,'Jam':320,'Icing sugar':120,'Almond flour':96,'Semolina':167,'Tapioca pearls':152};
+function cupsToGrams(ingredient, cups){ var d=DENSITY[ingredient]; if(d==null) return null; return Math.round(cups*d*10)/10; }
+function gramsToCups(ingredient, grams){ var d=DENSITY[ingredient]; if(d==null) return null; return Math.round(grams/d*100)/100; }
+if (typeof module!=="undefined") module.exports={DENSITY:DENSITY, cupsToGrams:cupsToGrams, gramsToCups:gramsToCups};
+
+</script>
+<script>
+
+var sel=document.getElementById('ing');
+sel.innerHTML=Object.keys(DENSITY).map(function(k){return '<option>'+k+'</option>';}).join('');
+function fromCups(){var g=cupsToGrams(sel.value,+document.getElementById('cups').value);document.getElementById('grams').value=g;conv();}
+function fromGrams(){var c=gramsToCups(sel.value,+document.getElementById('grams').value);document.getElementById('cups').value=c;conv();}
+function conv(){
+  var ing=sel.value,c=+document.getElementById('cups').value,g=+document.getElementById('grams').value;
+  document.getElementById('equiv').textContent=c+' cup(s) of '+ing.toLowerCase()+' = '+g+' g ('+DENSITY[ing]+' g per cup)';
+  document.getElementById('tbl').innerHTML='<tr><th>Ingredient</th><th>g per cup</th><th>¼ cup</th><th>½ cup</th><th>1 cup</th></tr>'+Object.keys(DENSITY).map(function(k){var d=DENSITY[k];return '<tr'+(k===ing?' style="background:#ffedd5"':'')+'><td>'+k+'</td><td>'+d+'</td><td>'+Math.round(d/4)+'</td><td>'+Math.round(d/2)+'</td><td>'+d+'</td></tr>';}).join('');
+}
+function scale(f){var c=+document.getElementById('cups').value*f;document.getElementById('scaled').textContent='Scaled: '+Math.round(c*100)/100+' cups = '+cupsToGrams(sel.value,c)+' g of '+sel.value.toLowerCase()+'.';document.getElementById('cups').value=Math.round(c*100)/100;fromCups();}
+conv();
+
+</script>
+</body>
+</html>
