@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyre Size Converter: Decode + Compare Sizes | TyreSize</title>
+<meta name="description" content="Decode tyre markings like 205/55R16, compare two tyre sizes side by side, and calculate speedometer error percentage before you buy new tyres. Free.">
+<link rel="canonical" href="https://convert.fixoraa.tech/tyresize/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Tyre Size Converter: Decode + Compare Sizes | TyreSize">
+<meta property="og:description" content="Decode tyre markings like 205/55R16, compare two tyre sizes side by side, and calculate speedometer error percentage before you buy new tyres. Free.">
+<meta property="og:url" content="https://convert.fixoraa.tech/tyresize/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TyreSize",
+      "url": "https://convert.fixoraa.tech/tyresize/",
+      "applicationCategory": "Automotive Tools",
+      "operatingSystem": "Web",
+      "description": "Decode tyre markings like 205/55R16, compare two tyre sizes side by side, and calculate speedometer error percentage before you buy new tyres. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does 205/55R16 mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "205 is the tread width in mm, 55 is the aspect ratio (sidewall height = 55% of 205 = 112.75 mm), R means radial construction, and 16 is the wheel rim diameter in inches. Overall diameter is 24.88 inches (631.9 mm)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I fit bigger tyres on my car?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can, but keep the overall diameter within \u00b13% of the original so the speedometer, odometer, gearing, and clearances stay correct. Also verify the new width clears the suspension and arches at full steering lock, and never fit a lower load index or speed rating than stock."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much speedometer error is acceptable with different tyres?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Up to \u00b13% overall diameter change is the widely accepted safe limit. Beyond that, speedometer and odometer readings become meaningfully wrong, gearing and ESC calibration suffer, and the tyre may rub. Use the comparison tool above to check any swap before buying."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the load index on a tyre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The load index (e.g. 91) is the maximum weight each tyre can carry \u2014 91 equals 615 kg. Your replacement tyres must have a load index equal to or higher than the vehicle manufacturer's placard rating on the driver's door jamb."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the speed rating letter mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The speed rating letter (T, H, V, W, Y\u2026) is the maximum sustained speed the tyre is certified for: H = 210 km/h, V = 240 km/h. You may fit a higher rating than stock but never a lower one \u2014 it is a safety downgrade that can affect insurance and inspections."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I mix different tyre sizes on my car?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 different sizes on the same axle destabilise handling and confuse ABS and stability control. On all-wheel-drive cars even uneven tread wear front-to-rear can damage the centre differential. Always replace axle pairs together, and ideally all four on AWD."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAF7F2; --surface:#FFFFFF; --accent:#B91C1C; --accent-ink:#FFFFFF;
+  --ink:#211D18; --muted:#665C50; --line:#E9DFD2;
+  --display:'Source Serif 4',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ts-wrap{font-family:'Source Serif 4',Georgia,serif;background:#FAF7F2;color:#211D18;padding:56px 20px 72px;}.ts-head{max-width:1060px;margin:0 auto 34px;text-align:center;}.ts-logo{width:70px;height:70px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,#B91C1C,#e06565);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(185,28,28,.22);}.ts-head h1{font-size:clamp(30px,4.6vw,46px);margin:0 0 10px;letter-spacing:-0.01em;font-weight:700;}.ts-tag{font-family:Inter,system-ui,sans-serif;color:#665C50;font-size:17px;margin:0;}.ts-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:22px;align-items:start;}.ts-panel{background:#FFFFFF;border:1px solid #E9DFD2;border-radius:22px;padding:30px;box-shadow:0 16px 40px rgba(185,28,28,.07);}.ts-panel-title{font-family:Inter,system-ui,sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#B91C1C;margin:0 0 18px;}.ts-tyre{border:2px solid #E9DFD2;border-radius:16px;padding:18px;margin-bottom:16px;background:#FAF7F2;}.ts-tyre.cur{border-color:#B91C1C;background:#FFF;}.ts-tyre h3{font-family:Inter,system-ui,sans-serif;font-size:14px;margin:0 0 12px;color:#211D18;}.ts-tyre h3 span{color:#B91C1C;font-weight:800;}.ts-dims{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}.ts-dim label{display:block;font-family:Inter,system-ui,sans-serif;font-size:11.5px;font-weight:700;color:#665C50;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}.ts-dim input{width:100%;box-sizing:border-box;padding:12px 10px;font-size:17px;border:2px solid #E9DFD2;border-radius:12px;font-family:Inter,system-ui,sans-serif;color:#211D18;min-height:50px;text-align:center;}.ts-dim input:focus{outline:none;border-color:#B91C1C;box-shadow:0 0 0 3px rgba(185,28,28,.14);}.ts-code{font-family:Inter,system-ui,sans-serif;text-align:center;font-weight:800;font-size:19px;margin:14px 0 2px;letter-spacing:.02em;}.ts-vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;}.ts-card{background:#FAF7F2;border:1px solid #E9DFD2;border-radius:16px;padding:18px;text-align:center;}.ts-card h4{font-family:Inter,system-ui,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:#665C50;margin:0 0 10px;}.ts-big{font-size:34px;font-weight:700;margin:0;color:#211D18;}.ts-big small{font-size:15px;color:#665C50;font-weight:400;}.ts-mini{font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#665C50;margin:8px 0 0;line-height:1.6;}.ts-err{margin-top:16px;border-radius:16px;padding:18px;font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;display:none;}.ts-err.show{display:block;}.ts-err.ok{background:#EAF4EA;border:1px solid #2E7D5B;}.ts-err.warn{background:#FBF3E2;border:1px solid #B45309;}.ts-err.bad{background:#FBE9E9;border:1px solid #B91C1C;}.ts-err strong{display:block;font-size:18px;margin-bottom:4px;}.ts-note{max-width:1060px;margin:22px auto 0;font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#665C50;line-height:1.65;text-align:center;}@media (max-width:760px){.ts-grid{grid-template-columns:1fr;}.ts-vs{grid-template-columns:1fr;}.ts-panel{padding:22px 16px;}.ts-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="TyreSize home">
+      <span class="fx-logo-tile" aria-hidden="true">🛞</span>
+      <span class="fx-brand">TyreSize</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-split-panel" aria-label="TyreSize tool">
+<section class='ts-wrap'><div class='ts-head'><div class='ts-logo' aria-hidden='true'>🛞</div><h1>Tyre Size Converter</h1><p class='ts-tag'>Decode any sidewall marking and compare sizes before you buy.</p></div><div class='ts-grid'><div class='ts-panel'><p class='ts-panel-title'>Your two sizes</p><div class='ts-tyre cur'><h3><span>A</span> · Current tyres</h3><div class='ts-dims'><div class='ts-dim'><label for='ts-aw'>Width</label><input id='ts-aw' type='number' value='205' min='125' max='355' step='5'></div><div class='ts-dim'><label for='ts-aa'>Aspect</label><input id='ts-aa' type='number' value='55' min='25' max='85' step='5'></div><div class='ts-dim'><label for='ts-ar'>Rim (in)</label><input id='ts-ar' type='number' value='16' min='12' max='24' step='1'></div></div><p class='ts-code' id='ts-code-a'>205/55R16</p></div><div class='ts-tyre'><h3><span>B</span> · New tyres</h3><div class='ts-dims'><div class='ts-dim'><label for='ts-bw'>Width</label><input id='ts-bw' type='number' value='225' min='125' max='355' step='5'></div><div class='ts-dim'><label for='ts-ba'>Aspect</label><input id='ts-ba' type='number' value='45' min='25' max='85' step='5'></div><div class='ts-dim'><label for='ts-br'>Rim (in)</label><input id='ts-br' type='number' value='17' min='12' max='24' step='1'></div></div><p class='ts-code' id='ts-code-b'>225/45R17</p></div></div><div class='ts-panel'><p class='ts-panel-title'>Comparison</p><div class='ts-vs'><div class='ts-card'><h4>A · Diameter</h4><p class='ts-big'><span id='ts-dia-a'>–</span> <small>in</small></p><p class='ts-mini' id='ts-sub-a'></p></div><div class='ts-card'><h4>B · Diameter</h4><p class='ts-big'><span id='ts-dia-b'>–</span> <small>in</small></p><p class='ts-mini' id='ts-sub-b'></p></div></div><div class='ts-err' id='ts-err' role='status'></div><p class='ts-mini' style='margin-top:14px'>Diameter change: <strong id='ts-delta'>–</strong> · When the speedo reads 60 mph you are actually doing <strong id='ts-actual'>–</strong> mph.</p></div></div><p class='ts-note'>Keep overall diameter within ±3% of stock. Always match or exceed the factory load index and speed rating, and check physical clearance before buying.</p></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Reading Your Tyre's Sidewall</h2><p>Every tyre carries its dimensions moulded into the sidewall in a code like <strong>205/55R16 91V</strong>. Once you learn to read it, you can shop for replacements, compare upgrades, and understand exactly what is bolted to your car:</p><ul><li><strong>205</strong> — the tread width in millimetres, measured sidewall to sidewall.</li><li><strong>55</strong> — the aspect ratio: the sidewall height as a percentage of the width. Here the sidewall is 55% of 205 mm, or 112.75 mm.</li><li><strong>R</strong> — radial construction (virtually all modern car tyres).</li><li><strong>16</strong> — the wheel rim diameter in inches that the tyre fits.</li><li><strong>91</strong> — the load index: how much weight each tyre can carry (91 = 615 kg).</li><li><strong>V</strong> — the speed rating: the maximum sustained speed (V = 240 km/h / 149 mph).</li></ul><h2>From Markings to Real Dimensions</h2><p>The three sizing numbers fully determine the tyre's geometry. The sidewall height is simply width × aspect ratio ÷ 100, and the overall diameter adds two sidewalls to the rim:</p><p><strong>Sidewall = width × aspect ÷ 100</strong><br><strong>Diameter = rim + 2 × sidewall ÷ 25.4</strong> (in inches)</p><p>For a 205/55R16: sidewall = 205 × 0.55 = 112.75 mm, and diameter = 16 + 2 × 112.75 ÷ 25.4 = <strong>24.88 inches</strong> (631.9 mm). The circumference — π × diameter — is what actually matters for your speedometer: about 78.2 inches per revolution for this size.</p><h2>Why Diameter Matters: Speedometer and Odometer Error</h2><p>Your car's speedometer does not measure speed directly. It counts wheel revolutions and multiplies by the factory tyre's circumference. Fit a tyre with a different overall diameter and the maths breaks: a <strong>larger</strong> diameter means each revolution covers more ground, so you travel <em>faster</em> than the speedometer shows. A <strong>smaller</strong> diameter reads fast — you are going slower than indicated.</p><p>The industry rule of thumb is to keep the overall diameter within <strong>±3%</strong> of the original size. At 3% on a 70 mph speedometer reading, the real speed differs by about 2 mph — small, but enough to matter for speeding tickets, and the odometer error accumulates into service-interval and resale-mileage discrepancies. The comparison tool above computes this error for any two sizes instantly.</p><h2>Plus-Sizing: Bigger Wheels, Same Diameter</h2><p><strong>Plus-sizing</strong> means fitting a larger wheel with a lower-profile tyre so the overall diameter stays nearly identical — for example, moving from 205/55R16 to 225/45R17. Done correctly, the speedometer stays accurate while you gain sharper handling and sportier looks from the shorter, stiffer sidewall.</p><table><thead><tr><th>Original</th><th>Plus-one option</th><th>Diameter change</th><th>Verdict</th></tr></thead><tbody><tr><td>205/55R16</td><td>225/45R17</td><td>+0.4%</td><td>Excellent</td></tr><tr><td>205/55R16</td><td>225/40R18</td><td>+0.3%</td><td>Excellent</td></tr><tr><td>205/55R16</td><td>215/55R17</td><td>+3.6%</td><td>Too big — avoid</td></tr></tbody></table><p>The trade-offs are real: lower-profile tyres ride more harshly, cost more, and are easier to damage on potholes. And the wider tread in the examples above needs clearance — always check that the new size clears the suspension, arches, and steering lock-to-lock before buying.</p><h2>Load Index and Speed Rating</h2><p>These two codes are safety-critical and often ignored. The <strong>load index</strong> must meet or exceed your vehicle's placard rating (found on the driver's door jamb) — fitting a lower index is illegal in many jurisdictions and can void insurance. Common values: 91 = 615 kg, 94 = 670 kg, 98 = 750 kg per tyre.</p><p>The <strong>speed rating</strong> must also meet the manufacturer's minimum. The common letters in ascending order: T (190 km/h), H (210 km/h), V (240 km/h), W (270 km/h), Y (300 km/h). A higher rating than stock is fine; a lower one is not, even if you never drive that fast — insurers and inspectors treat it as a safety downgrade.</p><h2>Can You Mix Tyre Sizes?</h2><p>On the same axle, no — mismatched sizes across an axle destabilise handling and confuse ABS and stability control. All-wheel-drive vehicles are especially sensitive: even different tread depths front-to-rear can overwork the centre differential, which is why some manufacturers specify replacing all four tyres together. A space-saver spare is the engineered exception, and it comes with strict speed and distance limits for exactly this reason.</p><h2>When to Replace: Tread Depth and Age</h2><p>Legal minimum tread depth is 1.6 mm across most of Europe and 2/32 in (1.6 mm) in most US states, but wet-weather braking degrades badly below 3 mm — many safety organisations recommend replacing at 3–4 mm. Check the DOT date code on the sidewall (a four-digit week/year like '3223' = week 32 of 2023): most manufacturers recommend replacement at <strong>6–10 years regardless of tread</strong>, because rubber compounds harden and crack with age even on a garaged car.</p><h2>Winter Tyres and Diameter</h2><p>A popular winter strategy is 'minus-sizing': a narrower tyre on a smaller wheel (e.g., 195/65R15 instead of 205/55R16) that keeps the same overall diameter. The narrower tread cuts through slush and snow to find grip, the taller sidewall shrugs off potholes, and smaller wheels and tyres cost less. Just verify brake-caliper clearance on the smaller wheel before committing.</p><p>Bottom line: the sidewall code is a complete engineering specification, not decoration. Decode it with the tool above before you buy, keep diameter changes inside ±3%, never downgrade load or speed ratings, and your car will handle, brake, and read speed exactly as its engineers intended.</p><h2>Where to Find Your Correct Size</h2><p>Before comparing alternatives, confirm what your car actually requires. The definitive source is the <strong>tyre placard on the driver's door jamb</strong> — it lists the factory size, load index, and pressures for front and rear. The owner's manual carries the same data plus approved alternatives. What is moulded on your current tyres only tells you what is fitted <em>now</em>, which may differ from stock if a previous owner changed sizes. When in doubt, the placard wins: it is what the manufacturer engineered, tested, and certified.</p><p>Also check the <strong>spare</strong>: space-saver spares are narrower and smaller by design and carry strict limits (usually 80 km/h and limited distance). A full-size matching spare has no such limits but needs the same load and speed ratings as the other four.</p><h2>Staggered Fitments, Directional Tyres, and Rotation</h2><p>Some performance cars run <strong>staggered fitments</strong> — wider tyres at the rear than the front. You cannot rotate these front-to-rear, and you must compare each axle against its own stock size, not against the other axle. <strong>Directional tyres</strong> (marked with a rotation arrow) must roll in one direction for their tread pattern to evacuate water correctly; fitting one backwards measurably worsens wet braking. <strong>Asymmetric tyres</strong> (marked 'outside') can go on either side of the car but must be mounted with the correct face out.</p><p>Rotation patterns depend on the setup: non-directional, same-size tyres rotate in a cross or front-to-rear pattern every 8,000–12,000 km to even out wear; directional tyres stay on the same side. Uneven wear is also a diagnostic tool — centre wear means over-inflation, edge wear means under-inflation, and one-sided wear points to alignment issues. Check pressures monthly when cold, because a tyre can be 20% under-inflated with no visible sag on modern stiff sidewalls.</p><h2>Tyre Pressure: The Free Performance Upgrade</h2><p>Before spending money on new tyres, check your pressures — it is the single highest-value maintenance on any car. Under-inflation by just 20% increases rolling resistance (hurting fuel economy by ~3%), accelerates edge wear, lengthens braking distances, and raises the risk of heat-related blowouts at motorway speeds. Over-inflation does the opposite damage: a harsh ride, reduced grip patch, and rapid centre wear. The correct pressures are on the door-jamb placard, not the tyre sidewall (which shows the maximum, not the recommendation). Check monthly when the tyres are cold, and always before long trips or when carrying heavy loads — most placards list a higher 'loaded' pressure for exactly that.</p><h2>Worked Example: Checking an Upgrade Before You Buy</h2><p>Your placard says <strong>205/55R16</strong> and you are tempted by a 225/45R17 wheel-and-tyre package. First compute the stock diameter: sidewall = 205 × 0.55 = 112.75 mm; diameter = 16 + 2 × 112.75 ÷ 25.4 = <strong>24.88 in</strong>. The candidate: sidewall = 225 × 0.45 = 101.25 mm; diameter = 17 + 2 × 101.25 ÷ 25.4 = <strong>24.97 in</strong>. The change is (24.97 − 24.88) ÷ 24.88 = <strong>+0.4%</strong> — comfortably inside the ±3% rule.</p><p>Translate that to the speedometer: at an indicated 70 mph you are actually travelling 70 × 24.97 ÷ 24.88 ≈ <strong>70.3 mph</strong>, an error no camera will notice. Now check the other two non-negotiables: the new tyre's load index must meet or exceed the placard (91 = 615 kg per tyre here), and the speed rating must be V or higher if the placard says V. Diameter passes, load passes, rating passes — the upgrade is sound. Run the same arithmetic on any package a shop offers you before paying.</p><h2>Insurance, Inspections, and the Law</h2><p>Diameter is physics; the paperwork is separate. In many countries any wheel or tyre change away from the manufacturer's approved sizes counts as a <strong>modification you must declare to your insurer</strong> — an undeclared change can void cover after a claim, even if the tyres had nothing to do with the crash. Periodic inspections vary too: Germany's TÜV requires an engineer's sign-off for non-approved sizes, while the UK's MOT mainly checks that tyres are correctly seated, undamaged, and adequately rated. Keep a photo of the placard on your phone and receipts showing the new size's load and speed ratings — when a seller says 'these will fit fine', verify with the calculator above, because 'fit' and 'legal' are different questions.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What does 205/55R16 mean?</summary><p>205 is the tread width in mm, 55 is the aspect ratio (sidewall height = 55% of 205 = 112.75 mm), R means radial construction, and 16 is the wheel rim diameter in inches. Overall diameter is 24.88 inches (631.9 mm).</p></details>
+<details><summary>Can I fit bigger tyres on my car?</summary><p>You can, but keep the overall diameter within ±3% of the original so the speedometer, odometer, gearing, and clearances stay correct. Also verify the new width clears the suspension and arches at full steering lock, and never fit a lower load index or speed rating than stock.</p></details>
+<details><summary>How much speedometer error is acceptable with different tyres?</summary><p>Up to ±3% overall diameter change is the widely accepted safe limit. Beyond that, speedometer and odometer readings become meaningfully wrong, gearing and ESC calibration suffer, and the tyre may rub. Use the comparison tool above to check any swap before buying.</p></details>
+<details><summary>What is the load index on a tyre?</summary><p>The load index (e.g. 91) is the maximum weight each tyre can carry — 91 equals 615 kg. Your replacement tyres must have a load index equal to or higher than the vehicle manufacturer's placard rating on the driver's door jamb.</p></details>
+<details><summary>What does the speed rating letter mean?</summary><p>The speed rating letter (T, H, V, W, Y…) is the maximum sustained speed the tyre is certified for: H = 210 km/h, V = 240 km/h. You may fit a higher rating than stock but never a lower one — it is a safety downgrade that can affect insurance and inspections.</p></details>
+<details><summary>Can I mix different tyre sizes on my car?</summary><p>No — different sizes on the same axle destabilise handling and confuse ABS and stability control. On all-wheel-drive cars even uneven tread wear front-to-rear can damage the centre differential. Always replace axle pairs together, and ideally all four on AWD.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TyreSize</div>
+    <p>TyreSize decodes 205/55R16 markings into real dimensions and compares two sizes for speedometer error.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function tyreSpecs(width,aspect,rimIn){var w=parseFloat(width),a=parseFloat(aspect),r=parseFloat(rimIn);if(!(w>0&&a>0&&r>0))return null;var sidewall=w*a/100;var diaIn=r+2*sidewall/25.4;return {diameterIn:Math.round(diaIn*100)/100,diameterMm:Math.round(diaIn*25.4*10)/10,sidewallMm:Math.round(sidewall*100)/100,widthMm:w};}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var ids=['ts-aw','ts-aa','ts-ar','ts-bw','ts-ba','ts-br'];var els={};ids.forEach(function(id){els[id]=document.getElementById(id);els[id].addEventListener('input',render);});function get(p){return tyreSpecs(els['ts-'+p+'w'].value,els['ts-'+p+'a'].value,els['ts-'+p+'r'].value);}function render(){var A=get('a'),B=get('b');if(!A||!B)return;document.getElementById('ts-code-a').textContent=A.widthMm+'/'+els['ts-aa'].value+'R'+els['ts-ar'].value;document.getElementById('ts-code-b').textContent=B.widthMm+'/'+els['ts-ba'].value+'R'+els['ts-br'].value;document.getElementById('ts-dia-a').textContent=A.diameterIn;document.getElementById('ts-dia-b').textContent=B.diameterIn;document.getElementById('ts-sub-a').innerHTML=A.diameterMm+' mm · sidewall '+A.sidewallMm+' mm';document.getElementById('ts-sub-b').innerHTML=B.diameterMm+' mm · sidewall '+B.sidewallMm+' mm';var pct=(B.diameterIn-A.diameterIn)/A.diameterIn*100;var ap=Math.abs(pct);document.getElementById('ts-delta').textContent=(pct>=0?'+':'')+pct.toFixed(1)+'%';document.getElementById('ts-actual').textContent=(60*B.diameterIn/A.diameterIn).toFixed(1);var box=document.getElementById('ts-err');var cls,head,body;if(ap<=1){cls='ok';head='✅ Excellent match';body='Diameter changes by just '+pct.toFixed(1)+'%. Speedometer, gearing and clearances stay effectively factory.';}else if(ap<=3){cls='warn';head='⚠️ Acceptable with care';body='Diameter changes by '+pct.toFixed(1)+'%. Within the ±3% rule of thumb — verify arch and suspension clearance, and expect a small speedo shift.';}else{cls='bad';head='🛑 Too different — avoid';body='Diameter changes by '+pct.toFixed(1)+'%, beyond the ±3% guideline. Speedometer error, gearing, and ESC calibration will suffer. Pick a closer size.';}box.className='ts-err show '+cls;box.innerHTML='<strong>'+head+'</strong>'+body;}render();});}
+</script>
+</body>
+</html>
