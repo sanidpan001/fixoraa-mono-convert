@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWG to mm² Converter + Ampacity Chart | WireGauge</title>
+<meta name="description" content="Convert AWG to mm² and diameter in both directions, with ampacity hints, breaker sizes, and common real-world uses for every wire gauge. Free converter tool.">
+<link rel="canonical" href="https://convert.fixoraa.tech/wiregauge/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AWG to mm² Converter + Ampacity Chart | WireGauge">
+<meta property="og:description" content="Convert AWG to mm² and diameter in both directions, with ampacity hints, breaker sizes, and common real-world uses for every wire gauge. Free converter tool.">
+<meta property="og:url" content="https://convert.fixoraa.tech/wiregauge/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "WireGauge",
+      "url": "https://convert.fixoraa.tech/wiregauge/",
+      "applicationCategory": "Electrical Tools",
+      "operatingSystem": "Web",
+      "description": "Convert AWG to mm\u00b2 and diameter in both directions, with ampacity hints, breaker sizes, and common real-world uses for every wire gauge. Free converter tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does a smaller AWG number mean thicker wire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The system comes from 1857 wire-drawing practice, where each gauge number was one pass through a drawing die. Each pass made the wire thinner, so higher numbers mean thinner wire. Every 3 gauges the cross-sectional area roughly halves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AWG the same as SWG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are different national standards and the numbers do not correspond. SWG (Standard Wire Gauge, British) sizes differ slightly from AWG at the same number \u2014 for example 12 SWG is 2.64 mm diameter versus 2.05 mm for 12 AWG. Always convert to mm\u00b2 or diameter before substituting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use 14 AWG wire for wall outlets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally no. In North America, 14 AWG is limited to 15 A circuits (typically lighting), while general-purpose outlet circuits require 12 AWG on a 20 A breaker. Using 14 AWG on a 20 A breaker is a code violation and a fire risk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does ampacity mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ampacity is the maximum electric current a wire can carry continuously without overheating its insulation. It depends on the wire's copper area, insulation temperature rating, installation method (free air vs. bundled), and ambient temperature \u2014 not just the gauge number alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between solid and stranded wire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Solid wire is one copper core: cheaper and ideal for fixed in-wall wiring under screw terminals. Stranded wire is many fine strands with the same total area: flexible and fatigue-resistant, used for cords, vehicles, and anything that moves. Both use the same AWG area rating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I identify the gauge of an unmarked wire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Strip a short section and measure the bare copper diameter with calipers, then look it up in an AWG diameter table (12 AWG = 2.05 mm, 14 AWG = 1.63 mm, 10 AWG = 2.59 mm). For stranded wire, measure one strand and multiply by the strand count using the area formula."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFFBF0; --surface:#FFFFFF; --accent:#92400e; --accent-ink:#FFFFFF;
+  --ink:#26211A; --muted:#6B5D4F; --line:#F0E3D0;
+  --display:'Albert Sans',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.wg-wrap{font-family:'Albert Sans',Inter,system-ui,sans-serif;background:#FFFBF0;color:#26211A;padding:56px 20px 72px;}.wg-head{max-width:1080px;margin:0 auto 34px;text-align:center;}.wg-logo{width:70px;height:70px;margin:0 auto 16px;border-radius:20px;background:linear-gradient(135deg,#92400e,#e08a2e);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(146,64,14,.25);}.wg-head h1{font-size:clamp(30px,4.6vw,48px);margin:0 0 10px;letter-spacing:-0.02em;font-weight:800;}.wg-tag{color:#6B5D4F;font-size:18px;margin:0;}.wg-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}.wg-panel{background:#FFFFFF;border:1px solid #F0E3D0;border-radius:24px;padding:32px;box-shadow:0 16px 40px rgba(146,64,14,.08);}.wg-panel-title{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#92400e;margin:0 0 18px;}.wg-field{margin-bottom:18px;}.wg-field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px;}.wg-field input{width:100%;box-sizing:border-box;padding:14px 16px;font-size:18px;border:2px solid #F0E3D0;border-radius:14px;font-family:inherit;color:#26211A;background:#FFFBF0;min-height:54px;}.wg-field input:focus{outline:none;border-color:#92400e;box-shadow:0 0 0 3px rgba(146,64,14,.15);}.wg-hintline{font-size:13.5px;color:#6B5D4F;line-height:1.6;margin:4px 0 0;}.wg-result-big{font-size:15px;color:#6B5D4F;margin:0 0 4px;}.wg-result-awg{font-size:56px;font-weight:800;letter-spacing:-0.03em;color:#26211A;line-height:1;margin:0 0 4px;}.wg-result-awg small{font-size:24px;color:#92400e;font-weight:700;}.wg-rows{margin-top:20px;border-top:1px solid #F0E3D0;}.wg-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid #F0E3D0;font-size:16px;}.wg-row span:first-child{color:#6B5D4F;}.wg-row span:last-child{font-weight:700;text-align:right;}.wg-amp{margin-top:16px;background:#FFFBF0;border:1px dashed #92400e;border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.55;}.wg-amp strong{color:#92400e;}.wg-note{max-width:1080px;margin:22px auto 0;font-size:13.5px;color:#6B5D4F;line-height:1.65;text-align:center;}@media (max-width:720px){.wg-grid{grid-template-columns:1fr;}.wg-panel{padding:24px 18px;}.wg-result-awg{font-size:44px;}.wg-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="WireGauge home">
+      <span class="fx-logo-tile" aria-hidden="true">⚡</span>
+      <span class="fx-brand">WireGauge</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-split-panel" aria-label="WireGauge tool">
+<section class='wg-wrap'><div class='wg-head'><div class='wg-logo' aria-hidden='true'>⚡</div><h1>AWG to mm² Converter</h1><p class='wg-tag'>AWG, mm², and diameter — converted both ways in a heartbeat.</p></div><div class='wg-grid'><div class='wg-panel'><p class='wg-panel-title'>Inputs</p><div class='wg-field'><label for='wg-awg'>Wire gauge (AWG)</label><input id='wg-awg' type='number' min='0' max='30' step='1' value='12' inputmode='numeric'><p class='wg-hintline'>Enter an AWG number from 0 to 30, or type a mm² value below to convert in reverse.</p></div><div class='wg-field'><label for='wg-mm2'>Cross-section (mm²)</label><input id='wg-mm2' type='number' min='0.05' max='60' step='0.01' placeholder='e.g. 2.5' inputmode='decimal'></div></div><div class='wg-panel'><p class='wg-panel-title'>Live results</p><p class='wg-result-big'>Nearest gauge</p><p class='wg-result-awg'><span id='wg-out-awg'>12</span> <small>AWG</small></p><div class='wg-rows'><div class='wg-row'><span>Cross-section</span><span id='wg-out-mm2'>3.31 mm²</span></div><div class='wg-row'><span>Diameter</span><span id='wg-out-dia'>2.05 mm · 0.081 in</span></div><div class='wg-row'><span>Typical use</span><span id='wg-out-use'>General outlets (20 A)</span></div></div><div class='wg-amp' id='wg-out-amp'></div></div></div><p class='wg-note'>Ampacity values are conservative approximations for copper building wire. Always follow your local electrical code (NEC / IEC) and consult a licensed electrician for mains work.</p></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Is AWG?</h2><p><strong>AWG</strong> stands for American Wire Gauge, the standard system used in North America to describe the thickness of electrical wire. It is a little counterintuitive at first: <strong>the smaller the gauge number, the thicker the wire</strong>. A chunky 0 AWG cable is about as thick as a pencil lead bundle, while a hair-thin 30 AWG wire is used for delicate electronics.</p><p>The system dates back to 1857 and the wire-drawing process, where each gauge number represented one pass through a drawing die. Every three gauge numbers, the cross-sectional area roughly doubles and the resistance roughly halves. That geometric progression is why the jump from 12 AWG to 10 AWG (a common upgrade for long outlet runs) gives you about 60 percent more copper.</p><h2>The Math Behind Gauge Numbers</h2><p>AWG is defined by a precise formula. The diameter in inches is:</p><p><strong>d = 0.005 × 92<sup>((36 − AWG) / 39)</sup></strong></p><p>From the diameter, the cross-sectional area follows the circle formula A = π × (d/2)², converted to square millimetres. Because the formula is exponential, memorizing it is unnecessary — but understanding the pattern helps: going <em>down</em> three gauges (say 15 to 12) doubles the copper area, and going down ten gauges multiplies the area roughly tenfold.</p><h2>AWG to mm² Conversion Table</h2><p>Most of the world buys wire by cross-section in square millimetres, so here is the definitive lookup for the gauges you will actually encounter:</p><table><thead><tr><th>AWG</th><th>Area (mm²)</th><th>Diameter (mm)</th><th>Typical use</th></tr></thead><tbody><tr><td>8</td><td>8.37</td><td>3.26</td><td>Subpanels, large appliances</td></tr><tr><td>10</td><td>5.26</td><td>2.59</td><td>30 A circuits: dryers, water heaters</td></tr><tr><td>12</td><td>3.31</td><td>2.05</td><td>20 A general outlet circuits</td></tr><tr><td>14</td><td>2.08</td><td>1.63</td><td>15 A lighting circuits</td></tr><tr><td>16</td><td>1.31</td><td>1.29</td><td>Speakers, low-voltage lighting</td></tr><tr><td>18</td><td>0.82</td><td>1.02</td><td>Thermostats, doorbells, signal wire</td></tr><tr><td>20</td><td>0.52</td><td>0.81</td><td>Electronics hookup wire</td></tr><tr><td>22</td><td>0.33</td><td>0.64</td><td>Breadboards, sensors</td></tr><tr><td>24</td><td>0.21</td><td>0.51</td><td>Ethernet pairs, jumpers</td></tr></tbody></table><p>Notice that 12 AWG (3.31 mm²) and 14 AWG (2.08 mm²) — the two gauges behind nearly every wall in a North American home — sit close to the 2.5 mm² and 1.5 mm² metric standards used in Europe, though they are not exact equivalents and should never be substituted on rating alone.</p><h2>Understanding Ampacity: How Much Current Is Safe?</h2><p><strong>Ampacity</strong> is the maximum current a conductor can carry continuously without exceeding its temperature rating. It depends on the copper area, the insulation type, how the wire is installed (free air vs. bundled in a wall), and ambient temperature. As a conservative rule of thumb for copper building wire:</p><table><thead><tr><th>AWG</th><th>Approx. ampacity</th><th>Common breaker</th></tr></thead><tbody><tr><td>14</td><td>15 A</td><td>15 A</td></tr><tr><td>12</td><td>20 A</td><td>20 A</td></tr><tr><td>10</td><td>30 A</td><td>30 A</td></tr><tr><td>8</td><td>40–50 A</td><td>40 A</td></tr><tr><td>6</td><td>55–65 A</td><td>50–60 A</td></tr></tbody></table><p>These are simplified values. The authoritative numbers live in your local electrical code (NEC Article 310 in the US), which derates ampacity for bundled cables, hot attics, and long runs. When in doubt, go one gauge thicker — copper is cheap compared to a fire.</p><h2>Voltage Drop: The Reason Long Runs Need Thicker Wire</h2><p>Even if a wire's ampacity is sufficient, a long run can starve the load through <strong>voltage drop</strong>: the wire's own resistance steals volts along the way. A 100-foot run of 14 AWG carrying 12 A drops roughly 6 volts — over 5 percent on a 120 V circuit, enough to dim lights and overheat motors. The fix is simple: for runs over about 80–100 feet, step up one or two gauges. This is the most common real-world reason to convert AWG to mm² and compare against metric cable charts.</p><h2>Solid vs. Stranded Wire</h2><p>Gauge describes the total copper cross-section, not its construction. <strong>Solid</strong> wire is a single copper core — cheaper, holds its shape, and terminates cleanly under screw terminals, which is why it dominates in-wall house wiring. <strong>Stranded</strong> wire bundles many fine strands for the same total area — far more flexible and resistant to metal fatigue, which is why extension cords, automotive wiring, and anything that moves uses stranded. For the same AWG number, stranded wire has a slightly larger overall diameter because of air gaps between strands.</p><h2>Choosing the Right Wire for Common Projects</h2><ul><li><strong>Rewiring a bedroom outlet circuit:</strong> 12 AWG on a 20 A breaker is the modern standard; 14 AWG is limited to 15 A lighting.</li><li><strong>Adding landscape lighting:</strong> 16 or 14 AWG low-voltage cable, sized by total wattage and run length to keep voltage drop under 10 percent.</li><li><strong>Wiring a 3D printer or electronics bench:</strong> 18–22 AWG silicone-insulated hookup wire handles a few amps and solders beautifully.</li><li><strong>Running power to a shed 150 feet away:</strong> calculate load, then upsize — often 10 or 8 AWG where 12 would suffice for ampacity alone.</li><li><strong>Car audio amplifier:</strong> 8 or 4 AWG power cable depending on wattage; undersized cable here is a classic cause of dimming headlights.</li></ul><h2>A Note on Safety</h2><p>This converter handles the numbers, but mains-voltage work is governed by electrical codes for good reason. If you are unsure about breaker sizing, box fill, grounding, or permits, hire a licensed electrician. The cost of a professional is trivial next to the cost of getting it wrong — and no online tool can inspect your actual installation.</p><h2>Converting mm² Back to AWG</h2><p>Going the other direction — from a metric cable size to the nearest AWG — is just as common, especially when following a US-based tutorial with European cable. The world's standard metric sizes run 0.5, 0.75, 1.0, 1.5, 2.5, 4, 6, 10, 16, 25, 35 and 50 mm², and each has a nearest AWG neighbour:</p><table><thead><tr><th>Metric (mm²)</th><th>Nearest AWG</th><th>Metric (mm²)</th><th>Nearest AWG</th></tr></thead><tbody><tr><td>0.5</td><td>20</td><td>6</td><td>10</td></tr><tr><td>0.75</td><td>18</td><td>10</td><td>8</td></tr><tr><td>1.0</td><td>17</td><td>16</td><td>5</td></tr><tr><td>1.5</td><td>15</td><td>25</td><td>4</td></tr><tr><td>2.5</td><td>13</td><td>35</td><td>2</td></tr><tr><td>4</td><td>11</td><td>50</td><td>0</td></tr></tbody></table><p>Type any mm² value into the converter's second field and it finds the nearest gauge automatically. Remember that 'nearest' is not 'equivalent' for regulated work — when a specification demands a particular ampacity, verify against your local code's tables rather than relying on a conversion alone, because stranding, insulation rating, and installation method all shift the real number.</p><h2>Quick Reference: Sizing Common Household Circuits</h2><p>For North American 120/240 V residential wiring, these are the standard wire-and-breaker pairings you will see on every job:</p><table><thead><tr><th>Circuit</th><th>Copper wire</th><th>Breaker</th></tr></thead><tbody><tr><td>Bedroom / living-room lighting</td><td>14 AWG</td><td>15 A</td></tr><tr><td>General-purpose outlets</td><td>12 AWG</td><td>20 A</td></tr><tr><td>Kitchen small-appliance circuits</td><td>12 AWG</td><td>20 A</td></tr><tr><td>Bathroom dedicated circuit</td><td>12 AWG</td><td>20 A</td></tr><tr><td>Electric dryer</td><td>10 AWG</td><td>30 A</td></tr><tr><td>Water heater</td><td>10 AWG</td><td>30 A</td></tr><tr><td>Electric range</td><td>6 AWG</td><td>50 A</td></tr><tr><td>EV charger (48 A continuous)</td><td>6 AWG</td><td>60 A</td></tr></tbody></table><p>Note the EV charger row: continuous loads (running 3+ hours) must be sized at 125% of the load current, which is why a 48 A charger needs a 60 A breaker and 6 AWG wire, not 8. The same 125% rule applies to electric heating and any other continuous load — it is one of the most frequently missed details in DIY panel work.</p><h2>Aluminium Wire: A Special Case</h2><p>You may encounter aluminium branch wiring in homes built between roughly 1965 and 1975. Aluminium needs to be about two gauges thicker than copper for the same ampacity (12 AWG copper ≈ 10 AWG aluminium), expands and contracts more with temperature, and oxidises into a resistive layer — the combination caused enough connection failures that aluminium is now essentially banned for small branch circuits. If you find it, do not simply swap in copper on old terminations; use approved Al/Cu connectors or have an electrician remediate with pigtailing. Convert the gauge with the tool above, but treat any aluminium circuit as a 'call a professional' situation.</p><h2>Worked Example: Sizing Wire for a 12 V Solar Setup</h2><p>Low-voltage systems punish undersized wire brutally, because the same power means far more current. Take a <strong>200 W</strong> solar array charging a 12 V battery bank: current = 200 ÷ 12 ≈ <strong>16.7 A</strong>. Suppose the panels sit 30 feet from the charge controller, so the round trip is 60 feet of copper.</p><p>Copper resistance per 1,000 feet is about 0.999 Ω for 10 AWG, 0.628 Ω for 8 AWG, and 0.395 Ω for 6 AWG. For 10 AWG: 60 ft × 0.999 ÷ 1,000 = 0.060 Ω, and voltage drop = 16.7 × 0.060 ≈ <strong>1.0 V</strong> — a painful 8.3% of 12 V, lost as heat. Stepping to 8 AWG gives 0.63 V (5.2%), still too much for a system where every volt counts. At 6 AWG the drop is 0.40 V (3.3%) — acceptable, and it runs cooler. The lesson: for 12 V work, size for voltage drop first and ampacity second, and when the calculator suggests 6 AWG where 10 'should' be fine, believe the calculator.</p><h2>Five Sizing Mistakes That Start Fires</h2><ul><li><strong>Running a space heater on a 16 AWG extension lead.</strong> A 1,500 W heater draws 12.5 A at 120 V — a 16 AWG cord runs hot, and coiled cords trap the heat. Use 12 AWG for heaters.</li><li><strong>Ignoring the 125% continuous-load rule.</strong> A load running 3+ hours must be sized at 125% of its current — the detail most DIY panels miss (see the EV charger row above).</li><li><strong>Forgetting bundle derating.</strong> Three current-carrying conductors in a conduit is the baseline; stuff nine in and each wire's ampacity drops to 70%. Your 12 AWG is no longer a 20 A wire.</li><li><strong>Matching the breaker to the appliance instead of the wire.</strong> The breaker protects the wire: 14 AWG on a 20 A breaker is the classic violation.</li><li><strong>Assuming stranded and solid terminate the same.</strong> Same copper area, yes — but check terminal compatibility; some push-in connectors accept only solid wire.</li></ul>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Why does a smaller AWG number mean thicker wire?</summary><p>The system comes from 1857 wire-drawing practice, where each gauge number was one pass through a drawing die. Each pass made the wire thinner, so higher numbers mean thinner wire. Every 3 gauges the cross-sectional area roughly halves.</p></details>
+<details><summary>Is AWG the same as SWG?</summary><p>They are different national standards and the numbers do not correspond. SWG (Standard Wire Gauge, British) sizes differ slightly from AWG at the same number — for example 12 SWG is 2.64 mm diameter versus 2.05 mm for 12 AWG. Always convert to mm² or diameter before substituting.</p></details>
+<details><summary>Can I use 14 AWG wire for wall outlets?</summary><p>Generally no. In North America, 14 AWG is limited to 15 A circuits (typically lighting), while general-purpose outlet circuits require 12 AWG on a 20 A breaker. Using 14 AWG on a 20 A breaker is a code violation and a fire risk.</p></details>
+<details><summary>What does ampacity mean?</summary><p>Ampacity is the maximum electric current a wire can carry continuously without overheating its insulation. It depends on the wire's copper area, insulation temperature rating, installation method (free air vs. bundled), and ambient temperature — not just the gauge number alone.</p></details>
+<details><summary>What is the difference between solid and stranded wire?</summary><p>Solid wire is one copper core: cheaper and ideal for fixed in-wall wiring under screw terminals. Stranded wire is many fine strands with the same total area: flexible and fatigue-resistant, used for cords, vehicles, and anything that moves. Both use the same AWG area rating.</p></details>
+<details><summary>How do I identify the gauge of an unmarked wire?</summary><p>Strip a short section and measure the bare copper diameter with calipers, then look it up in an AWG diameter table (12 AWG = 2.05 mm, 14 AWG = 1.63 mm, 10 AWG = 2.59 mm). For stranded wire, measure one strand and multiply by the strand count using the area formula.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">WireGauge</div>
+    <p>WireGauge converts AWG wire sizes to mm² and diameter instantly, with ampacity hints and real-world uses.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function awgToMm2(awg){var T={0:53.5,1:42.4,2:33.6,3:26.7,4:21.2,5:16.8,6:13.3,7:10.5,8:8.37,9:6.63,10:5.26,11:4.17,12:3.31,13:2.62,14:2.08,15:1.65,16:1.31,17:1.04,18:0.82,19:0.65,20:0.52,21:0.41,22:0.33,23:0.26,24:0.21,25:0.16,26:0.13,27:0.1,28:0.08,29:0.065,30:0.051};var m=/^\s*(\d{1,2})/.exec(String(awg==null?'':awg));if(!m)return null;var n=parseInt(m[1],10);if(T[n]===undefined)return null;return T[n];}
+function wgNearestAwg(mm2){var T={0:53.5,1:42.4,2:33.6,3:26.7,4:21.2,5:16.8,6:13.3,7:10.5,8:8.37,9:6.63,10:5.26,11:4.17,12:3.31,13:2.62,14:2.08,15:1.65,16:1.31,17:1.04,18:0.82,19:0.65,20:0.52,21:0.41,22:0.33,23:0.26,24:0.21,25:0.16,26:0.13,27:0.1,28:0.08,29:0.065,30:0.051};var best=0,bd=1e9;for(var k in T){var d=Math.abs(T[k]-mm2);if(d<bd){bd=d;best=parseInt(k,10);}}return best;}
+function wgDiameterMm(mm2){return Math.round(Math.sqrt(4*mm2/Math.PI)*100)/100;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var AMP={0:'125 A',1:'110 A',2:'95 A',4:'70 A',6:'55 A',8:'40 A',10:'30 A',12:'20 A',14:'15 A',16:'10 A',18:'7 A'};var USE={0:'Service entrance cable',1:'Heavy feeder runs',2:'Service entrance',4:'Service feeders',6:'Ranges, EV chargers',8:'Subpanels, large appliances',10:'Water heaters, AC units (30 A)',12:'General outlets (20 A)',14:'Lighting circuits (15 A)',16:'Speakers, low-voltage lighting',18:'Thermostats, doorbells, signal wire'};var awgIn=document.getElementById('wg-awg'),mm2In=document.getElementById('wg-mm2');function render(gauge){var mm2=awgToMm2(gauge);if(mm2==null)return;var dia=wgDiameterMm(mm2);var inch=Math.round(dia/25.4*1000)/1000;document.getElementById('wg-out-awg').textContent=gauge;document.getElementById('wg-out-mm2').textContent=mm2+' mm²';document.getElementById('wg-out-dia').textContent=dia+' mm · '+inch+' in';document.getElementById('wg-out-use').textContent=USE[gauge]||'Specialty / electronics wiring';document.getElementById('wg-out-amp').innerHTML='<strong>≈ '+AMP[gauge]+' max</strong> — conservative ampacity for copper building wire. Verify against local code before sizing a circuit.';}awgIn.addEventListener('input',function(){var v=parseInt(awgIn.value,10);if(isNaN(v))return;v=Math.max(0,Math.min(30,v));render(v);mm2In.value='';});mm2In.addEventListener('input',function(){var v=parseFloat(mm2In.value);if(isNaN(v)||v<=0)return;var g=wgNearestAwg(v);awgIn.value=g;render(g);});render(12);});}
+</script>
+</body>
+</html>
